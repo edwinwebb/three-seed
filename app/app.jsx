@@ -13,12 +13,12 @@ var bunny = new Bunny();
 
 function animate() {
   renderer.render(stage);
-  bunny.rotation += .5;
+  //bunny.rotation += .5;
   window.requestAnimationFrame(animate);
 }
 
 bunny.position.x = 50;
-bunny.position.y = 100;
+bunny.position.y = 50;
 
 stage.addChild(bunny);
 
