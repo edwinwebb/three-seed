@@ -26,6 +26,8 @@
     "babel-runtime": "^4.6.6",
     "lodash": "^3.3.1",
     "eslint": "^0.15.1",
+    "file-loader": "^0.8.1",
+    "html-loader": "^0.2.3",
     "template-html-loader": "0.0.3",
     "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0"
