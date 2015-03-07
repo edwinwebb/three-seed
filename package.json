@@ -1,0 +1,55 @@
+{
+  "name": "pixi-seed",
+  "version": "0.0.1",
+  "repository": "https://github.com/edwinwebb/pixi-seed",
+  "config": {
+    "build_dir": "./build",
+    "dev_port": 8000
+  },
+  "scripts": {
+    "env": "env",
+    "prestart": "npm install",
+    "prewebpack": "npm run clean",
+    "clean": "rm -rf $npm_package_config_build_dir && mkdir $npm_package_config_build_dir",
+    "start": "NODE_ENV=development npm run webpack && npm run start-dev-server",
+    "webpack": "webpack --colors --progress --config ./webpack.config.js",
+    "start-dev-server": "webpack-dev-server --colors --port $npm_package_config_dev_port --content-base $npm_package_config_build_dir --config webpack.config.js --output-pathinfo --inline",
+    "build": "NODE_ENV=production npm run webpack"
+  },
+  "dependencies": {
+    "pixi.js": "^2.2.7"
+  },
+  "devDependencies": {
+    "babel-core": "^4.6.6",
+    "babel-eslint": "^1.0.12",
+    "babel-loader": "^4.0.0",
+    "babel-runtime": "^4.6.6",
+    "lodash": "^3.3.1",
+    "eslint": "^0.15.1",
+    "template-html-loader": "0.0.3",
+    "webpack": "^1.7.2",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "globals": {},
+    "rules": {
+      "strict": true,
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
+  }
+}
