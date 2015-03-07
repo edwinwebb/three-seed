@@ -17,9 +17,6 @@ function animate() {
   window.requestAnimationFrame(animate);
 }
 
-bunny.anchor.x = .5;
-bunny.anchor.y = .5;
-
 bunny.position.x = 50;
 bunny.position.y = 100;
 
