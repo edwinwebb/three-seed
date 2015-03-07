@@ -29,7 +29,7 @@ rm -rf .git
 
 ```js
 // Filename: app.jsx
-import 'assets/images/logo.png';
+import './logo.png';
 ```
 
 ## HTML files
