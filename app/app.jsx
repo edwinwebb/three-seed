@@ -5,22 +5,22 @@ import 'babel-core/polyfill';
 import PIXI from 'pixi.js';
 
 import Renderer from './Renderer/Renderer';
-import Bunny from './Bunny/Bunny';
+import BunnyGroup from './BunnyGroup/BunnyGroup.jsx';
 
 var renderer = new Renderer();
 var stage = new PIXI.Stage(0x66FF99);
-var bunny = new Bunny();
+var group1 = new BunnyGroup();
+var group2 = new BunnyGroup();
 
 function animate() {
   renderer.render(stage);
-  //bunny.rotation += .5;
   window.requestAnimationFrame(animate);
 }
 
-bunny.position.x = 50;
-bunny.position.y = 50;
+group1.position.x = 50;
 
-stage.addChild(bunny);
+stage.addChild(group1);
+stage.addChild(group2);
 
 document.body.appendChild(renderer.view);
 

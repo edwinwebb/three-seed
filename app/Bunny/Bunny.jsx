@@ -13,7 +13,12 @@ export default class Bunny extends PIXI.Sprite {
 
   init() {
     this.anchor.x = .5;
-    this.anchor.y = .5;
+    this.anchor.y = .8;
+    this.interactive = true;
+  }
+
+  mouseover(event) {
+    this.rotation = (Math.random() * .32) - .16; 
   }
 
 }

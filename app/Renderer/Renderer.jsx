@@ -21,7 +21,7 @@ export default class Renderer extends PIXI.WebGLRenderer {
   }
 
   resizeHanlder() {
-    this.resize(...this.getWindowSize())
+    this.resize(...this.getWindowSize());
   }
 
   getWindowSize() {
