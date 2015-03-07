@@ -3,8 +3,8 @@
 import './index.html';
 import 'babel-core/polyfill';
 
-import PIXI from 'pixi.js';
+import Renderer from './Renderer/Renderer';
 
-var renderer = new PIXI.CanvasRenderer(1024, 768);
+var renderer = new Renderer();
 
 document.body.appendChild(renderer.view);
