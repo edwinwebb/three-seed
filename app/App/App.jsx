@@ -2,6 +2,7 @@
 
 import PIXI from 'pixi.js';
 import BunnyGroup from '../BunnyGroup/BunnyGroup.jsx';
+import Background from '../Background/Background.jsx';
 
 export default class App extends PIXI.DisplayObjectContainer {
 
@@ -11,6 +12,13 @@ export default class App extends PIXI.DisplayObjectContainer {
   }
 
   init() {
+    var bg = new Background();
+    this.addChild(bg);
+
+    this.addBunnies();
+  }
+
+  addBunnies() {
     var group1 = new BunnyGroup();
     var group2 = new BunnyGroup();
 

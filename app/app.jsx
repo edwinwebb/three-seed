@@ -8,7 +8,7 @@ import Renderer from './Renderer/Renderer';
 import App from './App/App.jsx';
 
 var renderer = new Renderer();
-var stage = new PIXI.Stage(0x66FF99);
+var stage = new PIXI.Stage(0x111111);
 var app = new App();
 
 function animate() {
