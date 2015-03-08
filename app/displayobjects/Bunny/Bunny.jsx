@@ -6,7 +6,7 @@ import './bunny@2x.png';
 export default class Bunny extends PIXI.Sprite {
 
   constructor() {
-    var texture = PIXI.Texture.fromImage('./Bunny/bunny@2x.png');
+    var texture = PIXI.Texture.fromImage('./displayobjects/Bunny/bunny@2x.png');
     super(texture);
     this.init();
   }

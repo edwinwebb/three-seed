@@ -5,10 +5,10 @@ import 'babel-core/polyfill';
 import PIXI from 'pixi.js';
 
 import Renderer from './Renderer/Renderer';
-import App from './App/App.jsx';
+import App from './displayobjects/App/App.jsx';
 
 var renderer = new Renderer();
-var stage = new PIXI.Stage(0x111111);
+var stage = new PIXI.Stage(0x333333);
 var app = new App();
 
 function animate() {
