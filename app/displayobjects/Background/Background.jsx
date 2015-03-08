@@ -15,9 +15,6 @@ export default class Background extends PIXI.DisplayObjectContainer {
     var map = PIXI.Texture.fromImage('././displayobjects/Background/texture@2x.jpg');
     var bg = PIXI.Sprite.fromImage('././displayobjects/Background/texture@2x.jpg');
     //var filter = new PIXI.NormalMapFilter(map);
-    //
-    window.pixi = PIXI;
-
     //bg.filters = [filter];
 
     this.addChild(bg);
