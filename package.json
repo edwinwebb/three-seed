@@ -18,7 +18,8 @@
     "build": "NODE_ENV=production npm run webpack"
   },
   "dependencies": {
-    "pixi.js": "^2.2.7"
+    "pixi.js": "^2.2.7",
+    "flux": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^4.6.6",
