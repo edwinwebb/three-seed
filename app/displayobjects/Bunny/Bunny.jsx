@@ -12,13 +12,29 @@ export default class Bunny extends PIXI.Sprite {
   }
 
   init() {
+    this.interval = 0;
     this.anchor.x = .5;
     this.anchor.y = .8;
     this.interactive = true;
   }
 
+  startWobble() {
+    this.wobbles = 6;
+    this.interval = setInterval(this.wobble.bind(this), 400 / this.wobbles);
+  }
+
+  wobble() {
+    this.rotation = Math.random() - .5;
+    this.wobbles = this.wobbles - 1;
+
+    if(this.wobbles === 0) {
+      clearInterval(this.interval);
+    }
+  }
+
   mouseover(event) {
-    this.rotation = (Math.random() * .32) - .16; 
+    clearInterval(this.interval);
+    this.startWobble(); 
   }
 
 }
