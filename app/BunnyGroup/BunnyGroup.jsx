@@ -12,10 +12,10 @@ export default class BunnyGroup extends PIXI.DisplayObjectContainer {
 
   init() {
     var bunny;
-
+    
     this.spreadX = 200;
     this.spreadY = 100;
-    this.count = 12;
+    this.count = 24;
 
     for(var i of this.count) {
       bunny = new Bunny();
