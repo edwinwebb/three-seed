@@ -35,9 +35,9 @@ export default class Renderer extends PIXI.WebGLRenderer {
   }
 
   getWindowSize() {
-    var width = window.innerWidth / this.resolution;
-    var height = window.innerHeight / this.resolution;
-
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    
     return [width, height];
   }
 

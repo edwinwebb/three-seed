@@ -11,16 +11,19 @@ class RendererStore extends EventEmitter {
   }
 
   init() {
-    this.data = new Map();
+    this.data = {
+      width : 0,
+      height : 0,
+      resolution : 1
+    };
   }
 
   get(key) {
-    return this.data.get(key);
+    return this.data[key];
   }
 
   set(key, value) {
-    var val = this.data.set(key, value);
-    return val;
+    return this.data[key] = value;
   }
 
   emitChange() {
