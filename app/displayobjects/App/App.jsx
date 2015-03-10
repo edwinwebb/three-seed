@@ -1,10 +1,11 @@
 'use strict';
 
 import PIXI from 'pixi.js';
+import ScaledObjectGroup from '../ScaledObjectGroup/ScaledObjectGroup.jsx';
 import BunnyGroup from '../BunnyGroup/BunnyGroup.jsx';
 import Background from '../Background/Background.jsx';
 
-export default class App extends PIXI.DisplayObjectContainer {
+export default class App extends ScaledObjectGroup {
 
   constructor() {
     super();

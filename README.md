@@ -1,6 +1,12 @@
 # Pixi Seed
 
-A boilerplate for building Pixi projects with ES6
+A boilerplate for building Pixi projects with ES6 and Flux architechture.
+
+## What you get
+- ES6 via Babel
+- Build with WebPack
+- Pixi.js
+- Flux
 
 ## Getting started
 
