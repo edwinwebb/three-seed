@@ -1,17 +1,15 @@
 'use strict';
 
 import PIXI from 'pixi.js';
-import './bunny@2x.png';
+import './bunny.png';
 
 export default class Bunny extends PIXI.Sprite {
 
   constructor() {
-    var texture = PIXI.Texture.fromImage('./displayobjects/Bunny/bunny@2x.png');
+    var texture = PIXI.Texture.fromImage('./displayobjects/Bunny/bunny.png');
+    
     super(texture);
-    this.init();
-  }
 
-  init() {
     this.interval = 0;
     this.anchor.x = .5;
     this.anchor.y = .8;

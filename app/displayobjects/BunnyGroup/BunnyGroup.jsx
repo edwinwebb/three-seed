@@ -6,16 +6,13 @@ import Bunny from '../Bunny/Bunny.jsx';
 export default class BunnyGroup extends PIXI.DisplayObjectContainer {
 
   constructor() {
-    super();
-    this.init();
-  }
-
-  init() {
     var bunny;
 
+    super();
+    
     this.spreadX = 200;
     this.spreadY = 100;
-    this.count = 24;
+    this.count = 12;
 
     for(var i of this.count) {
       bunny = new Bunny();
@@ -26,5 +23,4 @@ export default class BunnyGroup extends PIXI.DisplayObjectContainer {
       this.addChild(bunny);
     }
   }
-
 }

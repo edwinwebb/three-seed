@@ -10,6 +10,7 @@ var th = 1080;
 export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
 
   constructor(target_w,target_h) {
+
     super();
 
     tw = target_w || tw;
@@ -17,7 +18,7 @@ export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
 
     RendererStore.on(RESIZE, this.resizeHanlder.bind(this));
 
-    // work needed here to scale X axis
+    // work needed here to scale axis
     this.scaleDisplay(RendererStore.get('width'), RendererStore.get('height'), tw, th);
     this.centerDisplay(RendererStore.get('width'), RendererStore.get('height'), tw, th);
   }
@@ -46,7 +47,6 @@ export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
   }
 
   centerDisplay(w, h, width, height) {
-    console.log(w, h, width, height);
     var offsetX = (w / 2) - (width / 2);
     var offsetY = (h / 2) - (height / 2);
     this.position.x = offsetX;

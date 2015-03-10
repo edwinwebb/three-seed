@@ -7,10 +7,7 @@ class RendererStore extends EventEmitter {
 
   constructor(...args) {
     super(...args);
-    this.init();
-  }
-
-  init() {
+    
     this.data = {
       width : 0,
       height : 0,

@@ -15,10 +15,6 @@ export default class Renderer extends PIXI.WebGLRenderer {
 
     super(...args);
 
-    this.initRenderer();
-  }
-
-  initRenderer() {
     window.addEventListener('resize', this.resizeHanlder.bind(this));
     RendererStore.set('resolution', this.resolution);
     this.setStore();
