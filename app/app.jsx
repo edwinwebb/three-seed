@@ -20,28 +20,42 @@ function animate() {
 
 function resizeHanlder(data) {
   var r = RendererStore.get('resolution');
-  var w = RendererStore.get('width') * r;
-  var h = RendererStore.get('height') * r;
-  var width, height;
+  var w = RendererStore.get('width');
+  var h = RendererStore.get('height');
+  var rw = w * r;
+  var rh = h * r;
+  var offsetX, offsetY;
   const tw = 1920;
   const th = 1080;
 
-  // scale
-  if(w > h) {
+  console.group();
+  console.log(r);
+  console.log(w);
+  console.log(h);
+  console.log(rw);
+  console.log(rh);
+  console.log(app.width)
+  console.log(app.scale)
+  console.groupEnd();
+
+  sizeApp(w,h,tw,th);
+
+  //center
+  offsetX = (w / 2) - (app.width / 2);
+  offsetY = (h / 2) - (app.height / 2);
+  app.position.x = offsetX;
+  app.position.y = offsetY;
+}
+
+function sizeApp(w,h,tw,th) {
+	// scale
+  if(w > h && w * (th/tw) > h) {
     app.width = w;
     app.height = w * (th/tw);
   } else {
     app.width = h * (tw/th);
     app.height = h;
   }
-
-  //center
-  width = (w / 2) - (app.width / 2);
-  height = (h / 2) - (app.height / 2);
-
-  app.position.x = width / 2;
-  app.position.y = height / 2;
-
 }
 
 RendererStore.on(RESIZE, resizeHanlder);
