@@ -7,14 +7,15 @@ import Background from '../Background/Background.jsx';
 
 export default class App extends ScaledObjectGroup {
 
-  constructor() {
+  constructor(...args) {
     var bg = new Background();
 
-    super();
-    
+    super(...args);
+
     this.addChild(bg);
 
     this.addBunnies();
+
   }
 
   addBunnies() {

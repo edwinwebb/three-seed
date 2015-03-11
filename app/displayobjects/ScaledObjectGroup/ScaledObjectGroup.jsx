@@ -16,21 +16,21 @@ export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
     tw = target_w || tw;
     th = target_h || th;
 
-    RendererStore.on(RESIZE, this.resizeHanlder.bind(this));
+    RendererStore.on(RESIZE, this.resizeHandler.bind(this));
 
-    // work needed here to scale axis
-    this.scaleDisplay(RendererStore.get('width'), RendererStore.get('height'), tw, th);
+    // we can't scale until the assets are loaded. this.width is 0 until children are added.
     this.centerDisplay(RendererStore.get('width'), RendererStore.get('height'), tw, th);
   }
 
-  resizeHanlder() {
+  resizeHandler() {
     var r = RendererStore.get('resolution');
     var w = RendererStore.get('width');
     var h = RendererStore.get('height');
     var rw = w * r;
     var rh = h * r;
 
-    this.scaleDisplay(w,h,tw,th);
+    // TODO - put this back one the asset loader is place
+    //this.scaleDisplay(w,h,tw,th);
 
     this.centerDisplay(w,h, this.width, this.height);
   }

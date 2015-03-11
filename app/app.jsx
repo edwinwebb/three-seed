@@ -9,7 +9,7 @@ import App from './displayobjects/App/App.jsx';
 
 var renderer = new Renderer();
 var stage = new PIXI.Stage(0x333333);
-var app = new App();
+var app = new App(1920, 1080); // Scaling
 
 function animate() {
   renderer.render(stage);
