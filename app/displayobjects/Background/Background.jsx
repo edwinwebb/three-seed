@@ -14,7 +14,7 @@ export default class Background extends PIXI.DisplayObjectContainer {
     // var filter = new PIXI.NormalMapFilter(map); // Undefined?
     // var filter = new PIXI.DotScreenFilter();
     //     filter.scale = 4;
-    bg.filters = [filter];
+    //bg.filters = [filter];
 
     this.addChild(bg);
   }
