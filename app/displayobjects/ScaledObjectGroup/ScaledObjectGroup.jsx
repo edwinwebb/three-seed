@@ -18,7 +18,7 @@ export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
 
     RendererStore.on(RESIZE, this.resizeHandler.bind(this));
 
-    // we can't scale until the assets are loaded. this.width is 0 until children are added.
+    // we can't scale until the assets are loaded. this.width is 0 until children are added/loaded.
     this.centerDisplay(RendererStore.get('width'), RendererStore.get('height'), tw, th);
   }
 

@@ -1,5 +1,6 @@
 'use strict';
 
+import TWEEN from 'tween.js';
 import PIXI from 'pixi.js';
 import './bunny.png';
 
@@ -7,32 +8,24 @@ export default class Bunny extends PIXI.Sprite {
 
   constructor() {
     var texture = PIXI.Texture.fromImage('./displayobjects/Bunny/bunny.png');
-    
+
     super(texture);
 
     this.interval = 0;
     this.anchor.x = .5;
-    this.anchor.y = .8;
+    this.anchor.y = .5;
     this.interactive = true;
   }
 
   startWobble() {
-    this.wobbles = 6;
-    this.interval = setInterval(this.wobble.bind(this), 400 / this.wobbles);
-  }
-
-  wobble() {
-    this.rotation = Math.random() - .5;
-    this.wobbles = this.wobbles - 1;
-
-    if(this.wobbles === 0) {
-      clearInterval(this.interval);
-    }
-  }
+    var position = this;
+    var tween = new TWEEN.Tween(position);
+    tween.to({rotation: 6.2}, 1000);
+    tween.start();  }
 
   mouseover(event) {
     clearInterval(this.interval);
-    this.startWobble(); 
+    this.startWobble();
   }
 
 }

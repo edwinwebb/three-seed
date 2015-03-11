@@ -2,7 +2,7 @@
   "name": "pixi-seed",
   "version": "0.1.2",
   "repository": "https://github.com/edwinwebb/pixi-seed",
-  "description" : "Pixi.js project seed with ES6 and webpack",
+  "description": "Pixi.js project seed with ES6 and webpack",
   "config": {
     "build_dir": "./build",
     "dev_port": 8000
@@ -26,11 +26,12 @@
     "babel-eslint": "^1.0.12",
     "babel-loader": "^4.0.0",
     "babel-runtime": "^4.6.6",
-    "lodash": "^3.3.1",
     "eslint": "^0.15.1",
     "file-loader": "^0.8.1",
     "html-loader": "^0.2.3",
+    "lodash": "^3.3.1",
     "template-html-loader": "0.0.3",
+    "tween.js": "^0.14.0",
     "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0"
   },
