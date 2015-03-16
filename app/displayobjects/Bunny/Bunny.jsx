@@ -21,7 +21,8 @@ export default class Bunny extends PIXI.Sprite {
     var position = this;
     var tween = new TWEEN.Tween(position);
     tween.to({rotation: 6.2}, 1000);
-    tween.start();  }
+    tween.start();
+  }
 
   mouseover(event) {
     clearInterval(this.interval);
