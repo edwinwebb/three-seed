@@ -1,7 +1,7 @@
 'use strict';
 
 import PIXI from 'pixi.js';
-import Bunny from '../Bunny/Bunny.jsx';
+import Bunny from '../Bunny/Bunny.js';
 
 export default class BunnyGroup extends PIXI.DisplayObjectContainer {
 
@@ -9,7 +9,7 @@ export default class BunnyGroup extends PIXI.DisplayObjectContainer {
     var bunny;
 
     super();
-    
+
     this.spreadX = 200;
     this.spreadY = 100;
     this.count = 12;

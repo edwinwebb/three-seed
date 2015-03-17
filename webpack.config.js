@@ -61,7 +61,7 @@ var config = {
   entry: {
     app: [
       'webpack/hot/dev-server',
-      './app.jsx'
+      './app.js'
     ]
   },
   output: {

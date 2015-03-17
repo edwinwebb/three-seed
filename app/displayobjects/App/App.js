@@ -1,9 +1,9 @@
 'use strict';
 
 import PIXI from 'pixi.js';
-import ScaledObjectGroup from '../ScaledObjectGroup/ScaledObjectGroup.jsx';
-import BunnyGroup from '../BunnyGroup/BunnyGroup.jsx';
-import Background from '../Background/Background.jsx';
+import ScaledObjectGroup from '../ScaledObjectGroup/ScaledObjectGroup.js';
+import BunnyGroup from '../BunnyGroup/BunnyGroup.js';
+import Background from '../Background/Background.js';
 
 export default class App extends ScaledObjectGroup {
 
