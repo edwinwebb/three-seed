@@ -7,18 +7,17 @@ export default class BunnyGroup extends PIXI.DisplayObjectContainer {
 
   constructor() {
     var bunny;
+    var spreadX = 200;
+    var spreadY = 100;
+    var count = 12;
 
     super();
 
-    this.spreadX = 200;
-    this.spreadY = 100;
-    this.count = 12;
-
-    for(var i of this.count) {
+    for(var i of count) {
       bunny = new Bunny();
 
-      bunny.position.x = Math.random() * this.spreadX;
-      bunny.position.y = (Math.random() * this.spreadY * .2) + (this.spreadY * .8);
+      bunny.position.x = Math.random() * spreadX;
+      bunny.position.y = (Math.random() * spreadY * .2) + (spreadY * .8);
 
       this.addChild(bunny);
     }
