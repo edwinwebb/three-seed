@@ -3,7 +3,9 @@
 import PIXI from 'pixi.js';
 import ScaledObjectGroup from '../ScaledObjectGroup/ScaledObjectGroup.js';
 import BunnyGroup from '../BunnyGroup/BunnyGroup.js';
+import Bunny from '../Bunny/Bunny.js';
 import Background from '../Background/Background.js';
+import RendererStore from '../../stores/RendererStore.js';
 
 export default class App extends ScaledObjectGroup {
 

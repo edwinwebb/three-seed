@@ -7,6 +7,7 @@ A boilerplate for building Pixi projects with ES6 and Flux architechture.
 - Build with WebPack
 - Pixi.js
 - Flux
+- Tween.js
 
 ## Getting started
 
@@ -35,7 +36,7 @@ rm -rf .git
 
 ```js
 // Filename: app.jsx
-import './logo.png';
+import assetURL from './logo.png';
 ```
 
 ## HTML files

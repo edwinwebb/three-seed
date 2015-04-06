@@ -2,31 +2,31 @@
 
 import TWEEN from 'tween.js';
 import PIXI from 'pixi.js';
-import './bunny.png';
+import BUNNY from'./bunny.png';
 
 export default class Bunny extends PIXI.Sprite {
 
   constructor() {
-    var texture = PIXI.Texture.fromImage('./displayobjects/Bunny/bunny.png');
+    var texture = PIXI.Texture.fromImage(BUNNY);
 
     super(texture);
 
-    this.interval = 0;
+    this.tween = new TWEEN.Tween(this);
+
     this.anchor.x = .5;
     this.anchor.y = .5;
+
     this.interactive = true;
   }
 
-  startWobble() {
-    var position = this;
-    var tween = new TWEEN.Tween(position);
-    tween.to({rotation: 6.2}, 1000);
-    tween.start();
+  startSpin() {
+    this.tween.to({rotation: Math.PI*2}, 1000);
+    this.tween.start()
+    this.tween.onComplete(function(){this.rotation=0});
   }
 
   mouseover(event) {
-    clearInterval(this.interval);
-    this.startWobble();
+    this.startSpin();
   }
 
 }
