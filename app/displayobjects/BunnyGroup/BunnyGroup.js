@@ -13,7 +13,7 @@ export default class BunnyGroup extends PIXI.DisplayObjectContainer {
 
     super();
 
-    for(var i of count) {
+    for(let i = 0; i < count; i++) {
       bunny = new Bunny();
 
       bunny.position.x = Math.random() * spreadX;
