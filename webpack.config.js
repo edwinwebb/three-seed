@@ -1,82 +1,197 @@
 var path = require('path');
 var util = require('util');
 var webpack = require('webpack');
-var pkg = require('./package.json');
+var pkg = require('./package.json')
 
 var DEBUG = process.env.NODE_ENV !== 'production';
 
 var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
 
-var plugins =[
-  new webpack.optimize.OccurenceOrderPlugin()
-];
+var entry = {
+  app: ['./app.js']
+};
 
 if (DEBUG) {
-  plugins.push(
-    new webpack.HotModuleReplacementPlugin()
+  entry.app.push(
+    util.format(
+      'webpack-dev-server/client?http://%s:%d',
+      pkg.config.devHost,
+      pkg.config.devPort
+    )
   );
-} else {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new webpack.NoErrorsPlugin()
-  );
+  entry.app.push('webpack/hot/only-dev-server');
 }
-
-var loaders = [
-  {
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    loader: 'babel-loader?optional&optional=runtime'
-  },
-  {
-    test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
-    loader: 'file-loader?name=[path][name].[ext]'
-  },
-  {
-    test: /\.html$/,
-    loader: [
-      'file-loader?name=[path][name].[ext]',
-      'template-html-loader?' + [
-        'raw=true',
-        'engine=lodash',
-        'version='+pkg.version,
-        'description='+pkg.description
-      ].join('&')
-    ].join('!')
-  }
-];
 
 var config = {
   context: path.join(__dirname, 'app'),
   cache: DEBUG,
   debug: DEBUG,
   target: 'web',
-  devtool: DEBUG ? '#inline-source-map' : false,
-  entry: {
-    app: [
-      'webpack/hot/dev-server',
-      './app.js'
-    ]
-  },
+  devtool: DEBUG ? 'inline-source-map' : false,
+  entry: entry,
   output: {
-    path: pkg.config.build_dir,
+    path: path.resolve(pkg.config.buildDir),
     publicPath: '/',
     filename: jsBundle,
-    pathinfo: DEBUG
+    pathinfo: false
   },
   module: {
-    loaders: loaders
+    loaders: getLoaders()
   },
-  plugins: plugins,
+  plugins: getPlugins(),
   resolve: {
     extensions: ['', '.js', '.json', '.jsx']
+  },
+  devServer: {
+    contentBase: path.resolve(pkg.config.buildDir),
+    hot: true,
+    noInfo: false,
+    inline: true,
+    stats: { colors: true }
   }
 };
 
+function getPlugins() {
+  var plugins = [
+    new webpack.optimize.OccurenceOrderPlugin()
+  ];
+  if (!DEBUG) {
+    plugins.push(
+      new webpack.HotModuleReplacementPlugin()
+    );
+  } else {
+    plugins.push(
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      }),
+      new webpack.NoErrorsPlugin()
+    );
+  }
+  return plugins;
+}
+
+function getLoaders() {
+
+  var jsxLoader;
+  var fileLoader = 'file-loader?name=[path][name].[ext]';
+  var htmlLoader = [
+    'file-loader?name=[path][name].[ext]',
+    'template-html-loader?' + [
+      'raw=true',
+      'engine=lodash',
+      'version=' + pkg.version,
+      'title=' + pkg.name,
+      'debug=' + DEBUG
+    ].join('&')
+  ].join('!');
+  var jsonLoader = ['json-loader'];
+
+  if (DEBUG) {
+    jsxLoader = ['react-hot', 'babel-loader?optional=runtime'];
+  } else {
+    jsxLoader = ['babel-loader?optional=runtime'];
+  }
+
+  return [
+    {
+      test: /\.js?$/,
+      exclude: /node_modules/,
+      loaders: jsxLoader
+    },
+    {
+      test: /\.jpe?g$|\.svg$|\.png$/,
+      loader: fileLoader
+    },
+    {
+      test: /\.json$/,
+      exclude: /node_modules/,
+      loaders: jsonLoader
+    },
+    {
+      test: /\.html$/,
+      loader: htmlLoader
+    }
+  ];
+}
+
 module.exports = config;
+
+// // END
+
+// var plugins =[
+//   new webpack.optimize.OccurenceOrderPlugin()
+// ];
+
+// if (DEBUG) {
+//   plugins.push(
+//     new webpack.HotModuleReplacementPlugin()
+//   );
+// } else {
+//   plugins.push(
+//     new webpack.optimize.UglifyJsPlugin(),
+//     new webpack.optimize.DedupePlugin(),
+//     new webpack.DefinePlugin({
+//       'process.env': {
+//         NODE_ENV: JSON.stringify('production')
+//       }
+//     }),
+//     new webpack.NoErrorsPlugin()
+//   );
+// }
+
+// var loaders = [
+//   {
+//     test: /\.jsx?$/,
+//     exclude: /node_modules/,
+//     loader: 'babel-loader?optional&optional=runtime'
+//   },
+//   {
+//     test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
+//     loader: 'file-loader?name=[path][name].[ext]'
+//   },
+//   {
+//     test: /\.html$/,
+//     loader: [
+//       'file-loader?name=[path][name].[ext]',
+//       'template-html-loader?' + [
+//         'raw=true',
+//         'engine=lodash',
+//         'version='+pkg.version,
+//         'description='+pkg.description
+//       ].join('&')
+//     ].join('!')
+//   }
+// ];
+
+// var config = {
+//   context: path.join(__dirname, 'app'),
+//   cache: DEBUG,
+//   debug: DEBUG,
+//   target: 'web',
+//   devtool: DEBUG ? '#inline-source-map' : false,
+//   entry: {
+//     app: [
+//       'webpack/hot/dev-server',
+//       './app.js'
+//     ]
+//   },
+//   output: {
+//     path: pkg.config.build_dir,
+//     publicPath: '/',
+//     filename: jsBundle,
+//     pathinfo: DEBUG
+//   },
+//   module: {
+//     loaders: loaders
+//   },
+//   plugins: plugins,
+//   resolve: {
+//     extensions: ['', '.js', '.json', '.jsx']
+//   }
+// };
+
+// module.exports = config;
