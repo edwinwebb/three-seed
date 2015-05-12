@@ -55,7 +55,7 @@ function getPlugins() {
   var plugins = [
     new webpack.optimize.OccurenceOrderPlugin()
   ];
-  if (!DEBUG) {
+  if (DEBUG) {
     plugins.push(
       new webpack.HotModuleReplacementPlugin()
     );
