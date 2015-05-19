@@ -19,7 +19,7 @@ if (DEBUG) {
       pkg.config.devPort
     )
   );
-  entry.app.push('webpack/hot/only-dev-server');
+  entry.app.push('webpack/hot/dev-server');
 }
 
 var config = {
@@ -40,7 +40,7 @@ var config = {
   },
   plugins: getPlugins(),
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx']
+    extensions: ['', '.js', '.json']
   },
   devServer: {
     contentBase: path.resolve(pkg.config.buildDir),
@@ -76,7 +76,7 @@ function getPlugins() {
 
 function getLoaders() {
 
-  var jsxLoader;
+  var jsLoader;
   var fileLoader = 'file-loader?name=[path][name].[ext]';
   var htmlLoader = [
     'file-loader?name=[path][name].[ext]',
@@ -91,16 +91,16 @@ function getLoaders() {
   var jsonLoader = ['json-loader'];
 
   if (DEBUG) {
-    jsxLoader = ['react-hot', 'babel-loader?optional=runtime'];
+    jsLoader = ['babel-loader?optional&optional=runtime'];
   } else {
-    jsxLoader = ['babel-loader?optional=runtime'];
+    jsLoader = ['babel-loader?optional=runtime'];
   }
 
   return [
     {
       test: /\.js?$/,
       exclude: /node_modules/,
-      loaders: jsxLoader
+      loaders: jsLoader
     },
     {
       test: /\.jpe?g$|\.svg$|\.png$/,

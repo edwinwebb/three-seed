@@ -22,7 +22,7 @@
     "lint": "eslint --ext .js --ext .jsx ./app && echo No linting errors."
   },
   "dependencies": {
-    "pixi.js": "^3.0.3",
+    "pixi.js": "2.2.9",
     "flux": "^2.0.1"
   },
   "devDependencies": {
@@ -36,8 +36,6 @@
     "html-loader": "^0.2.3",
     "lodash": "^3.3.1",
     "opn": "^1.0.1",
-    "react-hot-loader": "^1.2.5",
-    "pixi.js": "^2.2.9",
     "template-html-loader": "0.0.3",
     "tween.js": "^0.14.0",
     "webpack": "^1.8.8",
