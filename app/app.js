@@ -1,7 +1,7 @@
 'use strict';
 
 import './index.html';
-import 'babel-core/polyfill';
+//import 'babel-core/polyfill';
 import PIXI from 'pixi.js';
 import TWEEN from 'tween.js';
 
@@ -23,4 +23,3 @@ document.body.appendChild(renderer.view);
 stage.addChild(app);
 
 animate();
-

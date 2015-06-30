@@ -5,21 +5,15 @@
   "description": "Pixi.js project seed with ES6 and webpack",
   "config": {
     "buildDir": "./build",
-    "devPort": 8000,
+    "devPort": 8080,
     "devHost": "localhost"
   },
-  "scripts": {
-    "env": "env",
-    "prerelease": "npm test",
+  "scripts" : {
     "prestart": "npm install",
-    "pretest": "npm install && npm run lint",
-    "prewebpack": "npm run clean",
-    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
-    "start": "NODE_ENV=development node dev-server",
-    "webpack": "webpack --colors --progress --config ./webpack.config.js",
-    "start-dev-server": "webpack-dev-server --output-pathinfo --inline",
-    "build": "NODE_ENV=production npm run webpack",
-    "lint": "eslint --ext .js --ext .jsx ./app && echo No linting errors."
+    "start" : "webpack-dev-server --content-base ./build/ --hot",
+    "webpack" : "webpack -p --config ./webpack.config.js",
+    "prewebpack" : "npm run clean",
+    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir"
   },
   "dependencies": {
     "pixi.js": "2.2.9",
@@ -31,37 +25,15 @@
     "babel-loader": "^5.0.0",
     "json-loader": "^0.5.1",
     "babel-runtime": "^5.1.11",
-    "eslint": "^0.19.0",
     "file-loader": "^0.8.1",
     "html-loader": "^0.2.3",
     "lodash": "^3.3.1",
-    "opn": "^1.0.1",
-    "template-html-loader": "0.0.3",
     "tween.js": "^0.14.0",
-    "webpack": "^1.8.8",
+    "webpack": "^1.9.5",
     "webpack-dev-server": "^1.8.2",
     "rimraf": "^2.3.2"
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "globals": {},
-    "rules": {
-      "strict": true,
-      "indent": [
-        2,
-        2
-      ],
-      "quotes": [
-        2,
-        "single"
-      ]
-    }
   }
 }
