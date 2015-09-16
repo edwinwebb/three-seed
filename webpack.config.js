@@ -6,10 +6,6 @@ var entry = {
   app: ['./app.js']
 };
 
-if (DEBUG) {
-  entry.app.unshift('webpack/hot/dev-server');
-}
-
 module.exports = {
     context: path.join(__dirname, 'app'),
     entry: entry,

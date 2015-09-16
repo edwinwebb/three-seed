@@ -18,15 +18,15 @@ rm -rf .git
 
 ## npm scripts
 
-* `npm start` - Build and start the app in dev mode at http://localhost:8080
-* `npm run webpack` - Run a production build
+* `npm start` - Build and start the app in development mode at http://localhost:8080
+* `npm run build` - Run a production build, outputs to ./build/
 
-## webpack
+## Static assets
 
 `import` asset files from within your JavaScript component files:
 
 ```js
-// Filename: app.jsx
+// Filename: app.js
 import assetURL from './logo.png';
 ```
 
