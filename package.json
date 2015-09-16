@@ -5,8 +5,6 @@
   "description": "Pixi.js project seed with ES6 and webpack",
   "config": {
     "buildDir": "./build",
-    "devPort": 8000,
-    "devHost": "localhost",
     "stageWidth": 1920,
     "stageHeight": 1080
   },
@@ -20,6 +18,7 @@
   },
   "dependencies": {
     "pixi.js": "3.0.7",
+    "tween.js": "^15.0.0",
     "flux": "^2.1.1"
   },
   "devDependencies": {
@@ -31,7 +30,6 @@
     "file-loader": "^0.8.4",
     "html-loader": "^0.3.0",
     "lodash": "^3.10.1",
-    "tween.js": "^15.0.0",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.10.1",
     "rimraf": "^2.4.3"

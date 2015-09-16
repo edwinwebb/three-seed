@@ -16,6 +16,16 @@ cd my-project
 rm -rf .git
 ```
 
+You can configure some app settings in package.json
+
+```
+"config": {
+  "buildDir": "./build",
+  "stageWidth": 1920,
+  "stageHeight": 1080
+}
+```
+
 ## npm scripts
 
 * `npm start` - Build and start the app in development mode at http://localhost:8080
