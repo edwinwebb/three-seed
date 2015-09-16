@@ -1,13 +1,24 @@
 'use strict';
 
+/**
+ * ScaledObjectGroup
+ *
+ * A DisplayObjectContainer which attempts to scale and best-fit into the
+ * window size dispatched from the RendererStrore
+ *
+ * @extends Container
+ * @exports ScaledObjectGroup
+ */
+
 import PIXI from 'pixi.js';
 import RendererStore from '../../stores/RendererStore.js';
 import { RESIZE } from '../../constants/AppConstants.js';
 
+// default target size
 var tw = 1920;
-var th = 1020;
+var th = 1080;
 
-export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
+export default class ScaledObjectGroup extends PIXI.Container {
 
   constructor(target_w,target_h) {
 
@@ -22,14 +33,14 @@ export default class ScaledObjectGroup extends PIXI.DisplayObjectContainer {
   }
 
   resizeHandler() {
-    var rw = RendererStore.get('width');
-    var rh = RendererStore.get('height');
-    var Xratio = rw / tw;
-    var Yratio = rh / th;
-    var scaleRatio = rw > rh ? Xratio : Yratio;
-    var scale = new PIXI.Point(scaleRatio, scaleRatio);
-    var offsetX = (rw / 2) - (tw*scaleRatio / 2);
-    var offsetY = (rh / 2) - (th*scaleRatio / 2);
+    const rw = RendererStore.get('width');
+    const rh = RendererStore.get('height');
+    const Xratio = rw / tw;
+    const Yratio = rh / th;
+    let scaleRatio = rw > rh ? Xratio : Yratio;
+    let scale = new PIXI.Point(scaleRatio, scaleRatio);
+    let offsetX = (rw / 2) - (tw*scaleRatio / 2);
+    let offsetY = (rh / 2) - (th*scaleRatio / 2);
 
     if(th*scaleRatio < rh) {
       scaleRatio = Yratio;

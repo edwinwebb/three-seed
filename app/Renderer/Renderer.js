@@ -11,13 +11,13 @@ export default class Renderer extends PIXI.WebGLRenderer {
 
     this.resolution = window.devicePixelRatio;
 
-    window.addEventListener('resize', this.resizeHanlder.bind(this));
-    
+    window.addEventListener('resize', this.resizeHandler.bind(this));
+
     RendererStore.set('resolution', this.resolution);
-    
+
     this.setStore();
 
-    this.resizeHanlder();
+    this.resizeHandler();
   }
 
   setStore() {
@@ -25,7 +25,7 @@ export default class Renderer extends PIXI.WebGLRenderer {
     RendererStore.set('height', this.getWindowSize()[1]);
   }
 
-  resizeHanlder() {
+  resizeHandler() {
     this.resize(...this.getWindowSize());
     this.setStore();
     RendererStore.emitChange();
