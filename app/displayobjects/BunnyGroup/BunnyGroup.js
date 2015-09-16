@@ -3,7 +3,7 @@
 import PIXI from 'pixi.js';
 import Bunny from '../Bunny/Bunny.js';
 
-export default class BunnyGroup extends PIXI.DisplayObjectContainer {
+export default class BunnyGroup extends PIXI.Container {
 
   constructor() {
     var bunny;

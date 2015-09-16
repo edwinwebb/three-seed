@@ -3,7 +3,7 @@
 import PIXI from 'pixi.js';
 import TEXTURE from './texture.jpg';
 
-export default class Background extends PIXI.DisplayObjectContainer {
+export default class Background extends PIXI.Container {
 
   constructor() {
     super();
