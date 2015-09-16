@@ -1,6 +1,10 @@
 # Pixi Seed
 
-A boilerplate for building Pixi projects with ES6 and Flux architechture.
+This seeds to deigned to bootstrap your PIXI.js development with modern tooling and technology and project organisation.
+
+Webpack with ES6 provides a more modular approach to PIXI.js development and  allow you to include assets within your JS. Reactman allows you to quickly add assets to your project and optional Flux architecture allows more complex apps to be built in an organised manner.
+
+The seed is designed to work across multiple devices with a ‘best-fit’ rendering methodology.
 
 ## What you get
 - ES6 via Babel
