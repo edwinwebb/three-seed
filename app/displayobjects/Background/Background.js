@@ -1,7 +1,7 @@
 'use strict';
 
 import PIXI from 'pixi.js';
-import TEXTURE from './texture.jpg';
+import TEXTURE from './diagnostic.png';
 
 export default class Background extends PIXI.Container {
 

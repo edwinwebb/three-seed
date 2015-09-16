@@ -11,12 +11,12 @@
 import './index.html';
 import PIXI from 'pixi.js';
 import TWEEN from 'tween.js';
-
+import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
 import App from './displayobjects/App/App.js';
 
-var renderer = new Renderer(1920, 1080);
-var app = new App(1920, 1080);
+var renderer = new Renderer(config.stageWidth, config.stageHeight);
+var app = new App(config.stageWidth, config.stageHeight);
 
 /**
  * Main animation loop

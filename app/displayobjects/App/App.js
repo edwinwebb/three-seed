@@ -21,20 +21,20 @@ export default class App extends ScaledObjectGroup {
   }
 
   addBunnies() {
-    var group1 = new BunnyGroup();
-    var group2 = new BunnyGroup();
+    const cx = RendererStore.get('stageCenter').x;
+    const cy = RendererStore.get('stageCenter').y;
 
-    group1.position.y = 520;
-    group2.position.y = 520;
+    let group1 = new BunnyGroup();
+    let b1 = new Bunny();
 
-    group1.position.x = 920;
-    group2.position.x = 960;
+    b1.position.x = cx;
+    b1.position.y = cy;
 
-    group2.scale.x = .5;
-    group2.scale.y = .5;
+    group1.position.x = cx;
+    group1.position.y = cy + (RendererStore.get('stageHeight')*.25);
 
+    this.addChild(b1);
     this.addChild(group1);
-    this.addChild(group2);
   }
 
 }

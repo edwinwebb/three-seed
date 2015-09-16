@@ -14,7 +14,10 @@ export default class Bunny extends PIXI.Sprite {
     this.tween = new TWEEN.Tween(this);
 
     this.anchor.x = .5;
-    this.anchor.y = .5;
+    this.anchor.y = 1;
+
+    this.pivot.x = .5;
+    this.pivot.y = .5;
 
     this.interactive = true;
   }

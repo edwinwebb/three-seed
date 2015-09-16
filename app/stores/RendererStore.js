@@ -7,10 +7,13 @@ class RendererStore extends EventEmitter {
 
   constructor(...args) {
     super(...args);
-    
+
     this.data = {
       width : 0,
       height : 0,
+      stageWidth : 0,
+      stageHeight: 0,
+      stageCenter : {x: 0,y: 0},
       resolution : 1
     };
   }
