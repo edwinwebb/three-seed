@@ -21,7 +21,7 @@ export default class Bunny extends PIXI.Sprite {
 
   startSpin() {
     this.tween.to({rotation: Math.PI*2}, 1000);
-    this.tween.start()
+    this.tween.start();
     this.tween.onComplete(function(){this.rotation=0});
   }
 

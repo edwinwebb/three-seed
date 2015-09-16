@@ -5,13 +5,14 @@
   "description": "Pixi.js project seed with ES6 and webpack",
   "config": {
     "buildDir": "./build",
-    "devPort": 8080,
+    "devPort": 8000,
     "devHost": "localhost"
   },
   "scripts" : {
     "prestart": "npm install",
-    "start" : "webpack-dev-server --content-base ./build/ --hot",
+    "start" : "NODE_ENV=development webpack-dev-server --content-base ./build/ --hot",
     "webpack" : "webpack -p --config ./webpack.config.js",
+    "build" : "NODE_ENV=production npm run webpack",
     "prewebpack" : "npm run clean",
     "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir"
   },

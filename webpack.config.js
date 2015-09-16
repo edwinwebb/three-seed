@@ -13,9 +13,12 @@ if (DEBUG) {
 module.exports = {
     context: path.join(__dirname, 'app'),
     entry: entry,
+    debug : DEBUG,
+    target : 'web',
+    devtool : DEBUG ? 'inline-source-map' : false,
     output: {
         path: path.resolve(pkg.config.buildDir),
-        "publicPath" : "/",
+        "publicPath": "/",
         filename: "bundle.js"
     },
     node: {
