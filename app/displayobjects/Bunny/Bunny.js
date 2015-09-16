@@ -1,5 +1,3 @@
-'use strict';
-
 import TWEEN from 'tween.js';
 import PIXI from 'pixi.js';
 import BUNNY from'./bunny.png';
@@ -28,7 +26,7 @@ export default class Bunny extends PIXI.Sprite {
     this.tween.onComplete(function(){this.rotation=0});
   }
 
-  mouseover(event) {
+  mouseover() {
     this.startSpin();
   }
 

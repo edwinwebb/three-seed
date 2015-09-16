@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * App.js
  *
@@ -9,7 +7,6 @@
  */
 
 import './index.html';
-import PIXI from 'pixi.js';
 import TWEEN from 'tween.js';
 import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
