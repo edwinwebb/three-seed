@@ -1,7 +1,14 @@
 'use strict';
 
+/**
+ * App.js
+ *
+ * The main entry point, appends PIXI to the DOM
+ * and starts a render and animation loop
+ *
+ */
+
 import './index.html';
-//import 'babel-core/polyfill';
 import PIXI from 'pixi.js';
 import TWEEN from 'tween.js';
 
@@ -10,6 +17,7 @@ import App from './displayobjects/App/App.js';
 
 var renderer = new Renderer(1920, 1080);
 var app = new App(1920, 1080);
+
 /**
  * Main animation loop
  * @todo abstract into module

@@ -7,7 +7,7 @@ Webpack with ES6 provides a more modular approach to PIXI.js development and  al
 The seed is designed to work across multiple devices with a ‘best-fit’ rendering methodology.
 
 ## What you get
-- ES6 via Babel
+- ES2015 via Babel
 - Build with WebPack
 - Pixi.js
 - Flux
