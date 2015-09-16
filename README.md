@@ -18,7 +18,7 @@ rm -rf .git
 
 ## npm scripts
 
-* `npm start` - Build and start the app in dev mode at http://localhost:8080/webpack-dev-server/index.html
+* `npm start` - Build and start the app in dev mode at http://localhost:8080
 * `npm run webpack` - Run a production build
 
 ## webpack

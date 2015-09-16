@@ -18,7 +18,7 @@ module.exports = {
     devtool : DEBUG ? 'inline-source-map' : false,
     output: {
         path: path.resolve(pkg.config.buildDir),
-        "publicPath": "/",
+        publicPath: "/",
         filename: "bundle.js"
     },
     node: {
