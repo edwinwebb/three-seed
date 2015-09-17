@@ -52,6 +52,18 @@ module.exports = {
           return i.toUpperCase().replace(" ","").split(",");
         }
       }]
+    },
+    "store" : {
+      "files" : {
+        "store.js" : "stores/{%=o.exports%}{%=o.ext%}"
+      },
+      "script" : [{
+        "name": "exports",
+        "message": "Exports",
+        "required": true,
+        "default": "Exports",
+        "type": "input"
+      }]
     }
   }
 }
