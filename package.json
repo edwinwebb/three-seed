@@ -16,7 +16,7 @@
     "prewebpack": "npm run clean",
     "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
     "lint": "eslint ./app/**/*.js",
-    "reactman": "reactman --config ./templates/reactman.json"
+    "reactman": "reactman --config ./templates/reactman.js"
   },
   "dependencies": {
     "pixi.js": "3.0.7",

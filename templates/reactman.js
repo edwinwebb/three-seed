@@ -1,4 +1,4 @@
-{
+module.exports = {
   "templatesFolder" : "./templates/",
   "outputFolder" : "./app/",
   "scripts" : {
@@ -11,7 +11,7 @@
         "message": "Exports",
         "required": true,
         "default": "Exports",
-        "type": "string"
+        "type": "input"
       }, {
         "name": "extendpixi",
         "message": "Extend Pixi.js?",
@@ -23,13 +23,34 @@
         "message": "Extends",
         "default": "Extends",
         "required": true,
-        "type": "string"
+        "type": "input"
       }, {
         "name": "description",
         "message": "Description",
         "default": "A display object",
         "required": true,
-        "type": "string"
+        "type": "input"
+      }]
+    },
+    "action" : {
+      "files" : {
+        "action.js" : "actions/{%=o.exports%}{%=o.ext%}"
+      },
+      "script" : [{
+        "name": "exports",
+        "message": "Exports",
+        "required": true,
+        "default": "Exports",
+        "type": "input"
+      }, {
+        "name": "actions",
+        "message": "Comma seperated list of actions",
+        "required": false,
+        "default": "DEFAULT",
+        "type": "input",
+        "filter" : function(i) {
+          return i.toUpperCase().replace(" ","").split(",");
+        }
       }]
     }
   }
