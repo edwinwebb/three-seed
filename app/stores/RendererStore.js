@@ -1,5 +1,3 @@
-'use strict';
-
 import EventEmitter from 'events';
 import { RESIZE } from '../constants/AppConstants';
 
@@ -9,12 +7,12 @@ class RendererStore extends EventEmitter {
     super(...args);
 
     this.data = {
-      width : 0,
-      height : 0,
-      stageWidth : 0,
+      width: 0,
+      height: 0,
+      stageWidth: 0,
       stageHeight: 0,
-      stageCenter : {x: 0,y: 0},
-      resolution : 1
+      stageCenter: {x: 0,y: 0},
+      resolution: 1
     };
   }
 

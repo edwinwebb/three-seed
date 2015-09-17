@@ -1,5 +1,3 @@
-'use strict';
-
 import PIXI from 'pixi.js';
 import TEXTURE from './diagnostic.png';
 

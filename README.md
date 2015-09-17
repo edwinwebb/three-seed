@@ -30,7 +30,9 @@ You can configure some app settings in package.json
 
 * `npm start` - Build and start the app in development mode at http://localhost:8080
 * `npm run build` - Run a production build, outputs to ./build/
+* `npm run lint` - Lint your code
 
+```
 ## Static assets
 
 `import` asset files from within your JavaScript component files:

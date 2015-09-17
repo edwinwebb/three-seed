@@ -1,6 +1,3 @@
-'use strict';
-
-import PIXI from 'pixi.js';
 import ScaledObjectGroup from '../ScaledObjectGroup/ScaledObjectGroup.js';
 import BunnyGroup from '../BunnyGroup/BunnyGroup.js';
 import Bunny from '../Bunny/Bunny.js';

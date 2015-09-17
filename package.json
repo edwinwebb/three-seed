@@ -1,6 +1,6 @@
 {
   "name": "pixi-seed",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "repository": "https://github.com/edwinwebb/pixi-seed",
   "description": "Pixi.js project seed with ES6 and webpack",
   "config": {
@@ -8,13 +8,15 @@
     "stageWidth": 1920,
     "stageHeight": 1080
   },
-  "scripts" : {
+  "scripts": {
     "prestart": "npm install",
-    "start" : "NODE_ENV=development webpack-dev-server --content-base ./build/ --hot --inline",
-    "webpack" : "webpack -p --config ./webpack.config.js",
-    "build" : "NODE_ENV=production npm run webpack",
-    "prewebpack" : "npm run clean",
-    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir"
+    "start": "NODE_ENV=development webpack-dev-server --content-base ./build/ --hot --inline",
+    "webpack": "webpack -p --config ./webpack.config.js",
+    "build": "NODE_ENV=production npm run webpack",
+    "prewebpack": "npm run clean",
+    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
+    "lint": "eslint ./app/**/*.js",
+    "reactman": "reactman --config ./templates/reactman.config.js"
   },
   "dependencies": {
     "pixi.js": "3.0.7",
@@ -25,14 +27,16 @@
     "babel-core": "^5.8.23",
     "babel-eslint": "^4.1.1",
     "babel-loader": "^5.3.2",
-    "json-loader": "^0.5.2",
     "babel-runtime": "^5.8.20",
+    "eslint": "^1.4.3",
     "file-loader": "^0.8.4",
     "html-loader": "^0.3.0",
+    "json-loader": "^0.5.2",
     "lodash": "^3.10.1",
+    "reactman": "^3.2.0",
+    "rimraf": "^2.4.3",
     "webpack": "^1.12.1",
-    "webpack-dev-server": "^1.10.1",
-    "rimraf": "^2.4.3"
+    "webpack-dev-server": "^1.10.1"
   },
   "engines": {
     "node": ">=0.10.0"
