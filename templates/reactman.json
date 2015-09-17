@@ -1,0 +1,36 @@
+{
+  "templatesFolder" : "./templates/",
+  "outputFolder" : "./app/",
+  "scripts" : {
+    "displayobject" : {
+      "files" : {
+        "displayobject.js" : "displayobjects/{%=o.exportsLowerCase%}/{%=o.exports%}{%=o.ext%}"
+      },
+      "script" : [{
+        "name": "exports",
+        "message": "Exports",
+        "required": true,
+        "default": "Exports",
+        "type": "string"
+      }, {
+        "name": "extendpixi",
+        "message": "Extend Pixi.js?",
+        "default": true,
+        "required": true,
+        "type": "confirm"
+      }, {
+        "name": "extends",
+        "message": "Extends",
+        "default": "Extends",
+        "required": true,
+        "type": "string"
+      }, {
+        "name": "description",
+        "message": "Description",
+        "default": "A display object",
+        "required": true,
+        "type": "string"
+      }]
+    }
+  }
+}
