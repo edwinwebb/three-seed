@@ -1,15 +1,15 @@
-import TWEEN from 'tween.js';
+import { Tween } from 'tween.js';
 import PIXI from 'pixi.js';
 import BUNNY from'./bunny.png';
 
 export default class Bunny extends PIXI.Sprite {
 
   constructor() {
-    var texture = PIXI.Texture.fromImage(BUNNY);
+    const texture = PIXI.Texture.fromImage(BUNNY);
 
     super(texture);
 
-    this.tween = new TWEEN.Tween(this);
+    this.tween = new Tween(this);
 
     this.anchor.x = .5;
     this.anchor.y = 1;

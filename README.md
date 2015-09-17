@@ -1,8 +1,8 @@
 # Pixi Seed
 
-This seeds to deigned to bootstrap your PIXI.js development with modern tooling and technology and project organisation.
+This seeds to deigned to bootstrap your PIXI.js development with modern tooling, technology and project organisation.
 
-Webpack with ES6 provides a more modular approach to PIXI.js development and  allow you to include assets within your JS. Reactman allows you to quickly add assets to your project and optional Flux architecture allows more complex apps to be built in an organised manner.
+Webpack with ES6 provides a more modular approach to PIXI.js development and allows you to include assets within your JS. Reactman allows you to quickly add assets to your project and Flux architecture allows more complex apps to be built in an organised manner.
 
 The seed is designed to work across multiple devices with a ‘best-fit’ rendering methodology.
 
@@ -41,6 +41,11 @@ You can configure some app settings in package.json
 // Filename: app.js
 import assetURL from './logo.png';
 ```
+
+## Removing the bootstrapped files
+Remove the Renderer, dispatcher, actions and stores folders. Then in displayobjects
+remove Bunny, BunnyGroup and Background. Finally edit App so it extends PIXI.Container
+rather than ScaledObjectGroup and clear out the calls to deleted files.
 
 ## License
 

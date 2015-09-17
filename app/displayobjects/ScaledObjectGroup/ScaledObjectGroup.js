@@ -13,8 +13,8 @@ import RendererStore from '../../stores/RendererStore.js';
 import { RESIZE } from '../../constants/AppConstants.js';
 
 // default target size
-var tw = 1920;
-var th = 1080;
+let tw = 1920;
+let th = 1080;
 
 export default class ScaledObjectGroup extends PIXI.Container {
 
