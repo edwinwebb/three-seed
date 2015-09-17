@@ -15,7 +15,8 @@
     "build": "NODE_ENV=production npm run webpack",
     "prewebpack": "npm run clean",
     "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
-    "lint": "eslint app --ext .js"
+    "lint": "eslint ./app/**/*.js",
+    "reactman": "reactman --config ./templates/reactman.config.js"
   },
   "dependencies": {
     "pixi.js": "3.0.7",
@@ -32,6 +33,7 @@
     "html-loader": "^0.3.0",
     "json-loader": "^0.5.2",
     "lodash": "^3.10.1",
+    "reactman": "^3.2.0",
     "rimraf": "^2.4.3",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.10.1"

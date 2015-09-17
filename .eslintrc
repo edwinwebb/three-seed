@@ -19,9 +19,9 @@
       "args": "after-used"
     }],
     "no-use-before-define": 2,
-    "no-console": 1,
-    "no-debugger": 1,
-    "no-alert": 1,
+    "no-console": 2,
+    "no-debugger": 2,
+    "no-alert": 2,
     "no-trailing-spaces": 2,
     "key-spacing": [2, {
         "beforeColon": false,
