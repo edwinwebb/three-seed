@@ -1,5 +1,8 @@
 import PIXI from 'pixi.js';
 import RendererStore from '../stores/RendererStore.js';
+import TWEEN from 'tween.js';
+
+let renderables = new Set();
 
 export default class Renderer extends PIXI.WebGLRenderer {
 
@@ -37,6 +40,44 @@ export default class Renderer extends PIXI.WebGLRenderer {
     var height = window.innerHeight;
 
     return [width, height];
+  }
+
+  start() {
+    this.active = true;
+    window.requestAnimationFrame(this.animate.bind(this));
+  }
+
+  stop() {
+    this.active = false;
+  }
+
+  animate() {
+    this.renderRenderables();
+
+    if(this.active) {
+      window.requestAnimationFrame(this.animate.bind(this));
+      TWEEN.update();
+    }
+  }
+
+  addRenderable(renderable) {
+    return renderables.add(renderable);
+  }
+
+  removeRenderable(renderable) {
+    let hasRenderable = renderables.has(renderable);
+
+    if(hasRenderable) {
+      renderables.delete(renderable);
+    }
+
+    return hasRenderable;
+  }
+
+  renderRenderables() {
+    for (let entry of renderables) {
+      this.render(entry);
+    }
   }
 
 }
