@@ -9,12 +9,22 @@
 import './index.html';
 import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
-import App from './displayobjects/App/App.js';
+import {Scene, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh} from 'three';
 
-var renderer = new Renderer(config.stageWidth, config.stageHeight);
-var app = new App(config.stageWidth, config.stageHeight);
+const renderer = new Renderer(config.stageWidth, config.stageHeight);
 
-document.body.appendChild(renderer.view);
+const scene = new Scene();
+const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+const geometry = new BoxGeometry( 200, 200, 200 );
+const material = new MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+const mesh = new Mesh( geometry, material );
 
-renderer.addRenderable(app);
+scene.add(mesh);
+camera.position.z = 1000;
+
+renderer.camera = camera;
+renderer.scene = scene;
+
 renderer.start();
+
+document.body.appendChild( renderer.domElement );

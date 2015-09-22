@@ -1,7 +1,7 @@
 {
-  "name": "pixi-seed",
-  "version": "0.2",
-  "repository": "https://github.com/edwinwebb/pixi-seed",
+  "name": "three-seed",
+  "version": "0.1.0",
+  "repository": "https://github.com/edwinwebb/three-seed",
   "description": "Pixi.js project seed with ES6 and webpack",
   "config": {
     "buildDir": "./build",
@@ -19,8 +19,7 @@
     "reactman": "reactman --config ./templates/reactman.config.js"
   },
   "dependencies": {
-    "pixi.js": "3.0.7",
-    "tween.js": "^15.0.0",
+    "three": "^0.72.0",
     "flux": "^2.1.1"
   },
   "devDependencies": {
@@ -39,6 +38,6 @@
     "webpack-dev-server": "^1.10.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   }
 }

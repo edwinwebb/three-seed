@@ -1,10 +1,7 @@
-import PIXI from 'pixi.js';
+import THREE from 'three';
 import RendererStore from '../stores/RendererStore.js';
-import TWEEN from 'tween.js';
 
-let renderables = new Set();
-
-export default class Renderer extends PIXI.WebGLRenderer {
+export default class Renderer extends THREE.WebGLRenderer {
 
   constructor(...args) {
 
@@ -15,9 +12,9 @@ export default class Renderer extends PIXI.WebGLRenderer {
     window.addEventListener('resize', this.resizeHandler.bind(this));
 
     RendererStore.set('resolution', this.resolution);
-    RendererStore.set('stageWidth', args[0]);
-    RendererStore.set('stageHeight', args[1]);
-    RendererStore.set('stageCenter', new PIXI.Point(args[0] / 2, args[1] / 2));
+
+    this.camera = false;
+    this.scene = false;
 
     this.setStore();
 
@@ -30,7 +27,7 @@ export default class Renderer extends PIXI.WebGLRenderer {
   }
 
   resizeHandler() {
-    this.resize(...this.getWindowSize());
+    this.setSize(...this.getWindowSize());
     this.setStore();
     RendererStore.emitChange();
   }
@@ -51,32 +48,14 @@ export default class Renderer extends PIXI.WebGLRenderer {
     this.active = false;
   }
 
+  isRenderable() {
+    return this.scene !== false && this.camera !== false;
+  }
+
   animate() {
-    this.renderRenderables();
-
-    if(this.active) {
+    if(this.active && this.isRenderable()) {
+      this.render(this.scene, this.camera);
       window.requestAnimationFrame(this.animate.bind(this));
-      TWEEN.update();
-    }
-  }
-
-  addRenderable(renderable) {
-    return renderables.add(renderable);
-  }
-
-  removeRenderable(renderable) {
-    let hasRenderable = renderables.has(renderable);
-
-    if(hasRenderable) {
-      renderables.delete(renderable);
-    }
-
-    return hasRenderable;
-  }
-
-  renderRenderables() {
-    for (let entry of renderables) {
-      this.render(entry);
     }
   }
 

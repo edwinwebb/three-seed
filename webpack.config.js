@@ -17,20 +17,12 @@ module.exports = {
         publicPath: "/",
         filename: "bundle.js"
     },
-    node: {
-      fs: 'empty'
-    },
     module: {
         loaders: [
           { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
           { test: /\.html$/, exclude: /node_modules/, loader: "file-loader?name=[path][name].[ext]"},
           { test: /\.jpe?g$|\.svg$|\.png$/, exclude: /node_modules/, loader: "file-loader?name=[path][name].[ext]"},
-          { test: /\.json$/, exclude: /node_modules/, loader: "json"},
-          {
-          test: /\.json$/,
-          include: path.join(__dirname, 'node_modules', 'pixi.js'),
-          loader: 'json',
-          }
+          { test: /\.json$/, exclude: /node_modules/, loader: "json"}
         ]
     }
 };
