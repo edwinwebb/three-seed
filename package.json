@@ -2,7 +2,7 @@
   "name": "three-seed",
   "version": "0.1.0",
   "repository": "https://github.com/edwinwebb/three-seed",
-  "description": "Pixi.js project seed with ES6 and webpack",
+  "description": "Three.js project seed with ES6 and webpack",
   "config": {
     "buildDir": "./build",
     "stageWidth": 1920,

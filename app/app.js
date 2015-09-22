@@ -1,7 +1,7 @@
 /**
  * App.js
  *
- * The main entry point, appends PIXI to the DOM
+ * The main entry point, appends Three to the DOM
  * and starts a render and animation loop
  *
  */

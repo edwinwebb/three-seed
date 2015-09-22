@@ -1,70 +1,8 @@
-# Pixi Seed
+# Three Seed
 
-This seeds to deigned to bootstrap your PIXI.js development with modern tooling, technology and project organisation.
+This seeds to deigned to bootstrap your Three.js development with modern tooling, technology and project organisation.
 
-Webpack with ES6 provides a more modular approach to PIXI.js development and allows you to include assets within your JS. Reactman allows you to quickly add assets to your project and Flux architecture allows more complex apps to be built in an organised manner.
-
-The seed is designed to work across multiple devices with a ‘best-fit’ rendering methodology.
-
-## Example Display Object
-Here's the PIXI.js bunny expressed as an interactive sprite in ES6.
-
-```JavaScript
-import { Tween } from 'tween.js';
-import PIXI from 'pixi.js';
-import BUNNY from'./bunny.png';
-
-export default class Bunny extends PIXI.Sprite {
-
-  constructor() {
-    const texture = PIXI.Texture.fromImage(BUNNY);
-
-    super(texture);
-
-    this.tween = new Tween(this);
-
-    this.anchor.x = .5;
-    this.anchor.y = 1;
-
-    this.pivot.x = .5;
-    this.pivot.y = .5;
-
-    this.interactive = true;
-  }
-
-  startSpin() {
-    this.tween.to({rotation: Math.PI*2}, 1000);
-    this.tween.start();
-    this.tween.onComplete(function(){this.rotation=0});
-  }
-
-  mouseover() {
-    this.startSpin();
-  }
-
-}
-```
-
-
-## Getting started
-
-Clone the project and remove the git repository:
-
-```
-git clone --depth=1 https://github.com/edwinwebb/pixi-seed.git my-project
-cd my-project
-rm -rf .git
-```
-
-You can configure some app settings in package.json
-
-```
-"config": {
-  "buildDir": "./build",
-  "stageWidth": 1920,
-  "stageHeight": 1080
-}
-```
+This is a work in progress and a fork of my pixi-seed repo.
 
 ## npm scripts
 
@@ -81,11 +19,6 @@ You can configure some app settings in package.json
 // Filename: app.js
 import assetURL from './logo.png';
 ```
-
-## Removing the bootstrapped files
-Remove the Renderer, dispatcher, actions and stores folders. Then in displayobjects
-remove Bunny, BunnyGroup and Background. Finally edit App so it extends PIXI.Container
-rather than ScaledObjectGroup and clear out the calls to deleted files.
 
 ## License
 
