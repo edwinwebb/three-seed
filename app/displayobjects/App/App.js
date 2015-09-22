@@ -1,10 +1,10 @@
-import ScaledObjectGroup from '../ScaledObjectGroup/ScaledObjectGroup.js';
+import ScaledContainer from '../ScaledContainer/ScaledContainer.js';
 import BunnyGroup from '../BunnyGroup/BunnyGroup.js';
 import Bunny from '../Bunny/Bunny.js';
 import Background from '../Background/Background.js';
 import RendererStore from '../../stores/RendererStore.js';
 
-export default class App extends ScaledObjectGroup {
+export default class App extends ScaledContainer {
 
   constructor(...args) {
     var bg = new Background();

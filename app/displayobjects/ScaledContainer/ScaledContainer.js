@@ -1,11 +1,11 @@
 /**
- * ScaledObjectGroup
+ * ScaledContainer
  *
  * A DisplayObjectContainer which attempts to scale and best-fit into the
  * window size dispatched from the RendererStrore
  *
  * @extends Container
- * @exports ScaledObjectGroup
+ * @exports ScaledContainer
  */
 
 import PIXI from 'pixi.js';
@@ -16,7 +16,7 @@ import { RESIZE } from '../../constants/AppConstants.js';
 let tw = 1920;
 let th = 1080;
 
-export default class ScaledObjectGroup extends PIXI.Container {
+export default class ScaledContainer extends PIXI.Container {
 
   constructor(target_w,target_h) {
 
