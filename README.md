@@ -6,6 +6,46 @@ Webpack with ES6 provides a more modular approach to PIXI.js development and all
 
 The seed is designed to work across multiple devices with a ‘best-fit’ rendering methodology.
 
+## Example Display Object
+Here's the PIXI.js bunny expressed as an interactive sprite in ES6.
+
+```JavaScript
+import { Tween } from 'tween.js';
+import PIXI from 'pixi.js';
+import BUNNY from'./bunny.png';
+
+export default class Bunny extends PIXI.Sprite {
+
+  constructor() {
+    const texture = PIXI.Texture.fromImage(BUNNY);
+
+    super(texture);
+
+    this.tween = new Tween(this);
+
+    this.anchor.x = .5;
+    this.anchor.y = 1;
+
+    this.pivot.x = .5;
+    this.pivot.y = .5;
+
+    this.interactive = true;
+  }
+
+  startSpin() {
+    this.tween.to({rotation: Math.PI*2}, 1000);
+    this.tween.start();
+    this.tween.onComplete(function(){this.rotation=0});
+  }
+
+  mouseover() {
+    this.startSpin();
+  }
+
+}
+```
+
+
 ## Getting started
 
 Clone the project and remove the git repository:
