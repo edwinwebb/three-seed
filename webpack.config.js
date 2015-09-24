@@ -1,7 +1,6 @@
 var path = require('path');
 var pkg = require('./package.json')
 var DEBUG = process.env.NODE_ENV !== 'production';
-var util = require('util');
 var entry = {
   app: ['./app.js']
 };
@@ -14,7 +13,7 @@ module.exports = {
     devtool : DEBUG ? 'inline-source-map' : false,
     output: {
         path: path.resolve(pkg.config.buildDir),
-        publicPath: "./",
+        publicPath: "/",
         filename: "bundle.js"
     },
     module: {

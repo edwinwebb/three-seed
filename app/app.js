@@ -9,6 +9,7 @@
 import './index.html';
 import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
+import AnimationStore from './stores/AnimationStore';
 import {Scene, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh} from 'three';
 
 const renderer = new Renderer(config.stageWidth, config.stageHeight);
@@ -24,6 +25,11 @@ camera.position.z = 1000;
 
 renderer.camera = camera;
 renderer.scene = scene;
+
+AnimationStore.addChangeListener(function() {
+  mesh.rotation.x += 0.1;
+  mesh.rotation.y += 0.1;
+});
 
 renderer.start();
 

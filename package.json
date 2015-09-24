@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "NODE_ENV=development webpack-dev-server --content-base ./build/ --hot --inline",
+    "start": "NODE_ENV=development webpack-dev-server --hot --inline",
     "webpack": "webpack -p --config ./webpack.config.js",
     "build": "NODE_ENV=production npm run webpack",
     "prewebpack": "npm run clean",
