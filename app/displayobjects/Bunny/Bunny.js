@@ -2,6 +2,12 @@ import { Tween } from 'tween.js';
 import PIXI from 'pixi.js';
 import BUNNY from'./bunny.png';
 
+/**
+ * A bunny which spins on it's feet
+ *
+ * @exports Bunny
+ * @extends Sprite
+ */
 export default class Bunny extends PIXI.Sprite {
 
   constructor() {

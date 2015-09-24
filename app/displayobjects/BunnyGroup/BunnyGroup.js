@@ -1,6 +1,12 @@
 import {Container} from 'pixi.js';
 import Bunny from '../Bunny/Bunny.js';
 
+/**
+ * A group of spinning bunnies
+ *
+ * @exports BunnyGroup
+ * @extends Container
+ */
 export default class BunnyGroup extends Container {
 
   constructor() {

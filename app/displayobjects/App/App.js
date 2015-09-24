@@ -7,6 +7,9 @@ import RendererStore from '../../stores/RendererStore.js';
  * Main App Display Object
  *
  * Adds a background and some bunnies to it's self
+ *
+ * @exports App
+ * @extends ScaledContainer
  */
 export default class App extends ScaledContainer {
 

@@ -1,6 +1,17 @@
 import EventEmitter from 'events';
 import { RESIZE } from '../constants/AppConstants';
 
+/**
+ * Render Store
+ * Keeps render variables
+ *
+ * @data
+ * 	width : window width
+ * 	height : window height
+ * 	stage : stage width and height
+ * 	stageCenter : center point of stage
+ * 	resolution : display density
+ */
 class RendererStore extends EventEmitter {
 
   constructor(...args) {

@@ -1,3 +1,11 @@
+import PIXI from 'pixi.js';
+import RendererStore from '../../stores/RendererStore.js';
+import { RESIZE } from '../../constants/AppConstants.js';
+
+// default target size
+let tw = 1920;
+let th = 1080;
+
 /**
  * ScaledContainer
  *
@@ -7,17 +15,14 @@
  * @extends Container
  * @exports ScaledContainer
  */
-
-import PIXI from 'pixi.js';
-import RendererStore from '../../stores/RendererStore.js';
-import { RESIZE } from '../../constants/AppConstants.js';
-
-// default target size
-let tw = 1920;
-let th = 1080;
-
 export default class ScaledContainer extends PIXI.Container {
 
+  /**
+   * Set target size
+   * @param  {Number} target_w width
+   * @param  {number} target_h height
+   * @return {null}
+   */
   constructor(target_w,target_h) {
 
     super();
@@ -25,11 +30,15 @@ export default class ScaledContainer extends PIXI.Container {
     tw = target_w || RendererStore.get('target_width');
     th = target_h || RendererStore.get('target_height');
 
-    RendererStore.on(RESIZE, this.resizeHandler.bind(this));
+    RendererStore.addChangeListener(this.resizeHandler.bind(this));
 
     this.resizeHandler();
   }
 
+  /**
+   * Scales and positions Container to best-fit to farget dimensions
+   * @return {null}
+   */
   resizeHandler() {
     const rw = RendererStore.get('width');
     const rh = RendererStore.get('height');
