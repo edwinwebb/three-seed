@@ -3,7 +3,7 @@ import PIXI from 'pixi.js';
 import BUNNY from'./bunny.png';
 
 /**
- * A bunny which spins on it's feet
+ * A bunny which spins on it's feet when moused over
  *
  * @exports Bunny
  * @extends Sprite
