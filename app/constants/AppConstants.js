@@ -1,1 +1,4 @@
-export const APP_RESIZE = 'APP_RESIZE';
+export const constants = {
+  RESIZE: 'APP_RESIZE',
+  ANIMATE: 'APP_ANIMATE'
+}
