@@ -20,8 +20,7 @@
   },
   "dependencies": {
     "pixi.js": "3.0.7",
-    "tween.js": "^15.0.0",
-    "flux": "^2.1.1"
+    "tween.js": "^15.0.0"
   },
   "devDependencies": {
     "babel-core": "^5.8.23",

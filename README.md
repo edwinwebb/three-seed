@@ -2,7 +2,7 @@
 
 This seeds to deigned to bootstrap your PIXI.js development with modern tooling, technology and project organisation.
 
-Webpack with ES6 provides a more modular approach to PIXI.js development and allows you to include assets within your JS. Reactman allows you to quickly add assets to your project and Flux architecture allows more complex apps to be built in an organised manner.
+Webpack with ES6 provides a more modular approach to PIXI.js development and allows you to include assets within your JS. Reactman allows you to quickly add assets to your project and the example Store helps organise your data.
 
 The seed is designed to work across multiple devices with a ‘best-fit’ rendering methodology.
 
