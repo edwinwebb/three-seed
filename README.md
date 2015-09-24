@@ -55,7 +55,7 @@ export default class Bunny extends Sprite {
 
 Clone the project and remove the git repository:
 
-```
+```bash
 git clone --depth=1 https://github.com/edwinwebb/pixi-seed.git my-project
 cd my-project
 rm -rf .git
@@ -63,7 +63,7 @@ rm -rf .git
 
 You can configure some app settings in package.json
 
-```
+```json
 "config": {
   "buildDir": "./build",
   "stageWidth": 1920,
@@ -77,12 +77,11 @@ You can configure some app settings in package.json
 * `npm run build` - Run a production build, outputs to ./build/
 * `npm run lint` - Lint your code
 
-```
 ## Static assets
 
 `import` asset files from within your JavaScript component files:
 
-```js
+```javascript
 // Filename: app.js
 import assetURL from './logo.png';
 ```
