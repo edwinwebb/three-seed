@@ -1,6 +1,6 @@
 # Pixi Seed
 
-This seeds to deigned to bootstrap your PIXI.js development with modern tooling, technology and project organisation.
+This project is designed to bootstrap your PIXI.js development with modern tooling, technology and project organisation. Use as boilerplate for your next Pixi.js project
 
 Webpack with ES6 provides a more modular approach to PIXI.js development and allows you to include assets within your JS. Reactman allows you to quickly add assets to your project and the example Store helps organise your data.
 
