@@ -1,6 +1,6 @@
 import PIXI from 'pixi.js';
-import RendererStore from '../stores/RendererStore.js';
-import TWEEN from 'tween.js';
+import RendererStore from '../stores/RendererStore';
+import AnimationStore from '../stores/AnimationStore';
 
 let renderables = new Set();
 
@@ -56,7 +56,7 @@ export default class Renderer extends PIXI.WebGLRenderer {
 
     if(this.active) {
       window.requestAnimationFrame(this.animate.bind(this));
-      TWEEN.update();
+      AnimationStore.emitChange();
     }
   }
 
