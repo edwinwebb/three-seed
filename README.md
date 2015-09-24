@@ -1,6 +1,6 @@
 # Three Seed
 
-This seeds to designed to bootstrap your Three.js development with modern tooling, technology and project organisation.
+This seed is designed to bootstrap your Three.js development with modern tooling, technology and project organisation.
 
 This is a work in progress and a fork of my pixi-seed repo.
 
