@@ -29,7 +29,7 @@ class RendererStore extends EventEmitter {
   }
 
   addChangeListener(callback) {
-    this.on(RESIZE, callback);
+    this.on(RESIZE, callback, this.data);
   }
 }
 
