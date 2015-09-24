@@ -43,9 +43,7 @@ import assetURL from './logo.png';
 ```
 
 ## Removing the bootstrapped files
-Remove the Renderer, dispatcher, actions and stores folders. Then in displayobjects
-remove Bunny, BunnyGroup and Background. Finally edit App so it extends PIXI.Container
-rather than ScaledObjectGroup and clear out the calls to deleted files.
+It's as easy as removing all the child folders in ./app/ then emptying app.js.
 
 ## License
 
