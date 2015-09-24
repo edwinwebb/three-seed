@@ -117,7 +117,7 @@ export default class Renderer extends PIXI.WebGLRenderer {
 
   /**
    * Loop over renderables and call the render function on them
-   * @return {null} 
+   * @return {null}
    */
   renderRenderables() {
     for (let entry of renderables) {

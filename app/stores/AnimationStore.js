@@ -19,8 +19,8 @@ class AnimationStore extends EventEmitter {
 
     this.data = {
       tick: 0,
-      startTime : 0,
-      currentTime : 0
+      startTime: 0,
+      currentTime: 0
     };
 
     this.data.startTime = window.performance.now();
