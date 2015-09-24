@@ -1,5 +1,5 @@
 import { Tween } from 'tween.js';
-import PIXI from 'pixi.js';
+import { Sprite, Texture } from 'pixi.js';
 import BUNNY from'./bunny.png';
 
 /**
@@ -8,10 +8,10 @@ import BUNNY from'./bunny.png';
  * @exports Bunny
  * @extends Sprite
  */
-export default class Bunny extends PIXI.Sprite {
+export default class Bunny extends Sprite {
 
   constructor() {
-    const texture = PIXI.Texture.fromImage(BUNNY);
+    const texture = Texture.fromImage(BUNNY);
 
     super(texture);
 
@@ -29,7 +29,7 @@ export default class Bunny extends PIXI.Sprite {
   startSpin() {
     this.tween.to({rotation: Math.PI*2}, 1000);
     this.tween.start();
-    this.tween.onComplete(function(){this.rotation=0});
+    this.tween.onComplete(() => this.rotation = 0);
   }
 
   mouseover() {
