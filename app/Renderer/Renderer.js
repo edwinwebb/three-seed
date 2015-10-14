@@ -14,6 +14,7 @@ export default class Renderer extends THREE.WebGLRenderer {
 
     RendererStore.set('resolution', this.resolution);
 
+    this.setPixelRatio(this.resolution);
     this.camera = false;
     this.scene = false;
 
@@ -28,8 +29,17 @@ export default class Renderer extends THREE.WebGLRenderer {
   }
 
   resizeHandler() {
-    this.setSize(...this.getWindowSize());
+    var w = this.getWindowSize()[0];
+    var h = this.getWindowSize()[1];
+
+    this.setSize(w,h);
     this.setStore();
+
+    if(this.camera) {
+      this.camera.aspect = w / h;
+      this.camera.updateProjectionMatrix();
+    }
+    
     RendererStore.emitChange();
   }
 
