@@ -11,7 +11,6 @@ import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
 import AnimationStore from './stores/AnimationStore';
 import {Scene, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh} from 'three';
-import Test from './glsl/test.glsl';
 
 const renderer = new Renderer(config.stageWidth, config.stageHeight);
 
@@ -23,8 +22,6 @@ const mesh = new Mesh( geometry, material );
 
 scene.add(mesh);
 camera.position.z = 1000;
-
-console.log(Test);
 
 renderer.camera = camera;
 renderer.scene = scene;
