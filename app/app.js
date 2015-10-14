@@ -19,7 +19,8 @@ const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 
 const geometry = new BoxGeometry( 200, 200, 200 );
-const material = new MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+//const material = new MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+const material = new THREE.MeshNormalMaterial();
 const bunny = new Bunny();
 const mesh = new Mesh( bunny.geometry, material );
 const OrbitControls = require('three-orbit-controls')(THREE)
@@ -31,7 +32,7 @@ camera.position.z = 1000;
 renderer.camera = camera;
 renderer.scene = scene;
 
-mesh.rotation.x = -90;
+mesh.rotation.x = (Math.PI*2) * .75;
 
 AnimationStore.addChangeListener(function() {
   //mesh.rotation.z += 0.1;
