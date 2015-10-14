@@ -19,7 +19,8 @@
     "reactman": "reactman --config ./templates/reactman.config.js"
   },
   "dependencies": {
-    "three": "^0.72.0"
+    "three": "^0.72.0",
+    "three-orbit-controls": "^71.0.0"
   },
   "devDependencies": {
     "babel-core": "^5.8.25",
