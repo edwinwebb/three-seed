@@ -3,7 +3,7 @@ import bunnyJSON from './stanford-bunny.json';
 
 const JSONLoader = new THREE.JSONLoader();
 
-export default class Renderer  {
+export default class Bunny {
 
   constructor() {
     const bunny = JSONLoader.parse(bunnyJSON.geometries[0].data);
