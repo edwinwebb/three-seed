@@ -4,7 +4,7 @@
   "repository": "https://github.com/edwinwebb/three-seed",
   "description": "Three.js project seed with ES6 and webpack",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --hot --inline --host 0.0.0.0",
+    "start": "webpack-dev-server --config ./webpack.config.js --inline -d --host 0.0.0.0",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production npm run webpack",
     "clean": "rimraf ./build && mkdir ./build",
@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "three": "^0.76.1",
-    "three-orbit-controls": "^72.0.0"
+    "three-orbit-controls": "^72.0.0",
+    "three-stereo-effect": "^1.0.13"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",
@@ -32,7 +33,6 @@
     "lodash": "^4.13.1",
     "reactman": "^3.2.0",
     "rimraf": "^2.4.3",
-    "three-stereo-effect": "^1.0.13",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.11.0"
   },
