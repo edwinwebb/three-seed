@@ -1,10 +1,15 @@
+function commaSplit(i) {
+  i = i.replace(" ", "");
+  return i.split(",");
+}
+
 module.exports = {
   "templatesFolder" : "./templates/",
   "outputFolder" : "./app/",
   "scripts" : {
-    "action" : {
+    "class" : {
       "files" : {
-        "action.js" : "actions/{%=o.exports%}{%=o.ext%}"
+        "action.js" : "{%=o.exports%}/{%=o.exports%}.js"
       },
       "script" : [{
         "name": "exports",
@@ -13,13 +18,14 @@ module.exports = {
         "default": "Exports",
         "type": "input"
       }, {
-        "name": "actions",
-        "message": "Comma seperated list of actions",
+        "name": "functions",
+        "message": "Comma seperated list of functions",
         "required": false,
-        "default": "DEFAULT",
+        "default": [],
         "type": "input",
         "filter" : function(i) {
-          return i.toUpperCase().replace(" ","").split(",");
+          var ar = i.replace(" ","").split(",");
+          return ar[0] === "" ? [] : ar;
         }
       }]
     },

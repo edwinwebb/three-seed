@@ -6,7 +6,6 @@
  *
  */
 
-import './index.html';
 import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
 import AnimationStore from './stores/AnimationStore';
@@ -33,4 +32,5 @@ mesh.rotation.x = (Math.PI*2) * .75;
 
 renderer.start();
 
+document.body.style.margin = 0;
 document.body.appendChild( renderer.domElement );
