@@ -3,27 +3,6 @@ var pkg = require('./package.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var DEBUG = process.env.NODE_ENV !== 'production';
 
-// module.exports = {
-//     context: path.join(__dirname, 'app'),
-//     entry: ['./app.js'],
-//     debug : DEBUG,
-//     target : 'web',
-//     devtool : DEBUG ? 'inline-source-map' : false,
-//     output: {
-//         path: path.resolve(pkg.config.buildDir),
-//         publicPath: "/",
-//         filename: "bundle.js"
-//     },
-//     module: {
-//         loaders: [
-//           { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-//           { test: /\.html$/, exclude: /node_modules/, loader: "file-loader?name=[path][name].[ext]"},
-//           { test: /\.jpe?g$|\.svg$|\.png$/, exclude: /node_modules/, loader: "file-loader?name=[path][name].[ext]"},
-//           { test: /\.json$/, exclude: /node_modules/, loader: "json"}
-//         ]
-//     }
-// };
-
 module.exports = {
   target : "web",
   entry : ["./app/app.js"],

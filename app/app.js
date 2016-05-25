@@ -32,4 +32,5 @@ AnimationStore.addChangeListener(function() {
 
 renderer.start();
 
+document.body.style.margin = 0;
 document.body.appendChild( renderer.domElement );
