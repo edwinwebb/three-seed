@@ -14,4 +14,13 @@ export default class Bunny {
     return this.bunnyGeometry;
   }
 
+  get mesh() {
+    const material = new THREE.MeshNormalMaterial();
+    const mesh = new THREE.Mesh(this.bunnyGeometry, material );
+
+    mesh.rotation.x = (Math.PI*2) * .75;
+
+    return mesh;
+  }
+
 }
