@@ -4,7 +4,8 @@ import img from './checker.png';
 export default class checkedFloor {
 
   constructor(renderer) {
-    const texture = THREE.ImageUtils.loadTexture(img);
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load(img);
 
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
@@ -27,8 +28,6 @@ export default class checkedFloor {
 
     const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
     floorMesh.rotation.x = -Math.PI / 2;
-
-    console.log(floorMaterial)
 
     return floorMesh;
   }
