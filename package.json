@@ -3,20 +3,17 @@
   "version": "0.1.0",
   "repository": "https://github.com/edwinwebb/three-seed",
   "description": "Three.js project seed with ES6 and webpack",
-  "config": {
-    "buildDir": "./build",
-    "stageWidth": 1920,
-    "stageHeight": 1080
-  },
   "scripts": {
-    "prestart": "npm install",
     "start": "NODE_ENV=development webpack-dev-server --hot --inline",
-    "webpack": "webpack -p --config ./webpack.config.js",
+    "prebuild": "npm run clean",
     "build": "NODE_ENV=production npm run webpack",
-    "prewebpack": "npm run clean",
-    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
+    "clean": "rimraf ./build && mkdir ./build",
     "lint": "eslint ./app/**/*.js",
     "reactman": "reactman --config ./templates/reactman.config.js"
+  },
+  "config": {
+    "title": "Three.js Project",
+    "build": "./build/"
   },
   "dependencies": {
     "three": "^0.76.1"
@@ -25,10 +22,11 @@
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
-    "babel-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
     "eslint": "^2.10.2",
     "file-loader": "^0.8.4",
     "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.17.0",
     "json-loader": "^0.5.3",
     "lodash": "^4.13.1",
     "reactman": "^3.2.0",

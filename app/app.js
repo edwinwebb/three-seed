@@ -6,7 +6,6 @@
  *
  */
 
-import './index.html';
 import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
 import AnimationStore from './stores/AnimationStore';
