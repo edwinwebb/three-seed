@@ -50,8 +50,6 @@ stereoEffect.setSize(window.innerWidth, window.innerHeight);
 bunnyMesh.position.y = 240;
 bunnyMesh.position.z = -500;
 
-window.bm = bunny.mesh;
-
 renderer.camera = camera;
 renderer.scene = scene;
 renderer.start();
