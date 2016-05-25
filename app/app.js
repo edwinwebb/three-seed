@@ -58,5 +58,13 @@ AnimationStore.addChangeListener(()=>{
   stereoEffect.render(scene, camera);
 });
 
+RendererStore.addChangeListener(()=>{
+  stereoEffect.setSize(window.innerWidth, window.innerHeight);
+});
+
+
 document.body.style.margin = 0;
+renderer.domElement.addEventListener('click',()=>{
+  document.body.webkitRequestFullScreen();
+});
 document.body.appendChild( renderer.domElement );
