@@ -32,6 +32,7 @@
     "lodash": "^4.13.1",
     "reactman": "^3.2.0",
     "rimraf": "^2.4.3",
+    "three-stereo-effect": "^1.0.13",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.11.0"
   },
