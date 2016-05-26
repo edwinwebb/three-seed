@@ -7,7 +7,6 @@
  */
 
 import THREE from 'three';
-import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
 import AnimationStore from './stores/AnimationStore';
 import RendererStore from './stores/RendererStore';
@@ -66,6 +65,6 @@ RendererStore.addChangeListener(()=>{
 
 document.body.style.margin = 0;
 renderer.domElement.addEventListener('click',()=>{
-  //document.body.webkitRequestFullScreen();
+  document.body.webkitRequestFullScreen();
 });
 document.body.appendChild( renderer.domElement );
