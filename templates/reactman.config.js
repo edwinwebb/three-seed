@@ -9,7 +9,7 @@ module.exports = {
   "scripts" : {
     "class" : {
       "files" : {
-        "action.js" : "{%=o.exports%}/{%=o.exports%}.js"
+        "generic.js" : "{%=o.exports%}/{%=o.exports%}.js"
       },
       "script" : [{
         "name": "exports",
@@ -21,7 +21,7 @@ module.exports = {
         "name": "functions",
         "message": "Comma seperated list of functions",
         "required": false,
-        "default": [],
+        "default": "",
         "type": "input",
         "filter" : function(i) {
           var ar = i.replace(" ","").split(",");
