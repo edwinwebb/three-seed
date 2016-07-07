@@ -13,7 +13,7 @@ import {Scene, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh} from 'th
 import THREE from 'three';
 import TWEEN from 'gsap';
 
-const renderer = new Renderer(config.stageWidth, config.stageHeight);
+const renderer = new Renderer({antialias:true});
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 const OrbitControls = require('three-orbit-controls')(THREE)
@@ -31,7 +31,7 @@ renderer.scene = scene;
 
 mesh.rotation.x = (Math.PI*2) * .3;
 
-TWEEN.to(mesh.rotation, 1, {z: Math.PI*2, yoyo: true, repeat: -1})
+TWEEN.to(mesh.rotation, 20, {z: Math.PI*2, yoyo: true, repeat: -1})
 
 renderer.start();
 
