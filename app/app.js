@@ -11,6 +11,7 @@ import Renderer from './Renderer/Renderer';
 import AnimationStore from './stores/AnimationStore';
 import {Scene, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh} from 'three';
 import THREE from 'three';
+import TWEEN from 'gsap';
 
 const renderer = new Renderer(config.stageWidth, config.stageHeight);
 const scene = new Scene();
@@ -29,7 +30,8 @@ renderer.camera = camera;
 renderer.scene = scene;
 
 mesh.rotation.x = (Math.PI*2) * .3;
-mesh.rotation.z = (Math.PI*2) * .3;
+
+TWEEN.to(mesh.rotation, 1, {z: Math.PI*2, yoyo: true, repeat: -1})
 
 renderer.start();
 
