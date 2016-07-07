@@ -39,7 +39,7 @@ export default class Renderer extends THREE.WebGLRenderer {
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
     }
-    
+
     RendererStore.emitChange();
   }
 
