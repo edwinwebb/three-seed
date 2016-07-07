@@ -33,4 +33,5 @@ mesh.rotation.x = (Math.PI*2) * .75;
 renderer.start();
 
 document.body.style.margin = 0;
+document.body.style.overflow = 'hidden';
 document.body.appendChild( renderer.domElement );
