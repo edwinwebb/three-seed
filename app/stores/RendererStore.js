@@ -32,7 +32,8 @@ class RendererStore extends EventEmitter {
   }
 
   set(key, value) {
-    return this.data[key] = value;
+    this.data[key] = value;
+    return value;
   }
 
   emitChange() {

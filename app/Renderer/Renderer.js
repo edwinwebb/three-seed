@@ -3,7 +3,6 @@ import RendererStore from '../stores/RendererStore.js';
 import AnimationStore from '../stores/AnimationStore.js';
 
 export default class Renderer extends THREE.WebGLRenderer {
-
   constructor(...args) {
 
     super(...args);
@@ -29,8 +28,8 @@ export default class Renderer extends THREE.WebGLRenderer {
   }
 
   resizeHandler() {
-    var w = this.getWindowSize()[0];
-    var h = this.getWindowSize()[1];
+    const w = this.getWindowSize()[0];
+    const h = this.getWindowSize()[1];
 
     this.setSize(w,h);
     this.setStore();
@@ -44,8 +43,8 @@ export default class Renderer extends THREE.WebGLRenderer {
   }
 
   getWindowSize() {
-    var width = window.innerWidth;
-    var height = window.innerHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     return [width, height];
   }
