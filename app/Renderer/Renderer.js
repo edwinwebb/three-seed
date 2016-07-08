@@ -3,8 +3,8 @@ import RendererStore from '../stores/RendererStore.js';
 import AnimationStore from '../stores/AnimationStore.js';
 
 export default class Renderer extends THREE.WebGLRenderer {
-  constructor(...args) {
 
+  constructor(...args) {
     super(...args);
 
     this.resolution = window.devicePixelRatio;
@@ -31,10 +31,10 @@ export default class Renderer extends THREE.WebGLRenderer {
     const w = this.getWindowSize()[0];
     const h = this.getWindowSize()[1];
 
-    this.setSize(w,h);
+    this.setSize(w, h);
     this.setStore();
 
-    if(this.camera) {
+    if (this.camera) {
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
     }
@@ -63,7 +63,7 @@ export default class Renderer extends THREE.WebGLRenderer {
   }
 
   animate() {
-    if(this.active && this.isRenderable()) {
+    if (this.active && this.isRenderable()) {
       this.render(this.scene, this.camera);
       AnimationStore.emitChange();
       window.requestAnimationFrame(this.animate.bind(this));
