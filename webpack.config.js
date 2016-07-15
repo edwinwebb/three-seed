@@ -8,13 +8,14 @@ module.exports = {
   entry : ["./app/app.js"],
   output : {
     path: path.join(__dirname, pkg.config.build),
-    filename: "[name].[hash].js",
-    devtool : 'source-map'
+    filename: "[name].[hash].js"
   },
+  devtool : 'eval',
   devServer: {
     outputPath : path.join(__dirname, pkg.config.build)
   },
   module : {
+    noparse: /three.js/,
     loaders : [
       {
         test: /\.js?$/,
