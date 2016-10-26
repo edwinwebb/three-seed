@@ -23,13 +23,8 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|json)$/i,
         loaders: ['file-loader']
-      },
-      {
-        test: /\.json$/,
-        loader: "json",
-        exclude: /node_modules/
       }
     ]
   },
