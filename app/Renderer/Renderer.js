@@ -1,8 +1,8 @@
-import THREE from 'three';
+import { WebGLRenderer } from 'three';
 import RendererStore from '../stores/RendererStore.js';
 import AnimationStore from '../stores/AnimationStore.js';
 
-export default class Renderer extends THREE.WebGLRenderer {
+export default class Renderer extends WebGLRenderer {
 
   constructor(...args) {
     super(...args);
