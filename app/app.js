@@ -7,30 +7,22 @@
  */
 
 import Renderer from './Renderer/Renderer';
-import {Scene, PerspectiveCamera, BoxGeometry, MeshNormalMaterial, Mesh } from 'three';
-import * as THREE from 'three';
-import TWEEN from 'gsap';
+import { Scene, PerspectiveCamera } from 'three';
+// import * as THREE from 'three';
+import TestCube from './objects/TestCube';
 
 const renderer = new Renderer({ antialias: true });
 const scene = new Scene();
-const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-const OrbitControls = require('three-orbit-controls')(THREE)
-
-const geometry = new BoxGeometry(20, 20, 20);
-const material = new MeshNormalMaterial();
-const mesh = new Mesh(geometry, material);
-
-new OrbitControls(camera);
+const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+//const OrbitControls = require('three-orbit-controls')(THREE)
+//new OrbitControls(camera);
+const mesh = new TestCube();
 
 scene.add(mesh);
 camera.position.z = 100;
 
 renderer.camera = camera;
 renderer.scene = scene;
-
-mesh.rotation.x = (Math.PI*2) * .3;
-
-TWEEN.to(mesh.rotation, 20, {z: Math.PI*2, yoyo: true, repeat: -1})
 
 renderer.start();
 
