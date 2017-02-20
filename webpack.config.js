@@ -1,34 +1,26 @@
-var path = require('path');
-var pkg = require('./package.json');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var DEBUG = process.env.NODE_ENV !== 'production';
+const path = require('path');
+const pkg = require('./package.json');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  target : "web",
-  entry : ["./app/app.js"],
-  output : {
+  entry: './app/app.js',
+  output: {
     path: path.join(__dirname, pkg.config.build),
-    filename: "[name].[hash].js",
-    devtool : 'source-map'
+    filename: '[name].[hash].js'
   },
-  devServer: {
-    outputPath : path.join(__dirname, pkg.config.build)
-  },
-  module : {
-    loaders : [
+  module: {
+    rules: [
       {
         test: /\.js?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'app'),
-        exclude: /node_modules/
-      },
-      {
+        use: 'babel-loader'
+      },{
         test: /\.(jpe?g|png|gif|svg|json)$/i,
-        loaders: ['file-loader']
+        use: 'file-loader'
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({'title' : pkg.config.title})
+    new HtmlWebpackPlugin({'title': pkg.config.title})
   ]
 }

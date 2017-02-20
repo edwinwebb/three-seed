@@ -32,8 +32,8 @@
     "lodash": "^4.17.4",
     "reactman": "^3.5.2",
     "rimraf": "^2.6.0",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   },
   "engines": {
     "node": ">=4.0.0"
