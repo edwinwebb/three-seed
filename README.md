@@ -2,7 +2,9 @@
 
 This seed is designed to bootstrap your Three.js development with modern tooling, technology and project organisation.
 
-This is a work in progress and a fork of my pixi-seed repo.
+## TODO
+* Add GLSL loaders and example
+* Add await, async with fileLoader examples
 
 ## npm scripts
 
@@ -21,6 +23,6 @@ import assetURL from './logo.png';
 
 ## License
 
-Copyright (c) 2015 Edwin Webb
+Copyright (c) 2017 Edwin Webb
 
 MIT (http://opensource.org/licenses/MIT)
