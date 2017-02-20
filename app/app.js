@@ -8,15 +8,16 @@
 
 import Renderer from './Renderer/Renderer';
 import { Scene, PerspectiveCamera } from 'three';
-// import * as THREE from 'three';
+import * as THREE from 'three'; // used for Orbit Controls
 import TestCube from './objects/TestCube';
 
 const renderer = new Renderer({ antialias: true });
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
-//const OrbitControls = require('three-orbit-controls')(THREE)
-//new OrbitControls(camera);
+const OrbitControls = require('three-orbit-controls')(THREE)
 const mesh = new TestCube();
+
+new OrbitControls(camera);
 
 scene.add(mesh);
 camera.position.z = 100;
