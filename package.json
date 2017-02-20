@@ -18,6 +18,7 @@
   "dependencies": {
     "gsap": "^1.19.1",
     "three": "^0.84.0",
+    "three-effectcomposer-es6": "0.0.4",
     "three-orbit-controls": "^82.1.0"
   },
   "devDependencies": {

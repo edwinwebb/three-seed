@@ -16,6 +16,7 @@ export default class Renderer extends WebGLRenderer {
     this.setPixelRatio(this.resolution);
     this.camera = false;
     this.scene = false;
+    this.animationToken = 0;
 
     this.setStore();
 
@@ -51,10 +52,11 @@ export default class Renderer extends WebGLRenderer {
 
   start() {
     this.active = true;
-    window.requestAnimationFrame(this.animate.bind(this));
+    this.animationToken = window.requestAnimationFrame(this.animate.bind(this));
   }
 
   stop() {
+    window.cancelAnimationFrame(this.animationToken);
     this.active = false;
   }
 
