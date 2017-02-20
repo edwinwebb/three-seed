@@ -33,13 +33,13 @@ export default class Renderer extends WebGLRenderer {
     const h = this.getWindowSize()[1];
 
     this.setSize(w, h);
-    this.setStore();
 
     if (this.camera) {
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
     }
 
+    this.setStore();
     RendererStore.emitChange();
   }
 
