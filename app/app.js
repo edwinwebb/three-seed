@@ -6,22 +6,21 @@
  *
  */
 
-import {config} from '../package.json';
 import Renderer from './Renderer/Renderer';
-import AnimationStore from './stores/AnimationStore';
-import {Scene, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh} from 'three';
-import THREE from 'three';
+import {Scene, PerspectiveCamera, BoxGeometry, MeshNormalMaterial, Mesh } from 'three';
+import * as THREE from 'three';
 import TWEEN from 'gsap';
 
-const renderer = new Renderer({antialias:true});
+const renderer = new Renderer({ antialias: true });
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 const OrbitControls = require('three-orbit-controls')(THREE)
-const controls = new OrbitControls(camera);
 
-const geometry = new THREE.BoxBufferGeometry(200, 200, 200);
-const material = new THREE.MeshNormalMaterial();
-const mesh = new THREE.Mesh(geometry, material);
+const geometry = new BoxGeometry(200, 200, 200);
+const material = new MeshNormalMaterial();
+const mesh = new Mesh(geometry, material);
+
+new OrbitControls(camera);
 
 scene.add(mesh);
 camera.position.z = 1000;
