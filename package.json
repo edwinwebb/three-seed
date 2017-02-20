@@ -4,7 +4,7 @@
   "repository": "https://github.com/edwinwebb/three-seed",
   "description": "Three.js project seed with ES6 and webpack",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --hot --inline",
+    "start": "NODE_ENV=development webpack-dev-server --hot",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production npm run webpack",
     "clean": "rimraf ./build && mkdir ./build",

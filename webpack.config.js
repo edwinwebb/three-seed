@@ -9,6 +9,8 @@ module.exports = {
     path: path.join(__dirname, pkg.config.build),
     filename: '[name].[hash].js'
   },
+  target: 'web',
+  devtool: 'source-map',
   module: {
     rules: [
       {
