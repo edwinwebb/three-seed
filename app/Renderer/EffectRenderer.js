@@ -14,10 +14,9 @@ export default class EffectRenderer {
     this.animationToken = 0;
     this.rTarget1 = RenderTarget.clone();
     this.rTarget2 = RenderTarget.clone();
-    this.copyPass = new ShaderPass(CopyShader);
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
-    this.passes = [];
+    this.passes = [new ShaderPass(CopyShader)];
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     this.quad = new Mesh(new PlaneGeometry(2,2), null);
     this.scene = new Scene();
@@ -78,7 +77,7 @@ export default class EffectRenderer {
 
   animate() {
     if (this.active && this.isRenderable()) {
-      this.render(this.scene, this.camera);
+      this.render();
       AnimationStore.emitChange();
       window.requestAnimationFrame(this.animate.bind(this));
     }
@@ -87,6 +86,8 @@ export default class EffectRenderer {
   render() {
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
+
+    //this.renderer.render(this.scene, this.camera);
 
     this.passes.forEach( (pass)=>{
       pass.enabled && pass.render(this.renderer, this.writeBuffer, this.readBuffer, {
@@ -111,7 +112,7 @@ export class ShaderPass {
       vertexShader,
       fragmentShader
     });
-    this.renderToScreen = false;
+    this.renderToScreen = true;
     this.enabled = true;
     this.needsSwap = true;
     this.clear = false;
