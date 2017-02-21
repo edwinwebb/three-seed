@@ -4,8 +4,8 @@ import AnimationStore from '../stores/AnimationStore.js';
 
 export default class Renderer extends WebGLRenderer {
 
-  constructor(...args) {
-    super(...args);
+  constructor(options, scene, camera) {
+    super(options);
 
     this.resolution = window.devicePixelRatio;
 
@@ -14,8 +14,8 @@ export default class Renderer extends WebGLRenderer {
     RendererStore.set('resolution', this.resolution);
 
     this.setPixelRatio(this.resolution);
-    this.camera = false;
-    this.scene = false;
+    this.camera = camera;
+    this.scene = scene;
     this.animationToken = 0;
 
     this.setStore();

@@ -15,9 +15,9 @@ import { ShaderPass, RenderPass, CopyShader } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
 import { Grain } from './Shaders/grain/grain';
 
-const renderer = new Renderer({antialias: false, alpha: false});
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+const renderer = new Renderer({antialias: true, alpha: false}, scene, camera);
 //const OrbitControls = require('three-orbit-controls')(THREE)
 const mesh = new TestCube();
 // const composer = new Composer(renderer);
@@ -29,8 +29,7 @@ const x = new ShaderPass(CopyShader);
 // new OrbitControls(camera);
 
 scene.add(mesh);
-camera.position.z = -100;
-camera.lookAt( mesh.position );
+camera.position.z = 100;
 
 // FXAA.renderToScreen = true;
 // x.renderToScreen = true;
