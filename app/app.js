@@ -6,7 +6,7 @@
  *
  */
 
-import Renderer from './Renderer/Renderer';
+import Renderer from './Renderer/EffectRenderer';
 // import Composer from './Composer/Composer';
 import { Scene, PerspectiveCamera } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
@@ -32,11 +32,11 @@ scene.add(mesh);
 camera.position.z = 100;
 
 // FXAA.renderToScreen = true;
-// x.renderToScreen = true;
+x.renderToScreen = true;
 // // grain.renderToScreen = true;
 // // composer.addPass(new RenderPass(scene, camera));
 // renderer.addPass(rPass);
-// //renderer.addPass(x);
+renderer.addPass(x);
 // renderer.addPass(FXAA);
 //renderer.addPass(grain);
 

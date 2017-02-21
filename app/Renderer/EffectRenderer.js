@@ -4,19 +4,19 @@ import AnimationStore from '../stores/AnimationStore.js';
 
 export default class EffectRenderer {
 
-  constructor(...args) {
+  constructor(options, camera, scene) {
 
     const { width, height } = this.getWindowSize();
     const RenderTarget = new WebGLRenderTarget(width, height, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat, stencilBuffer: false });
 
-    this.renderer = new WebGLRenderer(...args);
+    this.renderer = new WebGLRenderer(options);
     this.resolution = window.devicePixelRatio;
     this.animationToken = 0;
     this.rTarget1 = RenderTarget;
     this.rTarget2 = RenderTarget.clone();
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
-    this.passes = [];
+    this.passes = [new RenderPass(camera, scene)];
     // this.copyPass = new ShaderPass(CopyShader);
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     this.quad = new Mesh(new PlaneGeometry(2,2), null);
@@ -37,6 +37,10 @@ export default class EffectRenderer {
     // this.addPass(CopyShader);
   }
 
+  get domElement() {
+    return this.renderer.domElement;
+  }
+
   addPass(shader) {
     this.passes.push(shader);
   }
@@ -48,18 +52,28 @@ export default class EffectRenderer {
   }
 
   resizeHandler() {
-    // const { width, height } = this.getWindowSize();
+    const { width, height } = this.getWindowSize();
+    const tWidth = width * this.resolution;
+    const tHeight = height * this.resolution;
 
-    // this.renderer.setSize(width, height);
+    this.renderer.setSize(width, height);
 
-    // if (this.camera) {
-    //   this.camera.aspect = width / height;
-    //   this.camera.updateProjectionMatrix();
-    // }
+    if (this.passes[0].camera) {
+      this.passes[0].camera.aspect = width / height;
+      this.passes[0].camera.updateProjectionMatrix();
+    }
 
-    // this.setStore();
+    const rT = this.rTarget1.clone();
+    rT.width = tWidth;
+    rT.height = tHeight;
+    this.rTarget1 = rT;
+    this.rTarget2 = rT;
+    this.writeBuffer = this.rTarget1;
+    this.writeBuffer = this.rTarget2;
 
-    // RendererStore.emitChange();
+    this.setStore();
+
+    RendererStore.emitChange();
   }
 
   getWindowSize() {
