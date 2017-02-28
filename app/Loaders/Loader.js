@@ -52,3 +52,23 @@ export const loadTextureSet = (array, loadingCallback) => {
   const loader = TextureLoader;
   return LoadAssetArray(loader, array, loadingCallback);
 }
+
+export const loadModel = (url, loadingCallback, index) => {
+  const loader = JSONLoader;
+  return LoadAsset(loader, url, loadingCallback, index);
+}
+
+export const loadModelSet = (array, loadingCallback) => {
+  const loader = JSONLoader;
+  return LoadAssetArray(loader, array, loadingCallback);
+}
+
+export const loadScene = (url, loadingCallback, index) => {
+  const loader = ObjectLoader;
+  return LoadAsset(loader, url, loadingCallback, index);
+}
+
+export const loadSceneSet = (array, loadingCallback) => {
+  const loader = ObjectLoader;
+  return LoadAssetArray(loader, array, loadingCallback);
+}
