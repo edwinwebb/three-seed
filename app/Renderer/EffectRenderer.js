@@ -63,9 +63,9 @@ export default class EffectRenderer {
     rT.width = tWidth;
     rT.height = tHeight;
     this.rTarget1 = rT;
-    this.rTarget2 = rT;
+    this.rTarget2 = rT.clone();
     this.writeBuffer = this.rTarget1;
-    this.writeBuffer = this.rTarget2;
+    this.readBuffer = this.rTarget2;
 
     this.setStore();
 
@@ -163,7 +163,7 @@ export class ShaderPass {
 export const CopyShader = {
   uniforms: {
     'tDiffuse': { type: 't', value: null },
-    'opacity': { type: 'f', value: 1.0 }
+    'opacity': { type: 'f', value: 1 }
   },
   vertexShader: `varying vec2 vUv;
     void main() {

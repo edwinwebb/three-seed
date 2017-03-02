@@ -13,6 +13,7 @@ import * as THREE from 'three'; // used for Orbit Controls
 import TestCube from './objects/TestCube';
 import { ShaderPass, RenderPass, CopyShader } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
+import { SSAOShader } from './Shaders/ssao/ssao';
 import { Grain } from './Shaders/grain/grain';
 
 const scene = new Scene();
@@ -23,6 +24,7 @@ const mesh = new TestCube();
 // const composer = new Composer(renderer);
 const rPass = new RenderPass(scene, camera);
 const FXAA = new ShaderPass(FXAAShader);
+const SSAO = new ShaderPass(SSAOShader);
 const grain = new ShaderPass(Grain);
 const copy = new ShaderPass(CopyShader);
 
@@ -34,14 +36,16 @@ camera.position.z = 100;
 
 //
 // x.renderToScreen = true;
-// // grain.renderToScreen = true;
+// grain.renderToScreen = true;
+// renderer.addPass(grain);
 // // composer.addPass(new RenderPass(scene, camera));
 
-// renderer.addPass(x);
+// SSAO.renderToScreen = true;
+// renderer.addPass(SSAO);
 
 // FXAA.renderToScreen = true;
 // renderer.addPass(FXAA);
-//renderer.addPass(grain);
+
 
 copy.renderToScreen = true;
 renderer.addPass(copy);
