@@ -6,9 +6,8 @@ export default class EffectRenderer {
 
   constructor(options, camera, scene) {
 
-    const { width, height } = this.getWindowSize();
+    const { width, height } = this.getSize();
     const RenderTarget = new WebGLRenderTarget(width, height, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat, stencilBuffer: false });
-
     this.renderer = new WebGLRenderer(options);
     this.resolution = window.devicePixelRatio;
     this.animationToken = 0;
@@ -17,7 +16,6 @@ export default class EffectRenderer {
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
     this.passes = [new RenderPass(camera, scene)];
-    // this.copyPass = new ShaderPass(CopyShader);
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     this.quad = new Mesh(new PlaneGeometry(2,2), null);
     this.scene = new Scene();
@@ -33,8 +31,6 @@ export default class EffectRenderer {
 
     this.resizeHandler();
 
-    // this.passes.push(new RenderPass());
-    // this.addPass(CopyShader);
   }
 
   get domElement() {
@@ -79,6 +75,13 @@ export default class EffectRenderer {
   getWindowSize() {
     const width = window.innerWidth;
     const height = window.innerHeight;
+
+    return { width, height };
+  }
+
+  getSize() {
+    const width = window.innerWidth * window.devicePixelRatio;
+    const height = window.innerHeight * window.devicePixelRatio;
 
     return { width, height };
   }

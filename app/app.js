@@ -24,22 +24,27 @@ const mesh = new TestCube();
 const rPass = new RenderPass(scene, camera);
 const FXAA = new ShaderPass(FXAAShader);
 const grain = new ShaderPass(Grain);
-const x = new ShaderPass(CopyShader);
+const copy = new ShaderPass(CopyShader);
 
 // new OrbitControls(camera);
 
 scene.add(mesh);
 camera.position.z = 100;
+//renderer.addPass(rPass);
 
-// FXAA.renderToScreen = true;
-x.renderToScreen = true;
+//
+// x.renderToScreen = true;
 // // grain.renderToScreen = true;
 // // composer.addPass(new RenderPass(scene, camera));
-// renderer.addPass(rPass);
-renderer.addPass(x);
+
+// renderer.addPass(x);
+
+// FXAA.renderToScreen = true;
 // renderer.addPass(FXAA);
 //renderer.addPass(grain);
 
+copy.renderToScreen = true;
+renderer.addPass(copy);
 // window.composer = composer;
 
 renderer.start();
