@@ -47,33 +47,35 @@ camera.position.z = 100;
 // // composer.addPass(new RenderPass(scene, camera));
 
 // SSAO.renderToScreen = true;
+// console.log(SSAO)
 // renderer.addPass(SSAO);
 
 //FXAA.renderToScreen = true;
-//renderer.addPass(FXAA);
+// renderer.addPass(FXAA);
 
 // // colori.renderToScreen = true;
-// // renderer.addPass(colori);
+// colori.uniforms.color.value.set(0xFF00FF)
+// renderer.addPass(colori);
 
 // // clear.renderToScreen = true;
 // // renderer.addPass(clear);
 
-renderer.addPass(copy3);
-copy3.uniforms.opacity.value = 0.5;
+// renderer.addPass(copy3);
+// copy3.uniforms.opacity.value = 0.75;
 
-//copy.renderToScreen = true;
-renderer.addPass(copy);
-copy.uniforms.opacity.value = 0.5;
-//console.log()
+// //copy.renderToScreen = true;
+// renderer.addPass(copy);
+// copy.uniforms.opacity.value = 0.75;
+// //console.log()
 
 copy2.renderToScreen = true;
 renderer.addPass(copy2);
 
 // window.composer = composer;
 
-// renderer.start();
+renderer.start();
 
-document.body.addEventListener('click', e => (renderer.render()) )
+// document.body.addEventListener('click', e => (renderer.render()) );
 
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';

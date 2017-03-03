@@ -25,7 +25,7 @@ export default class EffectRenderer {
 
     // now add a renderer, camera and plane to render the textures to
     this.renderer = new WebGLRenderer(options);
-    console.log('EffectRenderer make renderer', this.renderer.id = 'id-internal-renderer');
+    // console.log('EffectRenderer make renderer', this.renderer.id = 'id-internal-renderer');
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     this.quad = new Mesh(new PlaneGeometry(2,2), null);
     this.scene = new Scene();
@@ -87,9 +87,9 @@ export default class EffectRenderer {
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
 
-    console.log('EffectRenderer reset targets')
-    console.log('EffectRenderer Write Buffer: ' + this.writeBuffer.uuid);
-    console.log('EffectRenderer Read Buffer: ' + this.readBuffer.uuid);
+    // console.log('EffectRenderer reset targets')
+    // console.log('EffectRenderer Write Buffer: ' + this.writeBuffer.uuid);
+    // console.log('EffectRenderer Read Buffer: ' + this.readBuffer.uuid);
 
     // update the store and emit
     this.setStore();
@@ -141,7 +141,7 @@ export default class EffectRenderer {
     this.passes.forEach( (pass)=>{
       if(!pass.enabled) return;
 
-      console.log('EffectRenderer Pass', pass)
+      // console.log('EffectRenderer Pass', pass)
 
       pass.render(this.renderer, this.writeBuffer, this.readBuffer, {
         camera: this.camera,
@@ -150,7 +150,7 @@ export default class EffectRenderer {
       });
 
       if(pass.needsSwap) {
-        console.log('EffectRenderer: swapping buffers')
+        // console.log('EffectRenderer: swapping buffers')
         const tmp = this.readBuffer;
         this.readBuffer = this.writeBuffer;
         this.writeBuffer = tmp;
@@ -183,17 +183,17 @@ export class ShaderPass {
     const { camera, scene, quad } = RendererBits;
 
     if (this.uniforms[this.textureID]) {
-      console.log('ShaderPass: Set the uniform texture id as ReadBuffer.texture')
+      // console.log('ShaderPass: Set the uniform texture id as ReadBuffer.texture')
       this.uniforms[this.textureID].value = readBuffer.texture
     }
 
     quad.material = this.material;
 
     if (this.renderToScreen) {
-      console.log('ShaderPass Render To Screen');
+      // console.log('ShaderPass Render To Screen');
       renderer.render(scene, camera);
     } else {
-      console.log('ShaderPass Render to WriteBuffer', writeBuffer.uuid);
+      // console.log('ShaderPass Render to WriteBuffer', writeBuffer.uuid);
       renderer.render(scene, camera, writeBuffer, this.clear);
     }
   }
@@ -227,7 +227,7 @@ export class RenderPass {
     this.needsSwap = false;
   }
   render(renderer, writeBuffer, readBuffer) {
-    console.log('RenderPass into ReadBuffer', readBuffer.uuid);
+    // console.log('RenderPass into ReadBuffer', readBuffer.uuid);
     this.scene.overrideMaterial = this.overrideMaterial;
     renderer.render(this.scene, this.camera, readBuffer, true);
     this.scene.overrideMaterial = null;
