@@ -133,10 +133,6 @@ export default class EffectRenderer {
   }
 
   render() {
-    // set the buffers again
-    // this.writeBuffer = this.rTarget1;
-    // this.readBuffer = this.rTarget2;
-
     // loop over passes and call the render function
     this.passes.forEach( (pass)=>{
       if(!pass.enabled) return;
