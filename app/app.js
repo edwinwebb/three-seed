@@ -27,6 +27,8 @@ const FXAA = new ShaderPass(FXAAShader);
 const SSAO = new ShaderPass(SSAOShader);
 const grain = new ShaderPass(Grain);
 const copy = new ShaderPass(CopyShader);
+const copy2 = new ShaderPass(CopyShader);
+const copy3 = new ShaderPass(CopyShader);
 const colori = new ShaderPass(ColorifyShader);
 const clear = new ClearPass(0xFF0000, 0.5);
 
@@ -48,7 +50,7 @@ camera.position.z = 100;
 // renderer.addPass(SSAO);
 
 //FXAA.renderToScreen = true;
-renderer.addPass(FXAA);
+//renderer.addPass(FXAA);
 
 // // colori.renderToScreen = true;
 // // renderer.addPass(colori);
@@ -56,8 +58,17 @@ renderer.addPass(FXAA);
 // // clear.renderToScreen = true;
 // // renderer.addPass(clear);
 
-copy.renderToScreen = true;
+renderer.addPass(copy3);
+copy3.uniforms.opacity.value = 0.5;
+
+//copy.renderToScreen = true;
 renderer.addPass(copy);
+copy.uniforms.opacity.value = 0.5;
+//console.log()
+
+copy2.renderToScreen = true;
+renderer.addPass(copy2);
+
 // window.composer = composer;
 
 // renderer.start();

@@ -183,7 +183,7 @@ export class ShaderPass {
     const { camera, scene, quad } = RendererBits;
 
     if (this.uniforms[this.textureID]) {
-      console.log('ShaderPass uniforms have texture')
+      console.log('ShaderPass: Set the uniform texture id as ReadBuffer.texture')
       this.uniforms[this.textureID].value = readBuffer.texture
     }
 
@@ -202,7 +202,7 @@ export class ShaderPass {
 export const CopyShader = {
   uniforms: {
     'tDiffuse': { type: 't', value: null },
-    'opacity': { type: 'f', value: 0.9 }
+    'opacity': { type: 'f', value: 1 }
   },
   vertexShader: `varying vec2 vUv;
     void main() {
