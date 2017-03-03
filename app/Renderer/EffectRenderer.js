@@ -194,4 +194,46 @@ export class RenderPass {
   }
 }
 
+export class ClearPass {
+  constructor(clearColor = 0x000000, clearAlpha = 0) {
+    this.needsSwap = false;
+    this.clearColor = clearColor;
+    this.clearAlpha = clearAlpha;
+  }
+
+  render(renderer, writeBuffer, readBuffer) {
+    const oldClearColor = renderer.getClearColor().getHex();
+    const oldClearAlpha = renderer.getClearAlpha();
+
+    renderer.setClearColor(this.clearColor, this.clearAlpha);
+
+    renderer.setRenderTarget(this.renderToScreen ? null : readBuffer);
+    renderer.clear();
+    renderer.setClearColor(oldClearColor, oldClearAlpha);
+  }
+}
+
+import { Color } from 'three';
+
+export const ColorifyShader = {
+  uniforms: {
+    'tDiffuse': { value: null },
+		'color': { value: new Color( 0xffffff ) }
+  },
+  vertexShader: `varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+  }`,
+  fragmentShader: `uniform vec3 color;
+		uniform sampler2D tDiffuse;
+		varying vec2 vUv;
+		void main() {
+			vec4 texel = texture2D( tDiffuse, vUv );
+			vec3 luma = vec3( 0.299, 0.587, 0.114 );
+			float v = dot( texel.xyz, luma );
+			gl_FragColor = vec4( v * color, texel.w );
+	  }`
+}
+
 
