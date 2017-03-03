@@ -14,14 +14,16 @@ export default class EffectRenderer {
 
     // and the targets
     this.rTarget1 = RenderTarget;
+    this.rTarget1.texture.name = 'RT1';
     this.rTarget2 = RenderTarget.clone();
+    this.rTarget2.texture.name = 'RT2';
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
 
     // Add a render pass
     this.passes = [new RenderPass(camera, scene)];
 
-    // now add a renderer, camera and plane to render on
+    // now add a renderer, camera and plane to render the textures to
     this.renderer = new WebGLRenderer(options);
     console.log('EffectRenderer make renderer', this.renderer.id = 'id-internal-renderer');
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -78,6 +80,8 @@ export default class EffectRenderer {
     rT.height = tHeight;
 
     // now reset the targets
+    this.rTarget1.dispose();
+    this.rTarget2.dispose();
     this.rTarget1 = rT;
     this.rTarget2 = rT.clone();
     this.writeBuffer = this.rTarget1;
@@ -130,8 +134,8 @@ export default class EffectRenderer {
 
   render() {
     // set the buffers again
-    this.writeBuffer = this.rTarget1;
-    this.readBuffer = this.rTarget2;
+    // this.writeBuffer = this.rTarget1;
+    // this.readBuffer = this.rTarget2;
 
     // loop over passes and call the render function
     this.passes.forEach( (pass)=>{
@@ -169,9 +173,9 @@ export class ShaderPass {
       fragmentShader
     });
     this.renderToScreen = false;
-    this.enabled = true;
-    this.needsSwap = true;
-    this.clear = false;
+    this.enabled = true; // process it
+    this.needsSwap = true; // swap buffers after render
+    this.clear = false; // clear buffer before rendering
   }
 
   render(renderer, writeBuffer, readBuffer, RendererBits) {
@@ -198,7 +202,7 @@ export class ShaderPass {
 export const CopyShader = {
   uniforms: {
     'tDiffuse': { type: 't', value: null },
-    'opacity': { type: 'f', value: 0.5 }
+    'opacity': { type: 'f', value: 0.9 }
   },
   vertexShader: `varying vec2 vUv;
     void main() {
@@ -223,7 +227,7 @@ export class RenderPass {
     this.needsSwap = false;
   }
   render(renderer, writeBuffer, readBuffer) {
-    console.log('RenderPass into', readBuffer.uuid);
+    console.log('RenderPass into ReadBuffer', readBuffer.uuid);
     this.scene.overrideMaterial = this.overrideMaterial;
     renderer.render(this.scene, this.camera, readBuffer, true);
     this.scene.overrideMaterial = null;
