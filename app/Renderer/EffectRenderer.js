@@ -276,4 +276,33 @@ export const ColorifyShader = {
 	  }`
 }
 
+export const TestShader = {
+  uniforms: {
+    'tDiffuse': { value: null}
+  },
+  vertexShader: `varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }`,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    varying vec2 vUv;
+    void main() {
+      gl_FragColor.r = 1.0;
+      gl_FragColor.g = 1.0;
+      gl_FragColor.b = 0.0;
+      gl_FragColor.a = 1.0;
+    }`
+}
 
+/*
+precision lowp float;
+
+void main() {
+	gl_FragColor.r = 1.0;
+	gl_FragColor.g = 0.0;
+	gl_FragColor.b = 0.0;
+	gl_FragColor.a = 1.0;
+}
+*/

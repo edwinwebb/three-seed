@@ -11,7 +11,7 @@ import Renderer from './Renderer/EffectRenderer';
 import { Scene, PerspectiveCamera, HemisphereLight } from 'three';
 // import * as THREE from 'three'; // used for Orbit Controls
 import TestCube from './objects/TestKnot';
-import { ShaderPass, RenderPass, CopyShader, ColorifyShader, ClearPass } from './Renderer/EffectRenderer';
+import { ShaderPass, RenderPass, CopyShader, ColorifyShader, ClearPass, TestShader } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
 import { SSAOShader } from './Shaders/ssao/ssao';
 import { Grain } from './Shaders/grain/grain';
@@ -31,6 +31,7 @@ const copy2 = new ShaderPass(CopyShader);
 const copy3 = new ShaderPass(CopyShader);
 const colori = new ShaderPass(ColorifyShader);
 const clear = new ClearPass(0xFF0000, 0.5);
+const test = new ShaderPass(TestShader)
 
 const light = new HemisphereLight(0xFFFFFF, 0x222222, 1);
 scene.add(light);
@@ -67,6 +68,8 @@ camera.position.z = 100;
 // renderer.addPass(copy);
 // copy.uniforms.opacity.value = 0.75;
 // //console.log()
+
+renderer.addPass(test);
 
 copy2.renderToScreen = true;
 renderer.addPass(copy2);
