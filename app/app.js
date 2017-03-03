@@ -6,11 +6,11 @@
  *
  */
 
-import Renderer from './Renderer/EffectRenderer';
+import Renderer from './Renderer/Renderer';
 // import Composer from './Composer/Composer';
 import { Scene, PerspectiveCamera } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
-import TestCube from './objects/TestCube';
+import TestCube from './objects/TestKnot';
 import { ShaderPass, RenderPass, CopyShader } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
 import { SSAOShader } from './Shaders/ssao/ssao';
@@ -18,7 +18,7 @@ import { Grain } from './Shaders/grain/grain';
 
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
-const renderer = new Renderer({antialias: true, alpha: false}, scene, camera);
+const renderer = new Renderer({antialias: false, alpha: false}, scene, camera);
 //const OrbitControls = require('three-orbit-controls')(THREE)
 const mesh = new TestCube();
 // const composer = new Composer(renderer);
@@ -47,8 +47,8 @@ camera.position.z = 100;
 // renderer.addPass(FXAA);
 
 
-copy.renderToScreen = true;
-renderer.addPass(copy);
+// copy.renderToScreen = true;
+// renderer.addPass(copy);
 // window.composer = composer;
 
 renderer.start();

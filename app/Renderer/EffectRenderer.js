@@ -26,10 +26,11 @@ export default class EffectRenderer {
     RendererStore.set('resolution', this.resolution);
 
     this.renderer.setPixelRatio(this.resolution);
+    this.renderer.setSize(width /2 , height /2);
 
     this.setStore();
 
-    this.resizeHandler();
+    //this.resizeHandler();
 
   }
 
@@ -48,6 +49,7 @@ export default class EffectRenderer {
   }
 
   resizeHandler() {
+    return;
     const { width, height } = this.getWindowSize();
     const tWidth = width * this.resolution;
     const tHeight = height * this.resolution;
@@ -118,9 +120,9 @@ export default class EffectRenderer {
         scene: this.scene,
         quad: this.quad
       });
-      const tmp = this.readBuffer;
-      this.readBuffer = this.writeBuffer;
-      this.writeBuffer = tmp;
+      // const tmp = this.readBuffer;
+      // this.readBuffer = this.writeBuffer;
+      // this.writeBuffer = tmp;
     } );
   }
 
