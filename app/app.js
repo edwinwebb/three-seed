@@ -51,11 +51,11 @@ camera.position.z = 100;
 // colori.renderToScreen = true;
 // renderer.addPass(colori);
 
-clear.renderToScreen = true;
-renderer.addPass(clear);
+// clear.renderToScreen = true;
+// renderer.addPass(clear);
 
-// copy.renderToScreen = true;
-// renderer.addPass(copy);
+copy.renderToScreen = true;
+renderer.addPass(copy);
 // window.composer = composer;
 
 renderer.start();

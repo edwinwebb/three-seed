@@ -5,33 +5,43 @@ import AnimationStore from '../stores/AnimationStore.js';
 export default class EffectRenderer {
 
   constructor(options, camera, scene) {
-
     const { width, height } = this.getSize();
     const RenderTarget = new WebGLRenderTarget(width, height, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat, stencilBuffer: false });
-    this.renderer = new WebGLRenderer(options);
+
+    // Set up class globals
     this.resolution = window.devicePixelRatio;
     this.animationToken = 0;
+
+    // and the targets
     this.rTarget1 = RenderTarget;
     this.rTarget2 = RenderTarget.clone();
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
+
+    // Add a render pass
     this.passes = [new RenderPass(camera, scene)];
+
+    // now add a renderer, camera and plane to render on
+    this.renderer = new WebGLRenderer(options);
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     this.quad = new Mesh(new PlaneGeometry(2,2), null);
     this.scene = new Scene();
     this.scene.add(this.quad);
 
+    // events
     window.addEventListener('resize', this.resizeHandler.bind(this));
 
     RendererStore.set('resolution', this.resolution);
 
+    // set up renderer
     this.renderer.setPixelRatio(this.resolution);
-    this.renderer.setSize(width /2 , height /2);
+    this.renderer.setSize(width / this.resolution, height / this.resolution);
 
+    // populate the store
     this.setStore();
 
-    //this.resizeHandler();
-
+    // and resize
+    this.resizeHandler();
   }
 
   get domElement() {
@@ -49,28 +59,31 @@ export default class EffectRenderer {
   }
 
   resizeHandler() {
-    return;
     const { width, height } = this.getWindowSize();
     const tWidth = width * this.resolution;
     const tHeight = height * this.resolution;
+    const rT = this.rTarget1.clone();
 
     this.renderer.setSize(width, height);
 
+    // set the RenderPass camera
     if (this.passes[0].camera) {
       this.passes[0].camera.aspect = width / height;
       this.passes[0].camera.updateProjectionMatrix();
     }
 
-    const rT = this.rTarget1.clone();
+    // size the cloned RT
     rT.width = tWidth;
     rT.height = tHeight;
+
+    // now reset the targets
     this.rTarget1 = rT;
     this.rTarget2 = rT.clone();
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
 
+    // update the store and emit
     this.setStore();
-
     RendererStore.emitChange();
   }
 
@@ -111,18 +124,23 @@ export default class EffectRenderer {
   }
 
   render() {
+    // set the buffers again
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
 
+    // loop over passes and call the render function
     this.passes.forEach( (pass)=>{
       pass.enabled && pass.render(this.renderer, this.writeBuffer, this.readBuffer, {
         camera: this.camera,
         scene: this.scene,
         quad: this.quad
       });
-      // const tmp = this.readBuffer;
-      // this.readBuffer = this.writeBuffer;
-      // this.writeBuffer = tmp;
+
+      if(pass.needsSwap) {
+        const tmp = this.readBuffer;
+        this.readBuffer = this.writeBuffer;
+        this.writeBuffer = tmp;
+      }
     } );
   }
 
