@@ -45,8 +45,8 @@ camera.position.z = 100;
 // SSAO.renderToScreen = true;
 // renderer.addPass(SSAO);
 
-// FXAA.renderToScreen = true;
-// renderer.addPass(FXAA);
+FXAA.renderToScreen = true;
+renderer.addPass(FXAA);
 
 // colori.renderToScreen = true;
 // renderer.addPass(colori);
@@ -54,8 +54,8 @@ camera.position.z = 100;
 // clear.renderToScreen = true;
 // renderer.addPass(clear);
 
-copy.renderToScreen = true;
-renderer.addPass(copy);
+//copy.renderToScreen = true;
+//renderer.addPass(copy);
 // window.composer = composer;
 
 // renderer.start();
