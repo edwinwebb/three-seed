@@ -4,7 +4,7 @@ import AnimationStore from '../stores/AnimationStore.js';
 
 export default class EffectRenderer {
 
-  constructor(options, camera, scene) {
+  constructor(options) {
     const { width, height } = this.getSize();
     const RenderTarget = new WebGLRenderTarget(width, height, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat, stencilBuffer: false });
 
@@ -21,7 +21,7 @@ export default class EffectRenderer {
     this.readBuffer = this.rTarget2;
 
     // Add a render pass
-    this.passes = [new RenderPass(camera, scene)];
+    this.passes = [];
 
     // now add a renderer, camera and plane to render the textures to
     this.renderer = new WebGLRenderer(options);
@@ -68,12 +68,6 @@ export default class EffectRenderer {
     const rT = this.rTarget1.clone();
 
     this.renderer.setSize(width, height);
-
-    // set the RenderPass camera
-    if (this.passes[0].camera) {
-      this.passes[0].camera.aspect = width / height;
-      this.passes[0].camera.updateProjectionMatrix();
-    }
 
     // size the cloned RT
     rT.width = tWidth;
@@ -225,7 +219,7 @@ export class RenderPass {
   render(renderer, writeBuffer, readBuffer) {
     // console.log('RenderPass into ReadBuffer', readBuffer.uuid);
     this.scene.overrideMaterial = this.overrideMaterial;
-    renderer.render(this.scene, this.camera, readBuffer, true);
+    renderer.render(this.scene, this.camera, readBuffer, this.clear);
     this.scene.overrideMaterial = null;
   }
 }
@@ -233,6 +227,9 @@ export class RenderPass {
 export class ClearPass {
   constructor(clearColor = 0x000000, clearAlpha = 0) {
     this.needsSwap = false;
+    this.enabled = true;
+    this.clear = false;
+    this.renderToScreen = false;
     this.clearColor = clearColor;
     this.clearAlpha = clearAlpha;
   }
@@ -243,7 +240,7 @@ export class ClearPass {
 
     renderer.setClearColor(this.clearColor, this.clearAlpha);
 
-    renderer.setRenderTarget(this.renderToScreen ? null : readBuffer);
+    renderer.setRenderTarget(readBuffer);
     renderer.clear();
     renderer.setClearColor(oldClearColor, oldClearAlpha);
   }
@@ -288,7 +285,7 @@ export const TestShader = {
       gl_FragColor.r = 1.0;
       gl_FragColor.g = 1.0;
       gl_FragColor.b = 0.0;
-      gl_FragColor.a = 1.0;
+      gl_FragColor.a = 0.5;
     }`
 }
 
