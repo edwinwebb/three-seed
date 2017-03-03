@@ -130,7 +130,9 @@ export default class EffectRenderer {
 
     // loop over passes and call the render function
     this.passes.forEach( (pass)=>{
-      pass.enabled && pass.render(this.renderer, this.writeBuffer, this.readBuffer, {
+      if(!pass.enabled) return;
+
+      pass.render(this.renderer, this.writeBuffer, this.readBuffer, {
         camera: this.camera,
         scene: this.scene,
         quad: this.quad
@@ -208,7 +210,9 @@ export class RenderPass {
     this.needsSwap = false;
   }
   render(renderer, writeBuffer, readBuffer) {
+    this.scene.overrideMaterial = this.overrideMaterial;
     renderer.render(this.scene, this.camera, readBuffer, true);
+    this.scene.overrideMaterial = null;
   }
 }
 

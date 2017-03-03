@@ -58,7 +58,9 @@ copy.renderToScreen = true;
 renderer.addPass(copy);
 // window.composer = composer;
 
-renderer.start();
+// renderer.start();
+
+document.body.addEventListener('click', e => (renderer.render()) )
 
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
