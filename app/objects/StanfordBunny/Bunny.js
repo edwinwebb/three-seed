@@ -18,6 +18,7 @@ export default class extends Group {
 
     loadScene(BUNNYSCENE).then( (mesh)=>{
       this.add(mesh);
+
       mesh.position.x = 1.2 / 2;
       mesh.position.y = -0.3
     } );
