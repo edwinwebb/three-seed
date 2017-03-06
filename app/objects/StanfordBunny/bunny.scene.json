@@ -7,7 +7,7 @@
         "type":"MeshPhongMaterial",
         "blending":"NormalBlending",
         "uuid":"109C8DEC-623D-3F38-8AFD-395BEC6741C8",
-        "specular":7352400,
+        "specular":14548957,
         "color":500508,
         "depthTest":true,
         "name":"Material.001",
