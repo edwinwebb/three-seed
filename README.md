@@ -17,8 +17,16 @@ This seed is designed to bootstrap your Three.js development with modern tooling
 `import` asset files from within your JavaScript component files:
 
 ```javascript
-// Filename: app.js
-import assetURL from './logo.png';
+import textureURL from './texture.png';
+```
+
+Then load them with the appropritate loader from /Loaders/Loader.js
+
+```javascript
+import { loadTexture } from '/loaders/loader.js';
+import textureURL from './texture.png';
+
+const myTexture = await loadTexture(textureURL);
 ```
 
 ## License
