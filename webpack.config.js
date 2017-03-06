@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: './app/app.js',
+  entry: ['babel-polyfill','./app/app.js'],
   output: {
     path: path.join(__dirname, pkg.config.build),
     filename: '[name].[hash].js'
