@@ -7,7 +7,7 @@
  */
 
 import Renderer from './Renderer/Renderer';
-import { Scene, PerspectiveCamera } from 'three';
+import { Scene, PerspectiveCamera, PCFSoftShadowMap } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
 import TestCube from './objects/TestCube';
 import Bunny from './objects/StanfordBunny/Bunny.js';
@@ -23,13 +23,14 @@ const Lights = new BasicLights();
 
 // Three JS inspector
 // https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi?hl=en
-/*
+
 window.THREE = THREE;
 window.scene = scene;
-*/
+
 
 // Renderer
-renderer.setClearColor(0xFFFFFF);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = PCFSoftShadowMap;
 renderer.camera = camera;
 renderer.scene = scene;
 

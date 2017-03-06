@@ -10,16 +10,16 @@ export default class extends Group {
   constructor() {
     super();
 
+    this.name = 'bunny';
     this.load();
   }
 
   async load() {
-
     const bunnyScene = await loadScene(BUNNYSCENE);
     const geometry = await loadModel(BUNNYMODEL);
+    const brickTextures = await loadTextureSet([BUMP, DIFFUSE, ROUGH]);
     const material = new MeshStandardMaterial();
     const bunny = new Mesh(geometry, material);
-    const brickTextures = await loadTextureSet([BUMP, DIFFUSE, ROUGH]);
     const getTexture = (url) => {
       const texture = GetAsset(url, brickTextures);
       texture.wrapS = RepeatWrapping;
@@ -29,15 +29,17 @@ export default class extends Group {
     };
     const planeGeo = new PlaneGeometry(25,25);
     const planeMaterial = new MeshStandardMaterial({
-        color: 0x888888,
-        bumpMap: getTexture(BUMP),
-        map: getTexture(DIFFUSE),
-        roughnessMap: getTexture(ROUGH),
-        roughness: 10,
-        metalness: 0
-      });
+      color: 0x888888,
+      bumpMap: getTexture(BUMP),
+      map: getTexture(DIFFUSE),
+      roughnessMap: getTexture(ROUGH),
+      roughness: 10,
+      metalness: 0
+    });
     const plane = new Mesh(planeGeo, planeMaterial);
 
+    bunny.castShadow = true;
+    plane.receiveShadow = true;
     bunny.position.x = 1.2 / -2;
     plane.rotation.x = -Math.PI / 2;
 

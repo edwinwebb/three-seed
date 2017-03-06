@@ -34,7 +34,7 @@
             "visible":true,
             "type":"Mesh",
             "material":"109C8DEC-623D-3F38-8AFD-395BEC6741C8",
-            "castShadow":false,
+            "castShadow":true,
             "receiveShadow":false,
             "geometry":"1F3BBC9D-36A8-383F-87A9-4F42AA13C0C4"
         }],
