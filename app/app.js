@@ -11,6 +11,7 @@ import { Scene, PerspectiveCamera } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
 import TestCube from './objects/TestCube';
 import Bunny from './objects/StanfordBunny/Bunny.js';
+import BasicLights from './objects/BasicLights';
 
 const renderer = new Renderer({ antialias: true });
 const scene = new Scene();
@@ -18,6 +19,7 @@ const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight
 const OrbitControls = require('three-orbit-controls')(THREE)
 const Bunnies = new Bunny();
 const Cube = new TestCube();
+const Lights = new BasicLights();
 
 // Three JS inspector
 // https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi?hl=en
@@ -26,20 +28,23 @@ window.THREE = THREE;
 window.scene = scene;
 */
 
+// Renderer
 renderer.setClearColor(0xFFFFFF);
-
-new OrbitControls(camera);
-
-Cube.position.y = 4;
-scene.add(Bunnies);
-scene.add(Cube);
-camera.position.z = 10;
-
 renderer.camera = camera;
 renderer.scene = scene;
 
+// Scene
+new OrbitControls(camera);
+
+Cube.position.y = 4;
+camera.position.z = 10;
+
+scene.add(Bunnies, Cube, Lights);
+
+// Document
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
 document.body.appendChild( renderer.domElement );
 
+// Go!
 renderer.start();
