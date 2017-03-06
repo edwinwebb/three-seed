@@ -34,14 +34,14 @@ export const LoadAssetArray = (loader, array, loadingCallback = ()=>{}) => {
     loadingCallback(totalAsPercent);
   };
   const promises = array.map((url, index) => {
-    return LoadModel(url, aggregateCallback, index);
+    return LoadAsset(loader, url, aggregateCallback, index);
   });
 
   // load one, report to action
   return Promise.all(promises);
 }
 
-export const GetAsset = (array = [], url) => (array.find( (i)=>(i.url === url) ));
+export const GetAsset = (url, array = []) => (array.find( (i)=>(i.url === url) ));
 
 export const loadTexture = (url, loadingCallback, index) => {
   const loader = TextureLoader;

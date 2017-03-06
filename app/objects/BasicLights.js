@@ -10,7 +10,7 @@ export default class BasicLights extends Group {
 
     point.position.set(0, 1, 1);
 
-    TWEEN.fromTo(point.position, 1, {x: -2}, {x: 2, yoyo: true, repeat: -1});
+    TWEEN.fromTo(point.position, 4, {x: -2}, {x: 2, yoyo: true, repeat: -1});
 
     this.add(point, hemisphere);
   }
