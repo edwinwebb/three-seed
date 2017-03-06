@@ -3,7 +3,7 @@ import TWEEN from 'gsap';
 
 export default class TestCube extends Mesh {
   constructor() {
-    const geometry = new BoxGeometry(20, 20, 20);
+    const geometry = new BoxGeometry(0.75, 0.75, 0.75);
     const material = new MeshNormalMaterial();
 
     super(geometry, material);
