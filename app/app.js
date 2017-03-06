@@ -26,9 +26,10 @@ window.scene = scene;
 */
 new OrbitControls(camera);
 
-scene.add(mesh);
+//scene.add(mesh);
 scene.add(mesh2);
-camera.position.z = 100;
+//mesh2.scale.set(50,50,50);
+camera.position.z = 10;
 
 renderer.camera = camera;
 renderer.scene = scene;
