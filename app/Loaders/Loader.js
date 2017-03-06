@@ -2,10 +2,10 @@ import { ObjectLoader, JSONLoader, TextureLoader } from 'three';
 
 export function LoadAsset(loaderClass, url, loadingCallback = ()=>{}, index = 1) {
   const loader = new loaderClass();
-
   return new Promise( (resolve, reject) => {
     loader.load(url, (item) => {
       item.url = url;
+      loadingCallback(1, index);
       resolve(item);
     },(xhr) => {
       const { total, loaded } = xhr;
@@ -30,7 +30,6 @@ export const LoadAssetArray = (loader, array, loadingCallback = ()=>{}) => {
     const total = totals.reduce((m,i)=>(m+i), 0);
     const totalAsDecimal = total / length;
     const totalAsPercent = Math.floor(totalAsDecimal * 100);
-
     loadingCallback(totalAsPercent);
   };
   const promises = array.map((url, index) => {

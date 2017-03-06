@@ -10,14 +10,21 @@ export default class extends Group {
   constructor() {
     super();
 
+    this.loadingFunction = (p) => {
+      console.log('loading', p)
+    }
     this.name = 'bunny';
     this.load();
   }
 
   async load() {
-    const bunnyScene = await loadScene(BUNNYSCENE);
-    const geometry = await loadModel(BUNNYMODEL);
-    const brickTextures = await loadTextureSet([BUMP, DIFFUSE, ROUGH]);
+    console.log('Loading bunny scene');
+    const bunnyScene = await loadScene(BUNNYSCENE, this.loadingFunction);
+    console.log('Loading bunny geo');
+    const geometry = await loadModel(BUNNYMODEL, this.loadingFunction);
+    console.log('Loading brick textures');
+    const brickTextures = await loadTextureSet([BUMP, DIFFUSE, ROUGH], this.loadingFunction);
+    console.log('Done loading')
     const material = new MeshStandardMaterial();
     const bunny = new Mesh(geometry, material);
     const getTexture = (url) => {
@@ -31,6 +38,7 @@ export default class extends Group {
     const planeMaterial = new MeshStandardMaterial({
       color: 0x888888,
       bumpMap: getTexture(BUMP),
+      bumpScale: 0.2,
       map: getTexture(DIFFUSE),
       roughnessMap: getTexture(ROUGH),
       roughness: 10,
