@@ -20,7 +20,7 @@ This seed is designed to bootstrap your Three.js development with modern tooling
 import textureURL from './texture.png';
 ```
 
-Then load them with the appropritate loader from /Loaders/Loader.js
+Then load them with the matching loader from /Loaders/Loader.js
 
 ```javascript
 import { loadTexture } from '/loaders/loader.js';
