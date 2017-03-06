@@ -15,44 +15,34 @@ export default class extends Group {
 
   async load() {
 
-    const geometry = await loadModel(BUNNYMODEL);
     const bunnyScene = await loadScene(BUNNYSCENE);
+    const geometry = await loadModel(BUNNYMODEL);
     const material = new MeshStandardMaterial();
-    const mesh = new Mesh(geometry, material);
-
-    mesh.position.x = 1.2 / -2;
-    geometry.dispose();
-    material.dispose();
-
-    bunnyScene.position.set(1.2 / 2, -0.3, 0);
-
-    this.add(mesh, bunnyScene);
-
-    loadTextureSet([BUMP, DIFFUSE, ROUGH]).then( (textures) => {
-      const getTexture = (url) => {
-        const texture = GetAsset(url, textures);
-        texture.wrapS = RepeatWrapping;
-        texture.wrapT = RepeatWrapping;
-        texture.repeat.set(2,2);
-        return texture;
-      }
-      const geometry = new PlaneGeometry(25,25);
-      const material = new MeshStandardMaterial({
+    const bunny = new Mesh(geometry, material);
+    const brickTextures = await loadTextureSet([BUMP, DIFFUSE, ROUGH]);
+    const getTexture = (url) => {
+      const texture = GetAsset(url, brickTextures);
+      texture.wrapS = RepeatWrapping;
+      texture.wrapT = RepeatWrapping;
+      texture.repeat.set(2,2);
+      return texture;
+    };
+    const planeGeo = new PlaneGeometry(25,25);
+    const planeMaterial = new MeshStandardMaterial({
         color: 0x888888,
         bumpMap: getTexture(BUMP),
         map: getTexture(DIFFUSE),
         roughnessMap: getTexture(ROUGH),
         roughness: 10,
         metalness: 0
-      })
-      const mesh = new Mesh(geometry, material);
+      });
+    const plane = new Mesh(planeGeo, planeMaterial);
 
-      this.add(mesh);
-      mesh.rotation.x = -Math.PI / 2;
+    bunny.position.x = 1.2 / -2;
+    plane.rotation.x = -Math.PI / 2;
 
-      geometry.dispose();
-      material.dispose();
+    bunnyScene.position.set(1.2 / 2, -0.3, 0);
 
-    } );
+    this.add(bunny, bunnyScene, plane);
   }
 }

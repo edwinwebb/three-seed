@@ -40,7 +40,6 @@ Cube.position.y = 4;
 camera.position.z = 10;
 camera.position.y = 1;
 
-
 scene.add(Bunnies, Cube, Lights);
 
 // Document
