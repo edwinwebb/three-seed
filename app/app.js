@@ -7,26 +7,41 @@
  */
 
 import Renderer from './Renderer/Renderer';
-import { Scene, PerspectiveCamera } from 'three';
+import { Scene, PerspectiveCamera, PCFSoftShadowMap } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
-import TestCube from './objects/TestCube';
+import Bunny from './objects/StanfordBunny/Bunny.js';
+import BasicLights from './objects/BasicLights';
 
 const renderer = new Renderer({ antialias: true });
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
 const OrbitControls = require('three-orbit-controls')(THREE)
-const mesh = new TestCube();
+const Bunnies = new Bunny();
+const Lights = new BasicLights();
 
-new OrbitControls(camera);
+// Three JS inspector
+// https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi?hl=en
+// window.THREE = THREE;
+// window.scene = scene;
 
-scene.add(mesh);
-camera.position.z = 100;
-
+// Renderer
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = PCFSoftShadowMap;
 renderer.camera = camera;
 renderer.scene = scene;
 
-renderer.start();
+// Scene
+new OrbitControls(camera);
 
+camera.position.z = 10;
+camera.position.y = 1;
+
+scene.add(Bunnies, Lights);
+
+// Document
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
 document.body.appendChild( renderer.domElement );
+
+// Go!
+renderer.start();

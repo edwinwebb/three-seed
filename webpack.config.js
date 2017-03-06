@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: './app/app.js',
+  entry: ['babel-polyfill','./app/app.js'],
   output: {
     path: path.join(__dirname, pkg.config.build),
     filename: '[name].[hash].js'
@@ -15,7 +15,8 @@ module.exports = {
     rules: [
       {
         test: /\.js?$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
+        exclude: path.resolve(__dirname, './node_modules/')
       },{
         test: /\.(jpe?g|png|gif|svg|json)$/i,
         use: 'file-loader'
