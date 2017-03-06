@@ -1,4 +1,4 @@
-import { Group, Mesh, MeshNormalMaterial } from 'three';
+import { Group, Mesh, MeshStandardMaterial } from 'three';
 import BUNNYMODEL from './bunny.model.json';
 import BUNNYSCENE from './bunny.scene.json';
 import { loadModel, loadScene } from '../../Loaders/loader';
@@ -8,7 +8,8 @@ export default class extends Group {
     super();
 
     loadModel(BUNNYMODEL).then( (geometry)=>{
-      const material = new MeshNormalMaterial();
+      geometry.computeVertexNormals();
+      const material = new MeshStandardMaterial();
       const mesh = new Mesh(geometry, material);
       this.add(mesh);
       mesh.position.x = 1.2 / -2;
