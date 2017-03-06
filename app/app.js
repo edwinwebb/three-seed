@@ -8,8 +8,10 @@
 
 import Renderer from './Renderer/EffectRenderer';
 import RendererStore from './stores/RendererStore';
-import { Scene, PerspectiveCamera, HemisphereLight } from 'three';
-// import * as THREE from 'three'; // used for Orbit Controls
+import { Scene, PerspectiveCamera, PCFSoftShadowMap } from 'three';
+import * as THREE from 'three'; // used for Orbit Controls
+import Bunny from './objects/StanfordBunny/Bunny.js';
+import BasicLights from './objects/BasicLights';
 import TestCube from './objects/TestKnot';
 import { ShaderPass, RenderPass, CopyShader, ColorifyShader, ClearPass, TestShader, BasicShader } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
@@ -32,13 +34,6 @@ const colori = new ShaderPass(ColorifyShader);
 const clear = new ClearPass(0xFF00FF, 0.5);
 const test = new ShaderPass(TestShader);
 const basic = new ShaderPass(BasicShader)
-
-const light = new HemisphereLight(0xFFFFFF, 0x222222, 1);
-scene.add(light);
-// new OrbitControls(camera);
-
-scene.add(mesh);
-camera.position.z = 100;
 
 // // Add a renderer pass
 renderer.addPass(rPass);
@@ -95,11 +90,31 @@ RendererStore.addChangeListener( (d)=>{
   rPass.camera.aspect = width / height;
   rPass.camera.updateProjectionMatrix();
 } );
+const OrbitControls = require('three-orbit-controls')(THREE)
+const Bunnies = new Bunny();
+const Lights = new BasicLights();
 
-renderer.start();
+// Three JS inspector
+// https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi?hl=en
+// window.THREE = THREE;
+// window.scene = scene;
 
-// document.body.addEventListener('click', e => (renderer.render()) );
+// Renderer
+renderer.renderer.shadowMap.enabled = true;
+renderer.renderer.shadowMap.type = PCFSoftShadowMap;
+// renderer.camera = camera;
+// renderer.scene = scene;
 
+// Scene
+new OrbitControls(camera);
+scene.add(Bunnies, Lights);
+camera.position.z = 10;
+camera.position.y = 1;
+
+// DOM
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
 document.body.appendChild( renderer.domElement );
+
+// Go!
+renderer.start();
