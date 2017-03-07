@@ -20,6 +20,9 @@ module.exports = {
       },{
         test: /\.(jpe?g|png|gif|svg|json)$/i,
         use: 'file-loader'
+      },{
+        test: /\.(vert|frag|geom)$/i,
+        use: 'raw-loader'
       }
     ]
   },

@@ -4,8 +4,8 @@ import AnimationStore from '../stores/AnimationStore.js';
 
 export default class Renderer extends WebGLRenderer {
 
-  constructor(...args) {
-    super(...args);
+  constructor(options, scene, camera) {
+    super(options);
 
     this.resolution = window.devicePixelRatio;
 
@@ -14,8 +14,9 @@ export default class Renderer extends WebGLRenderer {
     RendererStore.set('resolution', this.resolution);
 
     this.setPixelRatio(this.resolution);
-    this.camera = false;
-    this.scene = false;
+    this.camera = camera;
+    this.scene = scene;
+    this.animationToken = 0;
 
     this.setStore();
 
@@ -32,13 +33,13 @@ export default class Renderer extends WebGLRenderer {
     const h = this.getWindowSize()[1];
 
     this.setSize(w, h);
-    this.setStore();
 
     if (this.camera) {
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
     }
 
+    this.setStore();
     RendererStore.emitChange();
   }
 
@@ -51,10 +52,11 @@ export default class Renderer extends WebGLRenderer {
 
   start() {
     this.active = true;
-    window.requestAnimationFrame(this.animate.bind(this));
+    this.animationToken = window.requestAnimationFrame(this.animate.bind(this));
   }
 
   stop() {
+    window.cancelAnimationFrame(this.animationToken);
     this.active = false;
   }
 

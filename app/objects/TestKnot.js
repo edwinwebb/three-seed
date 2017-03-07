@@ -1,10 +1,10 @@
-import { Mesh, TorusKnotGeometry, MeshNormalMaterial } from 'three';
+import { Mesh, TorusKnotBufferGeometry, MeshStandardMaterial } from 'three';
 import TWEEN from 'gsap';
 
 export default class TestKnot extends Mesh {
   constructor() {
-    const geometry = new TorusKnotGeometry( 10, 3, 100, 16 );
-    const material = new MeshNormalMaterial();
+    const geometry = new TorusKnotBufferGeometry( 15, 4, 100, 16 );
+    const material = new MeshStandardMaterial({color: 0xFF0000});
 
     super(geometry, material);
 
