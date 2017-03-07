@@ -115,7 +115,9 @@ renderer.addPass(c1);
 
 RendererStore.addChangeListener( (d)=>{
   const { width, height } = d;
-  renderer.passes[0];
+  //renderer.passes[0];
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
   // rPass.camera.aspect = width / height;
   // rPass.camera.updateProjectionMatrix();
   //renderer.passes[3].uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2);
