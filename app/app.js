@@ -44,7 +44,7 @@ const c5 = new ShaderPass(TestShader);
 // // Add a renderer pass
 renderer.addPass(rPass);
 
-// FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2)
+FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2)
 
 renderer.addPass(c5);
 
@@ -62,7 +62,7 @@ renderer.addPass(c2);
 
 c1.uniforms.COLOR.value.set(0x00FFFF);
 c1.uniforms.CENTRE.value.set(256 * 2, 256);
-c1.renderToScreen = true;
+
 renderer.addPass(c1);
 
 
@@ -85,8 +85,8 @@ renderer.addPass(c1);
 // // console.log(SSAO)
 // // renderer.addPass(SSAO);
 
-//FXAA.renderToScreen = true;
-//renderer.addPass(FXAA);
+FXAA.renderToScreen = true;
+renderer.addPass(FXAA);
 
 // // // colori.renderToScreen = true;
 // // colori.uniforms.color.value.set(0xFF00FF)

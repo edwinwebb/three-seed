@@ -13,7 +13,7 @@ export default class EffectRenderer {
     this.animationToken = 0;
 
     // and the targets
-    this.rTarget1 = RenderTarget;
+    this.rTarget1 = RenderTarget.clone();
     this.rTarget1.texture.name = 'RT1';
     this.rTarget2 = RenderTarget.clone();
     this.rTarget2.texture.name = 'RT2';
@@ -44,7 +44,7 @@ export default class EffectRenderer {
     this.setStore();
 
     // and resize
-    // this.resizeHandler();
+    this.resizeHandler();
   }
 
   get domElement() {
@@ -67,19 +67,19 @@ export default class EffectRenderer {
     const tHeight = height * this.resolution;
     const rT = this.rTarget1.clone();
 
-    this.renderer.setSize(width, height);
+    this.active = false;
 
-    // size the cloned RT
-    rT.width = tWidth;
-    rT.height = tHeight;
+    this.renderer.setSize(width, height);
+    rT.setSize(tWidth, tHeight);
 
     // // now reset the targets
-    // this.rTarget1.dispose();
-    // this.rTarget2.dispose();
-    // this.rTarget1 = rT;
-    // this.rTarget2 = rT.clone();
-    // this.writeBuffer = this.rTarget1;
-    // this.readBuffer = this.rTarget2;
+    this.rTarget1.dispose();
+    this.rTarget2.dispose();
+    this.rTarget1 = rT;
+    this.rTarget2 = rT.clone();
+    this.writeBuffer = this.rTarget1;
+    this.readBuffer = this.rTarget2;
+
 
     // console.log('EffectRenderer reset targets')
     // console.log('EffectRenderer Write Buffer: ' + this.writeBuffer.uuid);
@@ -88,6 +88,8 @@ export default class EffectRenderer {
     // update the store and emit
     this.setStore();
     RendererStore.emitChange();
+
+    this.active = true;
   }
 
   getWindowSize() {
