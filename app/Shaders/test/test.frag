@@ -1,6 +1,7 @@
 uniform sampler2D tDiffuse;
 varying vec2 vUv;
 uniform vec2 CENTRE;
+uniform vec3 COLOR;
 
 #define RADIUS 128.0
 void main() {
@@ -8,7 +9,7 @@ void main() {
     float d = distance(gl_FragCoord.xy, CENTRE);
     vec4 texel = texture2D( tDiffuse, vUv );
     if(d <= RADIUS) {
-    texel[0] = 1.0;
+        texel = vec4( COLOR, texel.w );
     }
     gl_FragColor = texel;
 }

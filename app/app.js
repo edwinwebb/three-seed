@@ -34,32 +34,38 @@ const copy2 = new ShaderPass(CopyShader);
 const copy3 = new ShaderPass(CopyShader);
 const colori = new ShaderPass(ColorifyShader);
 const clear = new ClearPass(0xFF00FF, 1);
-const test = new ShaderPass(TestShader);
 const basic = new ShaderPass(BasicShader);
-const c1 = new ShaderPass(ColorTR);
-const c2 = new ShaderPass(ColorTR);
-const c3 = new ShaderPass(ColorTR);
+const c1 = new ShaderPass(TestShader);
+const c2 = new ShaderPass(TestShader);
+const c3 = new ShaderPass(TestShader);
+const c4 = new ShaderPass(TestShader);
+const c5 = new ShaderPass(TestShader);
 
 // // Add a renderer pass
 renderer.addPass(rPass);
 
-FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2)
+// FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2)
 
-console.log(FXAA);
+renderer.addPass(c5);
 
-test.uniforms.CENTRE.value.set(256 * 4, 256);
-renderer.addPass(test);
+c4.uniforms.COLOR.value.set(0xFF00FF);
+c4.uniforms.CENTRE.value.set(256 * 5, 256);
+renderer.addPass(c4);
 
+c3.uniforms.COLOR.value.set(0xFFFF00);
+c3.uniforms.CENTRE.value.set(256 * 4, 256);
+renderer.addPass(c3);
+
+c2.uniforms.COLOR.value.set(0xFF0000);
 c2.uniforms.CENTRE.value.set(256 * 3, 256);
 renderer.addPass(c2);
 
-renderer.addPass(FXAA);
-
-c3.uniforms.CENTRE.value.set(256 * 2, 256);
-renderer.addPass(c3);
-
+c1.uniforms.COLOR.value.set(0x00FFFF);
+c1.uniforms.CENTRE.value.set(256 * 2, 256);
 c1.renderToScreen = true;
 renderer.addPass(c1);
+
+
 
 // basic.renderToScreen = true;
 // renderer.addPass(test);
@@ -109,8 +115,10 @@ renderer.addPass(c1);
 
 RendererStore.addChangeListener( (d)=>{
   const { width, height } = d;
-  rPass.camera.aspect = width / height;
-  rPass.camera.updateProjectionMatrix();
+  renderer.passes[0];
+  // rPass.camera.aspect = width / height;
+  // rPass.camera.updateProjectionMatrix();
+  //renderer.passes[3].uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2);
 } );
 const OrbitControls = require('three-orbit-controls')(THREE)
 const Bunnies = new Bunny();

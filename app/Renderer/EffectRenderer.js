@@ -67,7 +67,7 @@ export default class EffectRenderer {
     const tHeight = height * this.resolution;
     const rT = this.rTarget1.clone();
 
-    this.renderer.setSize(width, height);
+    //this.renderer.setSize(width, height);
 
     // size the cloned RT
     rT.width = tWidth;
@@ -80,6 +80,8 @@ export default class EffectRenderer {
     this.rTarget2 = rT.clone();
     this.writeBuffer = this.rTarget1;
     this.readBuffer = this.rTarget2;
+
+    console.log(this.writeBuffer.width, this.readBuffer.width, rT.width);
 
     // console.log('EffectRenderer reset targets')
     // console.log('EffectRenderer Write Buffer: ' + this.writeBuffer.uuid);
