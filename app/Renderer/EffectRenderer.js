@@ -281,7 +281,7 @@ export const BasicShader = {
 
 export const TestShader = {
   uniforms: {
-    'tDiffuse': { value: null}
+    'tDiffuse': { value: null }
   },
   vertexShader: `varying vec2 vUv;
     void main() {
@@ -293,6 +293,38 @@ export const TestShader = {
     varying vec2 vUv;
     void main() {
       vec4 texel = texture2D( tDiffuse, vUv );
+      gl_FragColor = texel;
+    }`
+}
+
+
+import { Vector2 } from 'three';
+
+export const ColorTR = {
+  uniforms: {
+    'tDiffuse': { value: null },
+    'CENTRE': { value: new Vector2(256, 256)}
+  },
+  vertexShader: `varying vec2 vUv;
+  varying vec4 pos;
+    void main() {
+      vUv = uv;
+      pos = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+      gl_Position = pos;
+    }`,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    varying vec2 vUv;
+    varying vec4 pos;
+    uniform vec2 CENTRE;
+    #define RADIUS 128.0
+    void main() {
+      vec2 cell = step(0.5, fract(gl_FragCoord.xy/32.0));
+      float d = distance(gl_FragCoord.xy,  CENTRE);
+      vec4 texel = texture2D( tDiffuse, vUv );
+      if(d <= RADIUS) {
+        texel[0] = 1.0;
+      }
       gl_FragColor = texel;
     }`
 }
