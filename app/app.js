@@ -65,8 +65,6 @@ c1.uniforms.CENTRE.value.set(256 * 2, 256);
 
 renderer.addPass(c1);
 
-
-
 // basic.renderToScreen = true;
 // renderer.addPass(test);
 
@@ -114,13 +112,13 @@ renderer.addPass(FXAA);
 // window.composer = composer;
 
 RendererStore.addChangeListener( (d)=>{
-  const { width, height } = d;
-  //renderer.passes[0];
+  const { width, height, resolution } = d;
+  // set camera
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
-  // rPass.camera.aspect = width / height;
-  // rPass.camera.updateProjectionMatrix();
-  //renderer.passes[3].uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2);
+  // update the FXAA pass
+  renderer.passes[6].uniforms.resolution.value.set(width * resolution, height * resolution);
+
 } );
 const OrbitControls = require('three-orbit-controls')(THREE)
 const Bunnies = new Bunny();
