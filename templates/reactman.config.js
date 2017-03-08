@@ -7,9 +7,9 @@ module.exports = {
   "templatesFolder" : "./templates/",
   "outputFolder" : "./app/",
   "scripts" : {
-    "class" : {
+    "Display Object Class" : {
       "files" : {
-        "generic.js" : "{%=o.exports%}/{%=o.exports%}.js"
+        "displayobject.js" : "objects/{%=o.exports%}.js"
       },
       "script" : [{
         "name": "exports",

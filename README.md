@@ -2,7 +2,9 @@
 
 This seed is designed to bootstrap your Three.js development with modern tooling, technology and project organisation.
 
-This is a work in progress and a fork of my pixi-seed repo.
+## TODO
+* Add GLSL loaders and example
+* Add await, async with fileLoader examples
 
 ## npm scripts
 
@@ -15,12 +17,20 @@ This is a work in progress and a fork of my pixi-seed repo.
 `import` asset files from within your JavaScript component files:
 
 ```javascript
-// Filename: app.js
-import assetURL from './logo.png';
+import textureURL from './texture.png';
+```
+
+Then load them with the matching loader from /Loaders/Loader.js
+
+```javascript
+import { loadTexture } from '/loaders/loader.js';
+import textureURL from './texture.png';
+
+const myTexture = await loadTexture(textureURL);
 ```
 
 ## License
 
-Copyright (c) 2015 Edwin Webb
+Copyright (c) 2017 Edwin Webb
 
 MIT (http://opensource.org/licenses/MIT)

@@ -1,40 +1,32 @@
-var path = require('path');
-var pkg = require('./package.json');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var DEBUG = process.env.NODE_ENV !== 'production';
+const path = require('path');
+const pkg = require('./package.json');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  target : "web",
-  entry : ["./app/app.js"],
-  output : {
+  entry: ['babel-polyfill','./app/app.js'],
+  output: {
     path: path.join(__dirname, pkg.config.build),
-    filename: "[name].[hash].js"
+    filename: '[name].[hash].js'
   },
-  devtool : 'eval',
-  devServer: {
-    outputPath : path.join(__dirname, pkg.config.build)
-  },
-  module : {
-    noparse: /three.js/,
-    loaders : [
+  target: 'web',
+  devtool: 'source-map',
+  module: {
+    rules: [
       {
         test: /\.js?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'app'),
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: ['file-loader']
-      },
-      {
-        test: /\.json$/,
-        loader: "json",
-        exclude: /node_modules/
+        use: 'babel-loader',
+        exclude: path.resolve(__dirname, './node_modules/')
+      },{
+        test: /\.(jpe?g|png|gif|svg|json)$/i,
+        use: 'file-loader'
+      },{
+        test: /\.(vert|frag|geom)$/i,
+        use: 'raw-loader'
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({'title' : pkg.config.title})
+    new HtmlWebpackPlugin({'title': pkg.config.title})
   ]
 }
