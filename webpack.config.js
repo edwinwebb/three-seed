@@ -28,5 +28,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({'title': pkg.config.title})
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'build'),
+    compress: true,
+    port: 8080
+  }
 }
