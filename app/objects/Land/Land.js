@@ -1,5 +1,4 @@
-import { Group,PlaneGeometry,MeshNormalMaterial, Mesh } from 'three';
-//import LANDMAT from './material.mtl';
+import { Group  } from 'three';
 import LANDMOD from './land.json';
 import { loadScene } from '../../Loaders/loader';
 

@@ -31,6 +31,8 @@ const myTexture = await loadTexture(textureURL);
 
 ## CC Attributes
 land : https://poly.google.com/view/5qvyWhWns5f
+Floating island : https://poly.google.com/view/eEz9hdknXOi
+Flower: https://poly.google.com/view/eydI4__jXpi
 
 ## License
 
