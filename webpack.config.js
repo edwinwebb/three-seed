@@ -18,7 +18,7 @@ module.exports = {
         use: 'babel-loader',
         exclude: path.resolve(__dirname, './node_modules/')
       },{
-        test: /\.(jpe?g|png|gif|svg|json)$/i,
+        test: /\.(jpe?g|png|gif|svg|json|obj|mat)$/i,
         use: 'file-loader'
       },{
         test: /\.(vert|frag|geom)$/i,

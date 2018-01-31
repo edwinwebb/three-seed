@@ -29,6 +29,9 @@ import textureURL from './texture.png';
 const myTexture = await loadTexture(textureURL);
 ```
 
+## CC Attributes
+land : https://poly.google.com/view/5qvyWhWns5f
+
 ## License
 
 Copyright (c) 2017 Edwin Webb

@@ -10,14 +10,14 @@ import Renderer from './Renderer/EffectRenderer';
 import RendererStore from './stores/RendererStore';
 import { Scene, PerspectiveCamera, PCFSoftShadowMap } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
-import Bunny from './objects/StanfordBunny/Bunny.js';
+import Land from './objects/Land/Land.js';
 import BasicLights from './objects/BasicLights';
 import { ShaderPass, RenderPass } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
 import { TestShader } from './Shaders/test/test';
 
 const scene = new Scene();
-const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 const renderer = new Renderer({antialias: false}, scene, camera);
 const rPass = new RenderPass(scene, camera);
 const FXAA = new ShaderPass(FXAAShader);
@@ -64,7 +64,7 @@ RendererStore.addChangeListener( (d)=>{
 
 } );
 const OrbitControls = require('three-orbit-controls')(THREE)
-const Bunnies = new Bunny();
+const Bunnies = new Land();
 const Lights = new BasicLights();
 
 // Three JS inspector
