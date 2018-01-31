@@ -16,45 +16,24 @@ import BasicLights from './objects/BasicLights';
 import { ShaderPass, RenderPass } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
 //import { TestShader } from './Shaders/test/test';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './stores/Store';
 
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 const renderer = new Renderer({antialias: false}, scene, camera);
 const rPass = new RenderPass(scene, camera);
 const FXAA = new ShaderPass(FXAAShader);
-// const c1 = new ShaderPass(TestShader);
-// const c2 = new ShaderPass(TestShader);
-// const c3 = new ShaderPass(TestShader);
-// const c4 = new ShaderPass(TestShader);
-// const c5 = new ShaderPass(TestShader);
 
 // Post processing
 renderer.addPass(rPass);
-
-FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2)
-
-//renderer.addPass(c5);
-
-// c4.uniforms.COLOR.value.set(0xFF00FF);
-// c4.uniforms.CENTRE.value.set(256 * 5, 256);
-// renderer.addPass(c4);
-
-// c3.uniforms.COLOR.value.set(0xFFFF00);
-// c3.uniforms.CENTRE.value.set(256 * 4, 256);
-// renderer.addPass(c3);
-
-// c2.uniforms.COLOR.value.set(0xFF0000);
-// c2.uniforms.CENTRE.value.set(256 * 3, 256);
-// renderer.addPass(c2);
-
-// c1.uniforms.COLOR.value.set(0x00FFFF);
-// c1.uniforms.CENTRE.value.set(256 * 2, 256);
-
-//renderer.addPass(c1);
-
+FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2);
 FXAA.renderToScreen = true;
 renderer.addPass(FXAA);
 
+// Basic stores
 RendererStore.addChangeListener( (d)=>{
   const { width, height, resolution } = d;
   // set camera
@@ -83,12 +62,21 @@ renderer.renderer.setClearColor(0x888888,1);
 new OrbitControls(camera);
 scene.add(land, lights, flower);
 camera.position.z = 10;
-//camera.position.y = 1;
 
 // DOM
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
+const reactDiv = document.createElement('div');
+document.body.appendChild( reactDiv )
 document.body.appendChild( renderer.domElement );
+
+// React
+render(
+  <Provider store={store}>
+    <h1>Test</h1>
+  </Provider>,
+  reactDiv
+);
 
 // Go!
 renderer.start();
