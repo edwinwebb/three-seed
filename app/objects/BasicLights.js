@@ -11,14 +11,14 @@ export default class BasicLights extends Group {
     dir.position.set(5, 1, 2);
     dir.target.position.set(0,0,0);
 
-    //dir.castShadow = true;
+    // dir.castShadow = true;
 
-    dir.shadow.mapSize.width = 512 * 2;
-    dir.shadow.mapSize.height = 512 * 2;
+    // dir.shadow.mapSize.width = 512 * 2;
+    // dir.shadow.mapSize.height = 512 * 2;
 
-    dir.shadow.camera.near = 1;
-    dir.shadow.camera.far = 10;
-    dir.shadow.camera.fov = 40;
+    // dir.shadow.camera.near = 1;
+    // dir.shadow.camera.far = 10;
+    // dir.shadow.camera.fov = 40;
 
     point.position.set(0, 1, 5);
 
