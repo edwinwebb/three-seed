@@ -77,13 +77,13 @@ const lights = new BasicLights();
 // Renderer
 renderer.renderer.shadowMap.enabled = true;
 renderer.renderer.shadowMap.type = PCFSoftShadowMap;
-renderer.renderer.setClearColor(0x000000,1);
+renderer.renderer.setClearColor(0x888888,1);
 
 // Scene
 new OrbitControls(camera);
 scene.add(land, lights, flower);
 camera.position.z = 10;
-camera.position.y = 1;
+//camera.position.y = 1;
 
 // DOM
 document.body.style.margin = 0;

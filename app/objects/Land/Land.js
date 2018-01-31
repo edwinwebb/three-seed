@@ -17,6 +17,8 @@ export default class extends Group {
     console.log('Loading land scene');
     const landScene = await loadScene(LANDMOD, this.loadingFunction);
     landScene.rotation.z = Math.PI;
+    landScene.scale.set(4,4,4)
+    window.land = landScene;
     console.log('Done loading')
 
     this.add(landScene);

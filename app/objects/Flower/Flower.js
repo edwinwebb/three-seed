@@ -3,7 +3,7 @@
  */
 
 import { Group  } from 'three';
-import MODEL from './flower.json';
+import MODEL from './tree.json';
 import { loadScene } from '../../Loaders/loader';
 
 export default class Flower extends Group {
@@ -24,9 +24,5 @@ export default class Flower extends Group {
     window.flower = flower;
 
     this.add(flower);
-  }
-
-  setScale(scale) {
-    
   }
 }
