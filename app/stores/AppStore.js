@@ -2,7 +2,7 @@ const TEST = 'app/test';
 
 export default (
   state = {
-    test: false
+    test: 1
   },
   action = {}
 ) => {

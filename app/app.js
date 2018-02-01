@@ -19,7 +19,7 @@ import { FXAAShader } from './Shaders/fxaa/fxaa';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './stores/Store';
+import store from './stores/store';
 import Main from './components/Main.jsx';
 
 const scene = new Scene();
@@ -41,10 +41,9 @@ RendererStore.addChangeListener( (d)=>{
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   // update the FXAA pass
-  renderer.passes[6].uniforms.resolution.value.set(width * resolution, height * resolution);
-
+  renderer.passes[1].uniforms.resolution.value.set(width * resolution, height * resolution);
 } );
-const OrbitControls = require('three-orbit-controls')(THREE);
+const OrbitControls = require('three-orbit-controls')(THREE); // yuk
 const flower = new Flower();
 const land = new Land();
 const lights = new BasicLights();
@@ -57,12 +56,7 @@ const lights = new BasicLights();
 // Renderer
 renderer.renderer.shadowMap.enabled = true;
 renderer.renderer.shadowMap.type = PCFSoftShadowMap;
-renderer.renderer.setClearColor(0x888888,1);
-
-// Scene
-new OrbitControls(camera);
-scene.add(land, lights, flower);
-camera.position.z = 10;
+renderer.renderer.setClearColor(0xFEFEFE,1);
 
 // DOM
 document.body.style.margin = 0;
@@ -70,6 +64,11 @@ document.body.style.overflow = 'hidden';
 const reactDiv = document.createElement('div');
 document.body.appendChild( reactDiv )
 document.body.appendChild( renderer.domElement );
+
+// Scene
+new OrbitControls(camera, renderer.domElement);
+scene.add(land, lights, flower);
+camera.position.z = 10;
 
 // CSS
 const CSSURL = '//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css'

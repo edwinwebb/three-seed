@@ -1,6 +1,7 @@
 import { Group  } from 'three';
 import LANDMOD from './land.json';
 import { loadScene } from '../../Loaders/loader';
+import store from '../../stores/store.js';
 
 export default class extends Group {
   constructor() {
@@ -11,6 +12,11 @@ export default class extends Group {
     }
     this.name = 'land';
     this.load();
+
+    store.subscribe(() => {
+      const { test } = store.getState().App;
+      this.landScene.scale.set(4 * test, 4* test, 4* test);
+    });
   }
 
   async load() {
@@ -19,6 +25,7 @@ export default class extends Group {
     landScene.rotation.z = Math.PI;
     landScene.scale.set(4,4,4)
     window.land = landScene;
+    this.landScene = landScene;
     console.log('Done loading')
 
     this.add(landScene);
