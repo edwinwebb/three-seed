@@ -1,4 +1,4 @@
-import { Group, SpotLight, PointLight, AmbientLight } from 'three';
+import { Group, SpotLight, PointLight, AmbientLight,HemisphereLight } from 'three';
 import TWEEN, { Linear } from 'gsap';
 export default class BasicLights extends Group {
   constructor(...args) {
@@ -7,6 +7,7 @@ export default class BasicLights extends Group {
     const point = new PointLight(0xFFFFFF, 1, 10, 1);
     const dir = new SpotLight(0xFFFFFF, 1, 100, 1, 1, 1);
     const ambi = new AmbientLight( 0x404040 , 1); // soft white light
+    const hemi = new HemisphereLight( 0xffffbb, 0x080820, 1 )
 
     dir.position.set(5, 1, 2);
     dir.target.position.set(0,0,0);
@@ -24,7 +25,6 @@ export default class BasicLights extends Group {
 
     TWEEN.fromTo(point.position, 4, {x: -2}, {x: 2, yoyo: true, repeat: -1, ease: Linear.easeNone});
 
-    this.add(dir);
-    this.add(ambi)
+    this.add(dir,ambi, hemi)
   }
 }

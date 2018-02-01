@@ -20,6 +20,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './stores/Store';
+import Main from './components/Main.jsx';
 
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -73,7 +74,7 @@ document.body.appendChild( renderer.domElement );
 // React
 render(
   <Provider store={store}>
-    <h1>Test</h1>
+    <Main />
   </Provider>,
   reactDiv
 );
