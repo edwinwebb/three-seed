@@ -71,6 +71,16 @@ const reactDiv = document.createElement('div');
 document.body.appendChild( reactDiv )
 document.body.appendChild( renderer.domElement );
 
+// CSS
+const CSSURL = '//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css'
+const style = document.createElement('link');
+style.setAttribute('href', CSSURL);
+style.setAttribute('rel', 'stylesheet');
+document.body.appendChild(style);
+
+// Go Render!
+renderer.start();
+
 // React
 render(
   <Provider store={store}>
@@ -79,5 +89,4 @@ render(
   reactDiv
 );
 
-// Go!
-renderer.start();
+

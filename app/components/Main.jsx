@@ -9,6 +9,12 @@ class Main extends React.Component  {
     }
     return <div style={ wrapStyle }>
       <h1>Test</h1>
+      <form>
+        <fieldset>
+          <label>Name</label>
+          <input type="text" placeholder="CJ Patoilo" />
+        </fieldset>
+      </form>
     </div>
   }
 }
