@@ -15,7 +15,8 @@ import Flower from './objects/Flower/Flower.js';
 import BasicLights from './objects/BasicLights';
 import { ShaderPass, RenderPass } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
-//import { TestShader } from './Shaders/test/test';
+
+// React  Imports
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -56,7 +57,7 @@ const lights = new BasicLights();
 // Renderer
 renderer.renderer.shadowMap.enabled = true;
 renderer.renderer.shadowMap.type = PCFSoftShadowMap;
-renderer.renderer.setClearColor(0xFEFEFE,1);
+renderer.renderer.setClearColor(0x7ec0ee,1);
 
 // DOM
 document.body.style.margin = 0;

@@ -3,7 +3,7 @@
  */
 
 import { Group  } from 'three';
-import MODEL from './tree.json';
+import MODEL from './flower.json';
 import { loadScene } from '../../Loaders/loader';
 
 export default class Flower extends Group {
@@ -18,8 +18,11 @@ export default class Flower extends Group {
   }
 
   async load() {
+    console.log('loading start flower')
     const flower = await loadScene(MODEL, this.loadingFunction);
+    flower.rotation.set(0,Math.PI,0)
     this.flower = flower;
+    console.log('end load flower')
 
     window.flower = flower;
 

@@ -4,7 +4,7 @@ const DIRITEN = 'app/diriten'
 export default (
   state = {
     test: 1,
-    dirinten: 0.32
+    dirinten: 0.8
   },
   action = {}
 ) => {
