@@ -14,11 +14,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.js|x$/,
         use: 'babel-loader',
         exclude: path.resolve(__dirname, './node_modules/')
       },{
-        test: /\.(jpe?g|png|gif|svg|json)$/i,
+        test: /\.(jpe?g|png|gif|svg|json|obj|mat)$/i,
         use: 'file-loader'
       },{
         test: /\.(vert|frag|geom)$/i,
@@ -28,5 +28,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({'title': pkg.config.title})
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'build'),
+    compress: true,
+    port: 8080
+  }
 }

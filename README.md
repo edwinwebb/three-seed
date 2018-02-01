@@ -1,10 +1,20 @@
 # Three Seed
 
-This seed is designed to bootstrap your Three.js development with modern tooling, technology and project organisation.
+A boilerplate for building Three.js apps with ES6. 
+
+## Features
+* Easy to work with and understand Webpack and ES6.
+* Built in Renderer with resizes and optional GLSL
+* Redux for dependable state management
+* React for easy HTML controls
+* Use async/await for easy asset loading
+* GLSL example with .shader files
 
 ## TODO
-* Add GLSL loaders and example
-* Add await, async with fileLoader examples
+* Still needs some testing and tightening up
+* Make it easy to remove React/Redux/Builtins
+* Documentation
+* React componenents for Vector modification
 
 ## npm scripts
 
@@ -29,8 +39,12 @@ import textureURL from './texture.png';
 const myTexture = await loadTexture(textureURL);
 ```
 
+## CC Attributes
+Floating island : https://poly.google.com/view/eEz9hdknXOi
+Flower: https://poly.google.com/view/eydI4__jXpi
+
 ## License
 
-Copyright (c) 2017 Edwin Webb
+Copyright (c) 2018 Edwin Webb
 
 MIT (http://opensource.org/licenses/MIT)

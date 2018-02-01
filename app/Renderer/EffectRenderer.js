@@ -1,6 +1,6 @@
 import { WebGLRenderer, WebGLRenderTarget, LinearFilter, RGBFormat, OrthographicCamera, Mesh, Scene, PlaneGeometry } from 'three';
-import RendererStore from '../stores/RendererStore.js';
-import AnimationStore from '../stores/AnimationStore.js';
+import { setRendererSize } from '../stores/RendererStore.js';
+import store from '../stores/store.js';
 
 export default class EffectRenderer {
 
@@ -34,8 +34,6 @@ export default class EffectRenderer {
     // events
     window.addEventListener('resize', this.resizeHandler.bind(this));
 
-    RendererStore.set('resolution', this.resolution);
-
     // set up renderer
     this.renderer.setPixelRatio(this.resolution);
     this.renderer.setSize(width / this.resolution, height / this.resolution);
@@ -56,9 +54,7 @@ export default class EffectRenderer {
   }
 
   setStore() {
-    const { width, height } = this.getWindowSize();
-    RendererStore.set('width', width);
-    RendererStore.set('height', height);
+    store.dispatch(setRendererSize(this.getWindowSize()));
   }
 
   resizeHandler() {
@@ -86,7 +82,6 @@ export default class EffectRenderer {
 
     // update the store and emit
     this.setStore();
-    RendererStore.emitChange();
 
     this.active = true;
   }
@@ -95,7 +90,11 @@ export default class EffectRenderer {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    return { width, height };
+    return {
+      width,
+      height,
+      resolution: window.devicePixelRatio
+    };
   }
 
   getSize() {
@@ -122,7 +121,6 @@ export default class EffectRenderer {
   animate() {
     if (this.active && this.isRenderable()) {
       this.render();
-      AnimationStore.emitChange();
       window.requestAnimationFrame(this.animate.bind(this));
     }
   }

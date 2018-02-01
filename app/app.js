@@ -7,65 +7,46 @@
  */
 
 import Renderer from './Renderer/EffectRenderer';
-import RendererStore from './stores/RendererStore';
 import { Scene, PerspectiveCamera, PCFSoftShadowMap } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
-import Bunny from './objects/StanfordBunny/Bunny.js';
+import Land from './objects/Land/Land.js';
+import Flower from './objects/Flower/Flower.js';
 import BasicLights from './objects/BasicLights';
 import { ShaderPass, RenderPass } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
-import { TestShader } from './Shaders/test/test';
+
+// React  Imports
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './stores/store';
+import Main from './components/Main.jsx';
 
 const scene = new Scene();
-const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 const renderer = new Renderer({antialias: false}, scene, camera);
 const rPass = new RenderPass(scene, camera);
 const FXAA = new ShaderPass(FXAAShader);
-const c1 = new ShaderPass(TestShader);
-const c2 = new ShaderPass(TestShader);
-const c3 = new ShaderPass(TestShader);
-const c4 = new ShaderPass(TestShader);
-const c5 = new ShaderPass(TestShader);
 
 // Post processing
 renderer.addPass(rPass);
-
-FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2)
-
-renderer.addPass(c5);
-
-c4.uniforms.COLOR.value.set(0xFF00FF);
-c4.uniforms.CENTRE.value.set(256 * 5, 256);
-renderer.addPass(c4);
-
-c3.uniforms.COLOR.value.set(0xFFFF00);
-c3.uniforms.CENTRE.value.set(256 * 4, 256);
-renderer.addPass(c3);
-
-c2.uniforms.COLOR.value.set(0xFF0000);
-c2.uniforms.CENTRE.value.set(256 * 3, 256);
-renderer.addPass(c2);
-
-c1.uniforms.COLOR.value.set(0x00FFFF);
-c1.uniforms.CENTRE.value.set(256 * 2, 256);
-
-renderer.addPass(c1);
-
+FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2);
 FXAA.renderToScreen = true;
 renderer.addPass(FXAA);
 
-RendererStore.addChangeListener( (d)=>{
-  const { width, height, resolution } = d;
+// Update FXAA on resize
+store.subscribe( ()=>{
+  const { width, height, resolution } = store.getState().Renderer;
   // set camera
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   // update the FXAA pass
-  renderer.passes[6].uniforms.resolution.value.set(width * resolution, height * resolution);
-
+  renderer.passes[1].uniforms.resolution.value.set(width * resolution, height * resolution);
 } );
-const OrbitControls = require('three-orbit-controls')(THREE)
-const Bunnies = new Bunny();
-const Lights = new BasicLights();
+const OrbitControls = require('three-orbit-controls')(THREE); // yuk
+const flower = new Flower();
+const land = new Land();
+const lights = new BasicLights();
 
 // Three JS inspector
 // https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi?hl=en
@@ -75,18 +56,36 @@ const Lights = new BasicLights();
 // Renderer
 renderer.renderer.shadowMap.enabled = true;
 renderer.renderer.shadowMap.type = PCFSoftShadowMap;
-renderer.renderer.setClearColor(0x000000,1);
-
-// Scene
-new OrbitControls(camera);
-scene.add(Bunnies, Lights);
-camera.position.z = 10;
-camera.position.y = 1;
+renderer.renderer.setClearColor(0x7ec0ee,1);
 
 // DOM
+const reactDiv = document.createElement('div');
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
+document.body.appendChild( reactDiv )
 document.body.appendChild( renderer.domElement );
 
-// Go!
+// Scene
+new OrbitControls(camera, renderer.domElement);
+scene.add(land, lights, flower);
+camera.position.z = 10;
+
+// CSS
+const CSSURL = '//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css'
+const style = document.createElement('link');
+style.setAttribute('href', CSSURL);
+style.setAttribute('rel', 'stylesheet');
+document.body.appendChild(style);
+
+// Go Render!
 renderer.start();
+
+// React
+render(
+  <Provider store={store}>
+    <Main />
+  </Provider>,
+  reactDiv
+);
+
+
