@@ -1,8 +1,9 @@
 {
   "name": "three-seed",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": "https://github.com/edwinwebb/three-seed",
-  "description": "Three.js project seed with ES6 and webpack",
+  "description": "Three.js biolerplate with ES6, Webpack and React/Redux controls",
+  "keywords": ["react", "redux", "webgl", "boilerplate", "three.js", "es6", "webpack"],
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "prebuild": "npm run clean",

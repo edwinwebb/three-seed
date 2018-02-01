@@ -7,7 +7,6 @@
  */
 
 import Renderer from './Renderer/EffectRenderer';
-import RendererStore from './stores/RendererStore';
 import { Scene, PerspectiveCamera, PCFSoftShadowMap } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
 import Land from './objects/Land/Land.js';
@@ -38,7 +37,6 @@ renderer.addPass(FXAA);
 // Update FXAA on resize
 store.subscribe( ()=>{
   const { width, height, resolution } = store.getState().Renderer;
-  console.log(store.getState())
   // set camera
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
