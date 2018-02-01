@@ -14,7 +14,7 @@
   },
   "config": {
     "title": "Three.js Project",
-    "build": "./build/"
+    "build": "./"
   },
   "dependencies": {
     "gsap": "^1.19.1",
