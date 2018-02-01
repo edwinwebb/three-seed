@@ -1,48 +1,28 @@
-import EventEmitter from 'events';
-import { RESIZE } from '../constants/AppConstants';
+const RESIZE = 'renderer/resize';
 
-/**
- * Render Store
- * Keeps render variables
- *
- * @data
- * 	width : window width
- * 	height : window height
- * 	stage : stage width and height
- * 	stageCenter : center point of stage
- * 	resolution : display density
- */
-class RendererStore extends EventEmitter {
-
-  constructor(...args) {
-    super(...args);
-
-    this.data = {
-      width: 0,
-      height: 0,
-      stageWidth: 0,
-      stageHeight: 0,
-      stageCenter: {x: 0,y: 0},
-      resolution: 1
-    };
+export default (
+  state = {
+    width: 0,
+    height: 0,
+    resolution: 1
+  },
+  action = {}
+) => {
+  switch (action.type) {
+    case RESIZE: {
+      return {
+        ...state,
+        width: action.value.width,
+        height: action.value.height,
+        resolution: action.value.resolution
+      };
+    }
+    default:
+      return state;
   }
+};
 
-  get(key) {
-    return this.data[key];
-  }
-
-  set(key, value) {
-    this.data[key] = value;
-    return value;
-  }
-
-  emitChange() {
-    this.emit(RESIZE, this.data);
-  }
-
-  addChangeListener(callback) {
-    this.on(RESIZE, callback, this.data);
-  }
-}
-
-export default new RendererStore();
+export const setRendererSize = value => ({
+  type: RESIZE,
+  value
+});

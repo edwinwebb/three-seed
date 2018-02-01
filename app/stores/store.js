@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux';
-import Animation from './AnimationStore';
 import Renderer from './RendererStore';
 import App from './AppStore';
 
 const Combi = combineReducers({
-  App
+  App,
+  Renderer
 });
 
 // export const AnimationStore = createStore(Animation);

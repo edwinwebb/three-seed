@@ -35,9 +35,10 @@ FXAA.uniforms.resolution.value.set(window.innerWidth * 2, window.innerHeight * 2
 FXAA.renderToScreen = true;
 renderer.addPass(FXAA);
 
-// Basic stores
-RendererStore.addChangeListener( (d)=>{
-  const { width, height, resolution } = d;
+// Update FXAA on resize
+store.subscribe( ()=>{
+  const { width, height, resolution } = store.getState().Renderer;
+  console.log(store.getState())
   // set camera
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
@@ -60,9 +61,9 @@ renderer.renderer.shadowMap.type = PCFSoftShadowMap;
 renderer.renderer.setClearColor(0x7ec0ee,1);
 
 // DOM
+const reactDiv = document.createElement('div');
 document.body.style.margin = 0;
 document.body.style.overflow = 'hidden';
-const reactDiv = document.createElement('div');
 document.body.appendChild( reactDiv )
 document.body.appendChild( renderer.domElement );
 

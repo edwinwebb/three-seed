@@ -1,6 +1,6 @@
 import { WebGLRenderer } from 'three';
-import RendererStore from '../stores/RendererStore.js';
-import AnimationStore from '../stores/AnimationStore.js';
+import store from '../stores/store';
+import { setRendererSize } from '../stores/RendererStore.js';
 
 export default class Renderer extends WebGLRenderer {
 
@@ -10,8 +10,6 @@ export default class Renderer extends WebGLRenderer {
     this.resolution = window.devicePixelRatio;
 
     window.addEventListener('resize', this.resizeHandler.bind(this));
-
-    RendererStore.set('resolution', this.resolution);
 
     this.setPixelRatio(this.resolution);
     this.camera = camera;
@@ -24,8 +22,7 @@ export default class Renderer extends WebGLRenderer {
   }
 
   setStore() {
-    RendererStore.set('width', this.getWindowSize()[0]);
-    RendererStore.set('height', this.getWindowSize()[1]);
+    store.dispatch(setRendererSize(this.getWindowSize()));
   }
 
   resizeHandler() {
@@ -40,14 +37,17 @@ export default class Renderer extends WebGLRenderer {
     }
 
     this.setStore();
-    RendererStore.emitChange();
   }
 
   getWindowSize() {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    return [width, height];
+    return {
+      width,
+      height,
+      resolution: window.devicePixelRatio
+    };
   }
 
   start() {
@@ -67,7 +67,6 @@ export default class Renderer extends WebGLRenderer {
   animate() {
     if (this.active && this.isRenderable()) {
       this.render(this.scene, this.camera);
-      AnimationStore.emitChange();
       window.requestAnimationFrame(this.animate.bind(this));
     }
   }
