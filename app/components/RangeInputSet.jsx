@@ -14,7 +14,7 @@ export default class RangeInputSet extends React.Component {
       onChange(parseFloat(e.target.value))
     }
     return <div>
-      <label>{ label }</label>
+      <label>{ label } { value }</label>
       <input type="range" min={ min } step={ step } max={ max } value={ value } onChange={ changeHandler } />
     </div>
   }
