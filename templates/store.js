@@ -1,31 +1,14 @@
-import EventEmitter from 'events';
-import { * } from '../constants/AppConstants';
+const NEU = 'seed/NEU';
 
-class {%=o.exports%} extends EventEmitter {
-
-  constructor(...args) {
-    super(...args);
-
-    this.data = {
-      zero: 0
-    };
+export default (state = {}, action = {}) => {
+  switch (action.type) {
+    case NEU:
+      return {
+        ...state
+      };
+    default:
+      return state;
   }
+};
 
-  get(key) {
-    return this.data[key];
-  }
-
-  set(key, value) {
-    return this.data[key] = value;
-  }
-
-  emitChange() {
-    this.emit("NONE", this.data);
-  }
-
-  addChangeListener(callback) {
-    this.on("NONE", callback);
-  }
-}
-
-export default new {%=o.exports%}();
+export const neu = () => ({ type: NEU });

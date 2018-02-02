@@ -20,7 +20,7 @@ Three.js project biolerplate with ES6 and React/Redux controls. Design Goal: to 
 * Documentation
 * React componenents for Vector modification
 * Auto Lint
-* Reactman Updates
+* Reactman Updates - add React component
 
 ## npm scripts
 
