@@ -8,22 +8,21 @@ export default class extends Group {
     super();
 
     this.loadingFunction = (p) => {
-      console.log('loading', p)
+      console.log('loading island', p)
     }
     this.name = 'land';
     this.load();
 
     store.subscribe(() => {
-      const { test } = store.getState().App;
-      this.landScene.scale.set(4 * test, 4* test, 4* test);
+      const { islandScale } = store.getState().App;
+      this.landScene.scale.set(4 * islandScale, 4 * islandScale, 4 * islandScale);
     });
   }
 
   async load() {
     const landScene = await loadScene(LANDMOD, this.loadingFunction);
     landScene.rotation.z = Math.PI;
-    landScene.scale.set(4,4,4)
-    window.land = landScene;
+    landScene.scale.set(4,4,4);
     this.landScene = landScene;
 
     this.add(landScene);
