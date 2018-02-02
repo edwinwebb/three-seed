@@ -1,10 +1,12 @@
 const ISCALE = 'app/IslandScale';
-const DIRITEN = 'app/diriten'
+const DIRITEN = 'app/diriten';
+const LIGHTCOLOR = 'app/lightcolor';
 
 export default (
   state = {
     islandScale: 1,
-    dirinten: 1.15
+    dirinten: 1.15,
+    lightcolor: '#FEFEFE'
   },
   action = {}
 ) => {
@@ -21,6 +23,12 @@ export default (
         dirinten: action.value
       }
     }
+    case LIGHTCOLOR: {
+      return {
+        ...state,
+        lightcolor: action.value
+      }
+    }
     default:
       return state;
   }
@@ -34,5 +42,10 @@ export const setIslandScale = value => ({
 
 export const setDirIten = value => ({
   type: DIRITEN,
+  value
+})
+
+export const setLightColor = value => ({
+  type: LIGHTCOLOR,
   value
 })
