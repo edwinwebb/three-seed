@@ -1,4 +1,4 @@
-import { Group, SpotLight, PointLight, AmbientLight,HemisphereLight } from 'three';
+import { Group, SpotLight, PointLight, AmbientLight, HemisphereLight, Color } from 'three';
 import store from '../stores/store';
 
 export default class BasicLights extends Group {
@@ -18,8 +18,10 @@ export default class BasicLights extends Group {
     this.add(ambi, hemi, dir);
 
     store.subscribe( ()=>{
-      const { dirinten } = store.getState().App;
-      hemi.intensity = dirinten;
+      const { dirinten, lightcolor } = store.getState().App;
+      const col = parseInt(lightcolor.replace('#', '0x'));
+      dir.intensity = dirinten;
+      dir.color = new Color(col);
     } )
   }
 }

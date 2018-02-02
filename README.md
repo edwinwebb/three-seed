@@ -1,6 +1,6 @@
 # Three Seed
 
-A boilerplate for building Three.js apps with ES6. 
+Three.js project biolerplate with ES6 and React/Redux controls. Design Goal: to get projects up and running fast.
 
 [demo](http://edwinwebb.github.io/three-seed/)
 
@@ -14,13 +14,13 @@ A boilerplate for building Three.js apps with ES6.
 * Tweening with GSAP
 
 ## TODO
-* Still needs some testing and tightening up
+* HotLoading
 * Update Tweens to PopMotion
 * Make it easy to remove React/Redux/Builtins
 * Documentation
 * React componenents for Vector modification
 * Auto Lint
-* Reactman Updates
+* Reactman Updates - add React component
 
 ## npm scripts
 
