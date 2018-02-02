@@ -9,9 +9,7 @@
 import Renderer from './Renderer/EffectRenderer';
 import { Scene, PerspectiveCamera, Vector3 } from 'three';
 import * as THREE from 'three'; // used for Orbit Controls
-import Land from './objects/Land/Land.js';
-import Flower from './objects/Flower/Flower.js';
-import BasicLights from './objects/BasicLights';
+import SeedScene from './objects/Scene.js';
 import { ShaderPass, RenderPass } from './Renderer/EffectRenderer';
 import { FXAAShader } from './Shaders/fxaa/fxaa';
 
@@ -26,7 +24,6 @@ import Main from './components/Main.jsx';
 const scene = new Scene();
 const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 const renderer = new Renderer({antialias: false}, scene, camera);
-
 
 // Post processing
 const rPass = new RenderPass(scene, camera);
@@ -46,14 +43,12 @@ store.subscribe( ()=>{
   renderer.passes[1].uniforms.resolution.value.set(width * resolution, height * resolution);
 } );
 
-// Controls and Scene
+// Camera, Controls and Scene
 const OrbitControls = require('three-orbit-controls')(THREE); // yuk
-const flower = new Flower();
-const land = new Land();
-const lights = new BasicLights();
+const seedScene = new SeedScene();
 
 new OrbitControls(camera, renderer.domElement);
-scene.add(land, lights, flower);
+scene.add(seedScene);
 camera.position.set(-2,2,10);
 camera.lookAt(new Vector3(0,0,0));
 
