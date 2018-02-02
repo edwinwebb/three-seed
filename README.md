@@ -11,9 +11,11 @@ A boilerplate for building Three.js apps with ES6.
 * React for easy HTML controls
 * Use async/await for easy asset loading
 * GLSL example with .shader files
+* Tweening with GSAP
 
 ## TODO
 * Still needs some testing and tightening up
+* Update Tweens to PopMotion
 * Make it easy to remove React/Redux/Builtins
 * Documentation
 * React componenents for Vector modification

@@ -4,7 +4,7 @@ const DIRITEN = 'app/diriten'
 export default (
   state = {
     islandScale: 1,
-    dirinten: 0.8
+    dirinten: 1.15
   },
   action = {}
 ) => {
