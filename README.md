@@ -2,19 +2,25 @@
 
 A boilerplate for building Three.js apps with ES6. 
 
+[demo](http://edwinwebb.github.io/three-seed/)
+
 ## Features
 * Easy to work with and understand Webpack and ES6.
-* Built in Renderer with resizes and optional GLSL
+* Built in Renderer with resizes and optional GLSL, fire and forget.
 * Redux for dependable state management
 * React for easy HTML controls
 * Use async/await for easy asset loading
 * GLSL example with .shader files
+* Tweening with GSAP
 
 ## TODO
 * Still needs some testing and tightening up
+* Update Tweens to PopMotion
 * Make it easy to remove React/Redux/Builtins
 * Documentation
 * React componenents for Vector modification
+* Auto Lint
+* Reactman Updates
 
 ## npm scripts
 
@@ -30,7 +36,7 @@ A boilerplate for building Three.js apps with ES6.
 import textureURL from './texture.png';
 ```
 
-Then load them with the matching loader from /Loaders/Loader.js
+Then load them with the matching loader from /Loaders/Loader.js with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
 ```javascript
 import { loadTexture } from '/loaders/loader.js';

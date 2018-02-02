@@ -1,18 +1,18 @@
-const TEST = 'app/test';
+const ISCALE = 'app/IslandScale';
 const DIRITEN = 'app/diriten'
 
 export default (
   state = {
-    test: 1,
-    dirinten: 0.8
+    islandScale: 1,
+    dirinten: 1.15
   },
   action = {}
 ) => {
   switch (action.type) {
-    case TEST: {
+    case ISCALE: {
       return {
         ...state,
-        test: action.value
+        islandScale: action.value
       };
     }
     case DIRITEN: {
@@ -27,8 +27,8 @@ export default (
 };
 
 
-export const setTest = value => ({
-  type: TEST,
+export const setIslandScale = value => ({
+  type: ISCALE,
   value
 });
 
