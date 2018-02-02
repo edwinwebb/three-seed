@@ -14,6 +14,7 @@ Three.js project biolerplate with ES6 and React/Redux controls. Design Goal: to 
 * Tweening with GSAP
 
 ## TODO
+If you can help with this project, please do!
 * HotLoading
 * Update Tweens to PopMotion
 * Make it easy to remove React/Redux/Builtins
@@ -21,6 +22,28 @@ Three.js project biolerplate with ES6 and React/Redux controls. Design Goal: to 
 * React componenents for Vector modification
 * Auto Lint
 * Reactman Updates - add React component
+
+## Running the Project
+
+Clone the project, remove the git repository and install to get going:
+
+```bash
+git clone --depth=1 https://github.com/edwinwebb/three-seed.git my-project
+cd my-project
+rm -rf .git
+npm install
+npm start
+```
+
+Then visit http://localhost:8080
+
+### Editing the code
+There are two entry files which are called from the project init code in the entry file `app.js`.
+
+* Three.js : `app/objects/Scene.js`
+* React : `app/components/Main.jsx`
+
+Data is managed in Redux stores, I've included one for the renderer and the app it's self. There are examples in the codebase and online : https://redux.js.org/docs/basics/
 
 ## npm scripts
 

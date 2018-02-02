@@ -7,7 +7,9 @@ class Main extends React.Component  {
   render() {
     const wrapStyle = {
       position: 'absolute',
-      padding: 20
+      padding: 20,
+      width: 260,
+      height: '100vh'
     };
     const { islandScale, dirinten, lightcolor } = this.props.app;
 
