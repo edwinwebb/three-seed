@@ -12,6 +12,9 @@ Before you begin, make sure your comfortable with terminal commands and have
 [Node and NPM installed](https://www.npmjs.com/get-npm).
 
 ### Install with Git
+In terminal clone the project into a directory of your choice then delete the git 
+folder to start fresh.
+
 ```bash
 git clone --depth=1 https://github.com/edwinwebb/three-seed.git my-project
 cd my-project
@@ -19,8 +22,10 @@ rm -rf .git
 npm install
 ```
 
+You can run `git init`.
+
 ### Install via Download
-Download the [zip of the project](https://github.com/edwinwebb/three-seed/archive/master.zip),
+If you don't have Git then download the [zip of the project](https://github.com/edwinwebb/three-seed/archive/master.zip),
 extract it and then in terminal type `npm install` to install dependencies.
 
 ## Running the development server
@@ -76,5 +81,3 @@ Flower: https://poly.google.com/view/eydI4__jXpi
 
 ## License
 MIT (http://opensource.org/licenses/MIT)
-
-

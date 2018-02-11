@@ -1,7 +1,6 @@
 {
   "name": "three-seed",
   "version": "0.3.0",
-  "repository": "https://github.com/edwinwebb/three-seed",
   "description": "Three.js biolerplate with Webpack and ES6",
   "keywords": [
     "webgl",
