@@ -10,7 +10,7 @@ export default class Flower extends Group {
     this.name = 'flower';
 
     loader.load(MODEL, (mesh)=>{
-      this.add(mesh)
+      this.add(mesh);
     });
   }
 }
