@@ -1,12 +1,12 @@
 const path = require('path');
 const pkg = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const DEBUG = process.env.NODE_ENV !== 'production';
+const buildPath = './build/';
 
 module.exports = {
-  entry: ['babel-polyfill','./app/app.js'],
+  entry: ['./src/entry.js'],
   output: {
-    path: path.join(__dirname, pkg.config.build),
+    path: path.join(__dirname, buildPath),
     filename: '[name].[hash].js'
   },
   target: 'web',
@@ -14,23 +14,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js|x$/,
+        test: /\.js$/,
         use: 'babel-loader',
         exclude: path.resolve(__dirname, './node_modules/')
       },{
-        test: /\.(jpe?g|png|gif|svg|json|obj|mat)$/i,
+        test: /\.(jpe?g|png|gif|svg|json|obj|mat|mp3|ogg)$/i,
         use: 'file-loader'
       },{
-        test: /\.(vert|frag|geom)$/i,
+        test: /\.(vert|frag|glsl|shader|txt)$/i,
         use: 'raw-loader'
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({'title': pkg.config.title})
+    new HtmlWebpackPlugin({'title': 'three-seed project'})
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.join(__dirname, buildPath),
     compress: true,
     port: 8080
   }
