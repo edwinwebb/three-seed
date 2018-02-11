@@ -13,4 +13,8 @@ export default class SeedScene extends Group {
 
     this.add(land, flower, lights);
   }
+
+  update(timeStamp) {
+    this.rotation.y = timeStamp / 10000;
+  }
 }

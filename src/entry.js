@@ -27,9 +27,10 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setClearColor(0x7ec0ee, 1);
 
 // render loop
-const onAnimationFrameHandler = () => {
+const onAnimationFrameHandler = (timeStamp) => {
   renderer.render(scene, camera);
-  window.requestAnimationFrame(onAnimationFrameHandler)
+  seedScene.update && seedScene.update(timeStamp);
+  window.requestAnimationFrame(onAnimationFrameHandler);
 }
 window.requestAnimationFrame(onAnimationFrameHandler);
 
