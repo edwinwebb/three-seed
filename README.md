@@ -1,10 +1,10 @@
 # Three Seed
 
-Three.js starter project boilerplate bundled with webpack.
+Three.js starter project boilerplate bundled with Webpack.
 
 This project will help you get started on your next three.js project and provide a foundation for extension. It sets up a scene, camera and renderer and gives examples of loading objects.
 
-[demo](http://edwinwebb.github.io/three-seed/)
+[Online Demo](http://edwinwebb.github.io/three-seed/)
 
 ## Install
 Before you begin, make sure your comfortable with terminal commands and have [Node and NPM installed](https://www.npmjs.com/get-npm).
@@ -19,19 +19,19 @@ rm -rf .git
 npm install
 ```
 
-You can run `git init`.
+You can run `git init` to start tracking your changes after adding the files.
 
 ### Install via Download
 If you don't have Git then download the [zip of the project](https://github.com/edwinwebb/three-seed/archive/master.zip), extract it and then in terminal type `npm install` to install dependencies.
 
 ## Running the development server
-To see the changes you make to the starter project go to the project folder in terminal and follow the instruction
+To see the changes you make to the starter project go to the project folder in terminal and run...
 
 ```bash
 npm start
 ```
 
-This command will bundle the project code and start a development server at (http://localhost:8080/)[http://localhost:8080/]. Visit this in your web browser, every time you make changes to the code, the page will refresh.
+This command will bundle the project code and start a development server at [http://localhost:8080/](http://localhost:8080/). Visit this in your web browser, every time you make changes to the code the page will refresh. Any errors when building the project will be displayed here.
 
 ## Editing the code
 The first file you should open is `./objects/Scene.js`. In it you will find the three objects comprising the world represented in your browser. The flower, the island and the lights illuminating them are each represented as a javascript file. Open these, edit them and see the changes represented in the browser. If something goes wrong a message will displayed in the debug console of your browser.
@@ -46,6 +46,9 @@ If you want to add additional functionality to your project, you can search and 
 * [Cannon.js Physics](https://www.npmjs.com/package/cannon).
 
 Additions like these are best managed in the projects entry file: `./src/entry.js`. In it are the Scene, Camera and Renderer classes, the window event listeners and the animation loop.
+
+## About the models
+Both models were exported from the [free 3D software Blender](https://www.blender.org/) using the [three.js exporter](https://github.com/timoxley/threejs/tree/master/utils/exporters/blender). They were downloaded from the Google Poly project. 
 
 ## Building the project for the web
 Once you are happy with your project you'll be sure to want to show it off. Running `npm run build` in terminal will bundle your project into the folder `./build/`. You can upload this directory to a web server. For more complex results read [this guide](https://webpack.js.org/guides/production/).
