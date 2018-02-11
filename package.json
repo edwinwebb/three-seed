@@ -1,7 +1,7 @@
 {
   "name": "three-seed",
   "version": "0.3.0",
-  "description": "Three.js biolerplate with Webpack and ES6",
+  "description": "Three.js starter project boilerplate bundled with webpack",
   "keywords": [
     "webgl",
     "boilerplate",
