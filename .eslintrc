@@ -8,6 +8,9 @@
     "node": true,
     "es6": true
   },
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "strict": [2, "never"],
     "quotes": [
@@ -31,6 +34,7 @@
     "no-func-assign": 2,
     "no-invalid-regexp": 2,
     "no-dupe-keys": 2,
-    "comma-dangle": [2, "never"]
+    "comma-dangle": [2, "never"],
+    "react/jsx-uses-vars": 2
   }
 }
