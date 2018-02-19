@@ -2,12 +2,17 @@
 
 Three.js starter project boilerplate bundled with webpack.
 
-This project will help you get started on your next three.js project and provide a foundation for extension. It sets up a scene, camera and renderer and gives examples of loading objects.
+This project will help you get started on your next three.js project and provide a foundation for extension. It sets up a simple scene, camera and renderer.
+
+The [advanced branch](https://github.com/edwinwebb/three-seed/advanced/) maintains a more complex environment including controls, post-processing, redux stores, react, tweeing, async/await and more.
 
 [demo](http://edwinwebb.github.io/three-seed/)
 
 ## Install
-Before you begin, make sure your comfortable with terminal commands and have [Node and NPM installed](https://www.npmjs.com/get-npm).
+Before you begin, make sure you are comfortable with terminal commands and have [Node and NPM installed](https://www.npmjs.com/get-npm).
+
+### Install via Download
+First download the [zip of the project](https://github.com/edwinwebb/three-seed/archive/master.zip) and extract it. Then in terminal at that folder type `npm install` to set things up. To get going run: `npm start`.
 
 ### Install with Git
 In terminal clone the project into a directory of your choice then delete the git folder to start fresh.
@@ -19,25 +24,20 @@ rm -rf .git
 npm install
 ```
 
-You can run `git init`.
-
-### Install via Download
-If you don't have Git then download the [zip of the project](https://github.com/edwinwebb/three-seed/archive/master.zip), extract it and then in terminal type `npm install` to install dependencies.
-
 ## Running the development server
-To see the changes you make to the starter project go to the project folder in terminal and follow the instruction
+To see the changes you make to the starter project go to the project folder in terminal and type...
 
 ```bash
 npm start
 ```
 
-This command will bundle the project code and start a development server at (http://localhost:8080/)[http://localhost:8080/]. Visit this in your web browser, every time you make changes to the code, the page will refresh.
+This command will bundle the project code and start a development server at (http://localhost:8080/)[http://localhost:8080/]. Visit this in your web browser; every time you make changes to the code the page will refresh. Congratulations, you are good to go!
 
 ## Editing the code
-The first file you should open is `./objects/Scene.js`. In it you will find the three objects comprising the world represented in your browser. The flower, the island and the lights illuminating them are each represented as a javascript file. Open these, edit them and see the changes represented in the browser. If something goes wrong a message will displayed in the debug console of your browser.
+The first file you should open is `./objects/Scene.js`. In it you will find the three objects comprising the world represented in your browser. The flower, the island, and the lights illuminating them are each represented as a javascript file in the `./object/s` folder. Open these, edit them and see your changes in the browser. If something goes wrong a message will displayed in the debug console of the browser.
 
 ## Importing local files
-Local files, such as images and 3D models, are imported into the application as URLS then loaded asynchronously with three.js. Most common files that three.js uses are supported. Shader files are loaded as raw text. For more information about this system see the [webpack site](https://webpack.js.org/).
+Local files, such as images and 3D models, are imported into the application as URLs then loaded asynchronously with three.js. Most common files that three.js uses are supported. Shader files are loaded as raw text. For more information about this system see the [webpack site](https://webpack.js.org/).
 
 ## Importing modules from the web
 If you want to add additional functionality to your project, you can search and install them from the [NPM repository](https://www.npmjs.com/). Some modules you might want to consider are...
