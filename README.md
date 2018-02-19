@@ -7,7 +7,7 @@ This project will help you get started on your next three.js project and provide
 [Online Demo](http://edwinwebb.github.io/three-seed/)
 
 ## Install
-Before you begin, make sure your comfortable with terminal commands and have [Node and NPM installed](https://www.npmjs.com/get-npm).
+Before you begin, make sure your comfortable with terminal commands and have [Node and NPM installed](https://www.npmjs.com/get-npm). You'll also want a text editor.
 
 ### Install with Git
 In terminal clone the project into a directory of your choice then delete the git folder to start fresh.
@@ -45,7 +45,7 @@ If you want to add additional functionality to your project, you can search and 
 * [popmotion](https://www.npmjs.com/package/popmotion)
 * [Cannon.js Physics](https://www.npmjs.com/package/cannon).
 
-Additions like these are best managed in the projects entry file: `./src/entry.js`. In it are the Scene, Camera and Renderer classes, the window event listeners and the animation loop.
+Additions like these are best managed in the projects entry file: `./src/entry.js`. In it are the Scene, Camera, Renderer, the window event listeners and the animation loop.
 
 ## About the models
 Both models were exported from the [free 3D software Blender](https://www.blender.org/) using the [three.js exporter](https://github.com/timoxley/threejs/tree/master/utils/exporters/blender). They were downloaded from the Google Poly project. 
@@ -54,7 +54,7 @@ Both models were exported from the [free 3D software Blender](https://www.blende
 Once you are happy with your project you'll be sure to want to show it off. Running `npm run build` in terminal will bundle your project into the folder `./build/`. You can upload this directory to a web server. For more complex results read [this guide](https://webpack.js.org/guides/production/).
 
 ## Advanced Usage
-This project has a branch with a host of additional features for the advanced user. It contains shaders, tweens, and react with redux. See the 'advanced' branch.
+This project has a branch with a host of additional features for the advanced user. It contains shaders, controls, tweens, and react with redux. See the 'advanced' branch.
 
 ## CC Attributes
 Floating island : https://poly.google.com/view/eEz9hdknXOi
