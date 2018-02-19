@@ -2,9 +2,9 @@
 
 Three.js starter project boilerplate bundled with Webpack.
 
-This project will help you get started on your next three.js project and provide a foundation for extension. It sets up a simple scene, camera and renderer.
+This project will help you get started on your next three.js project and provide a foundation for extension. It sets up a simple scene, camera and renderer in a modern Javascript environment.
 
-The [advanced branch](https://github.com/edwinwebb/three-seed/advanced/) maintains a more complex environment including controls, post-processing, redux stores, react, tweeing, async/await and more.
+The [advanced branch](https://github.com/edwinwebb/three-seed/tree/advanced) maintains a more complex environment including controls, post-processing, redux stores, react, tweeing, async/await and more.
 
 [Online Demo](http://edwinwebb.github.io/three-seed/)
 
@@ -54,7 +54,7 @@ Both models were exported from the [free 3D software Blender](https://www.blende
 Once you are happy with your project you'll be sure to want to show it off. Running `npm run build` in terminal will bundle your project into the folder `./build/`. You can upload this directory to a web server. For more complex results read [this guide](https://webpack.js.org/guides/production/).
 
 ## Advanced Usage
-This project has a branch with a host of additional features for the advanced user. It contains shaders, controls, tweens, and react with redux. See the 'advanced' branch.
+This project has a branch with a host of additional features for the advanced user. It contains shaders, controls, tweens, and react with redux. See the [advanced branch](https://github.com/edwinwebb/three-seed/tree/advanced).
 
 ## CC Attributes
 Floating island : https://poly.google.com/view/eEz9hdknXOi
