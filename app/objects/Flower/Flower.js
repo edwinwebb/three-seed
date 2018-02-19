@@ -19,10 +19,9 @@ export default class Flower extends Group {
 
   async load() {
     const flower = await loadScene(MODEL, this.loadingFunction);
-    flower.rotation.set(0,Math.PI,0)
+    flower.rotation.set(0,Math.PI,0);
+    flower.scale.set(1.2,1.2,1.2);
     this.flower = flower;
-
-    window.flower = flower;
 
     this.add(flower);
   }

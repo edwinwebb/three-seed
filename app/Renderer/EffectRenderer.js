@@ -2,6 +2,8 @@ import { WebGLRenderer, WebGLRenderTarget, LinearFilter, RGBFormat, Orthographic
 import { setRendererSize } from '../stores/RendererStore.js';
 import store from '../stores/store.js';
 
+// Renderer which manages shader post processing.
+
 export default class EffectRenderer {
 
   constructor(options) {

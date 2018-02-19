@@ -31,7 +31,7 @@ module.exports = {
     },
     "store" : {
       "files" : {
-        "store.js" : "stores/{%=o.exports%}{%=o.ext%}"
+        "store.js" : "stores/{%=o.exports%}.js"
       },
       "script" : [{
         "name": "exports",
