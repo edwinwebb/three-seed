@@ -31,7 +31,7 @@ To see the changes you make to the starter project go to the project folder in t
 npm start
 ```
 
-This command will bundle the project code and start a development server at (http://localhost:8080/)[http://localhost:8080/]. Visit this in your web browser; every time you make changes to the code the page will refresh. Congratulations, you are good to go!
+This command will bundle the project code and start a development server at [http://localhost:8080/](http://localhost:8080/). Visit this in your web browser; every time you make changes to the code the page will refresh. Congratulations, you are good to go!
 
 ## Editing the code
 The first file you should open is `./objects/Scene.js`. In it you will find the three objects comprising the world represented in your browser. The flower, the island, and the lights illuminating them are each represented as a javascript file in the `./object/s` folder. Open these, edit them and see your changes in the browser. If something goes wrong a message will displayed in the debug console of the browser.
@@ -58,6 +58,7 @@ This project has a branch with a host of additional features for the advanced us
 
 ## CC Attributes
 Floating island : https://poly.google.com/view/eEz9hdknXOi
+
 Flower: https://poly.google.com/view/eydI4__jXpi
 
 ## License
