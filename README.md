@@ -47,6 +47,14 @@ If you want to add additional functionality to your project, you can search and 
 
 Additions like these are best managed in the projects entry file: `./src/entry.js`. In it are the Scene, Camera, Renderer, the window event listeners and the animation loop.
 
+## Using the Three.js Examples
+When using this project you might bump into a few issues around using 
+the examples from three.js docs. Most of the common issues have been 
+solved with including NPM packages. However, for more complex examples 
+with custom script includes you might find yourself having to refactor 
+them. See [Issue 15](https://github.com/edwinwebb/three-seed/issues/15) 
+for an example.
+
 ## About the models
 Both models were exported from the [free 3D software Blender](https://www.blender.org/) using the [three.js exporter](https://github.com/timoxley/threejs/tree/master/utils/exporters/blender). They were downloaded from the Google Poly project. 
 
