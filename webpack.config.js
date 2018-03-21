@@ -18,20 +18,24 @@ module.exports = {
         use: 'babel-loader',
         exclude: path.resolve(__dirname, './node_modules/')
       },{
-        test: /\.(jpe?g|png|gif|svg|tga|json|gltf|babylon|mtl|pcb|pcd|prwm|obj|mat|mp3|ogg)$/i,
-        use: 'file-loader'
+        test: /\.(jpe?g|png|gif|svg|tga|gltf|babylon|mtl|pcb|pcd|prwm|obj|mat|mp3|ogg)$/i,
+        use: 'file-loader',
+        exclude: path.resolve(__dirname, './node_modules/')
       },{
         test: /\.(vert|frag|glsl|shader|txt)$/i,
-        use: 'raw-loader'
+        use: 'raw-loader',
+        exclude: path.resolve(__dirname, './node_modules/')
+      },{
+        type: 'javascript/auto',
+        test: /\.(json)/,
+        exclude: path.resolve(__dirname, './node_modules/'),
+        use: [{
+          loader: 'file-loader'
+        }],
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({'title': 'three-seed project'})
-  ],
-  devServer: {
-    contentBase: path.join(__dirname, buildPath),
-    compress: true,
-    port: 8080
-  }
+  ]
 }
