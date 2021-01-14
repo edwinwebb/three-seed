@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, buildPath),
     filename: '[name].[hash].js'
   },
+  mode: 'development',
   target: 'web',
   devtool: 'source-map',
   module: {
