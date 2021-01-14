@@ -27,12 +27,12 @@ module.exports = {
         use: 'raw-loader',
         exclude: path.resolve(__dirname, './node_modules/')
       },{
-        type: 'javascript/auto',
-        test: /\.(json)/,
+        test: /\.(bin)$/i,
+        loader: 'file-loader',
         exclude: path.resolve(__dirname, './node_modules/'),
-        use: [{
-          loader: 'file-loader'
-        }],
+        options: {
+          name: '[name].bin'
+        }
       }
     ]
   },
