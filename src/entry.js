@@ -47,4 +47,3 @@ window.addEventListener('resize', windowResizeHanlder);
 // dom
 document.body.style.margin = 0;
 document.body.appendChild( renderer.domElement );
-
