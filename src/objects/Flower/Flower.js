@@ -11,7 +11,7 @@ export default class Flower extends Group {
     this.name = 'flower';
 
     loader.load(MODEL, (gltf)=>{
-      this.add(gltf.scene.children[0]);
+      this.add(gltf.scene);
     });
   }
 }
