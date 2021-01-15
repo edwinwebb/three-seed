@@ -1,7 +1,6 @@
 import { Group } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import MODEL from './Flower.gltf';
-import './Flower.bin'; // export as localhost:8080/Flower.bin
+import MODEL from './Flower.glb';
 
 export default class Flower extends Group {
   constructor() {
