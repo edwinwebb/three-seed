@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, buildPath),
     filename: '[name].[hash].js'
   },
+  mode: 'development',
   target: 'web',
   devtool: 'source-map',
   module: {
@@ -18,20 +19,9 @@ module.exports = {
         use: 'babel-loader',
         exclude: path.resolve(__dirname, './node_modules/')
       },{
-        test: /\.(jpe?g|png|gif|svg|tga|gltf|babylon|mtl|pcb|pcd|prwm|obj|mat|mp3|ogg)$/i,
+        test: /\.(jpe?g|png|gif|svg|tga|glb|babylon|mtl|pcb|pcd|prwm|obj|mat|mp3|ogg)$/i,
         use: 'file-loader',
         exclude: path.resolve(__dirname, './node_modules/')
-      },{
-        test: /\.(vert|frag|glsl|shader|txt)$/i,
-        use: 'raw-loader',
-        exclude: path.resolve(__dirname, './node_modules/')
-      },{
-        type: 'javascript/auto',
-        test: /\.(json)/,
-        exclude: path.resolve(__dirname, './node_modules/'),
-        use: [{
-          loader: 'file-loader'
-        }],
       }
     ]
   },
