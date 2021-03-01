@@ -15,7 +15,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "three": "^0.124.0",
+    "three": "^0.125.0",
     "webpack-cli": "^4.3.1"
   },
   "devDependencies": {
