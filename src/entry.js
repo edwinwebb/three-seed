@@ -9,6 +9,7 @@
 
 import { WebGLRenderer, PerspectiveCamera, Scene, Vector3 } from 'three';
 import SeedScene from './objects/Scene.js';
+import {OrbitControls} from './orbitcontrols.js';
 
 const scene = new Scene();
 const camera = new PerspectiveCamera();
@@ -19,8 +20,14 @@ const seedScene = new SeedScene();
 scene.add(seedScene);
 
 // camera
-camera.position.set(6,3,-10);
+camera.position.set(10,10,20);
 camera.lookAt(new Vector3(0,0,0));
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor=0.1;
+
+
 
 // renderer
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -29,7 +36,7 @@ renderer.setClearColor(0x7ec0ee, 1);
 // render loop
 const onAnimationFrameHandler = (timeStamp) => {
   renderer.render(scene, camera);
-  seedScene.update && seedScene.update(timeStamp);
+  //seedScene.update && seedScene.update(timeStamp);
   window.requestAnimationFrame(onAnimationFrameHandler);
 }
 window.requestAnimationFrame(onAnimationFrameHandler);
