@@ -15,17 +15,30 @@ export default class Pie extends Group {
       this.add(gltf.scene);
       this.scale.set(10, 10, 10);
       this.position.set(0,0,0);
-      
-
-    const objeto1 = gltf.scene.getObjectByName('01');
-
-    if (objeto1){
-      var valorEnY = 40;
-      var total = valorEnY * 2;
-      objeto1.scale.y = total;
-    };
-
     
+
+      for (let i = 1; i <= 5; i++) {
+        let asignacion = i.toString().padStart(2, '0');
+        let objeto_existente = bpy.data.objects[asignacion];
+        
+        if (objeto_existente) {
+            objeto_existente.scale.z = valor_z[i - 1];
+        }
+      };
+    
+      const objeto1 = gltf.scene.getObjectByName('01');
+      const objeto5 = gltf.scene.getObjectByName('05');
+
+      if (objeto1){
+        var valorEnY = 50;
+        var total = valorEnY * 2;
+        objeto1.scale.y = total;
+      };
+
+      if (objeto5){
+        objeto5.scale.y= 30*2;
+      }
+
     });
   }
 }
